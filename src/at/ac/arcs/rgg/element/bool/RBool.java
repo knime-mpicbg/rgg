@@ -9,12 +9,13 @@
 package at.ac.arcs.rgg.element.bool;
 
 import javax.swing.JComponent;
+
 import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
 
+
 /**
- *
  * @author ilhami
  */
 public class RBool extends RElement {
@@ -22,10 +23,14 @@ public class RBool extends RElement {
     private Boolean value;
     private String var;
 
-    /** Creates a new instance of RBool */
+
+    /**
+     * Creates a new instance of RBool
+     */
     public RBool() {
         value = new Boolean(false);
     }
+
 
     @Override
     public String getRCode() {
@@ -42,9 +47,11 @@ public class RBool extends RElement {
         return rbuf.toString();
     }
 
+
     public Boolean getValue() {
         return value;
     }
+
 
     public void setValue(Boolean value) {
         Boolean oldValue = this.value;
@@ -52,25 +59,31 @@ public class RBool extends RElement {
         changeSupport.firePropertyChange("value", oldValue, value);
     }
 
+
     public String getVar() {
         return var;
     }
+
 
     public void setVar(String var) {
         this.var = var;
     }
 
+
     public boolean hasVisualComponents() {
         return false;
     }
+
 
     public VisualComponent[][] getVisualComponents() {
         return null;
     }
 
+
     public boolean isChildAddable() {
         return false;
     }
+
 
     public JComponent[][] getSwingComponentMatrix() {
         return new JComponent[][]{};

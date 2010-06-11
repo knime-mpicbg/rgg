@@ -5,7 +5,6 @@
 package at.ac.arcs.rgg.element.maimporter.array;
 
 /**
- *
  * @author ilhami
  */
 public class TargetFileException extends Exception {

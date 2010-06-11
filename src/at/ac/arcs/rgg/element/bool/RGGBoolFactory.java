@@ -19,15 +19,18 @@ import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 import org.w3c.dom.Element;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGBoolFactory extends RElementFactory {
 
-    /** Creates a new instance of RGGBoolFactory */
+    /**
+     * Creates a new instance of RGGBoolFactory
+     */
     public RGGBoolFactory() {
     }
+
 
     public RElement createRGGElement(Element element, RGG rggInstance) {
 //        if(element.getNodeType() != Element.ELEMENT_NODE)
@@ -45,33 +48,33 @@ public class RGGBoolFactory extends RElementFactory {
         if (StringUtils.isNotBlank(var)) {
             rbool.setVar(var);
         }
-        
+
         if (StringUtils.isNotBlank(id)) {
             rggInstance.addObject(id, rbool);
         }
-        
+
         if (StringUtils.isNotBlank(defaultvalue)) {
             if (StringUtils.equalsIgnoreCase("TRUE", defaultvalue) ||
                     StringUtils.equalsIgnoreCase("T", defaultvalue)) {
                 rbool.setValue(true);
             }
         }
-        
+
         if (StringUtils.isNotBlank(value)) {
             if (util.match("/(\\w+)\\./", value)) {
                 String sourceid = util.group(1);
                 value = util.substitute("s/" + sourceid + "\\.//g", value);
                 AutoBinding<Object, Object, Object, Object> binding =
                         Bindings.createAutoBinding(AutoBinding.UpdateStrategy.READ, // one-way binding
-                        rggInstance.getObject(sourceid), // source of value
-                        ELProperty.create(value), // the property to get
-                        rbool, // the "backing bean"
-                        BeanProperty.create("value") // property to set
+                                rggInstance.getObject(sourceid), // source of value
+                                ELProperty.create(value), // the property to get
+                                rbool, // the "backing bean"
+                                BeanProperty.create("value") // property to set
                         );
                 binding.bind();
             }
         }
-        
+
         return rbool;
     }
 }

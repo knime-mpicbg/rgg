@@ -6,6 +6,7 @@
 package at.ac.arcs.rgg.element.h5;
 
 import javax.swing.SwingConstants;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.oro.text.perl.Perl5Util;
 import at.ac.arcs.rgg.RGG;
@@ -18,8 +19,8 @@ import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 import org.w3c.dom.Element;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGH5Factory extends RElementFactory {
@@ -69,10 +70,10 @@ public class RGGH5Factory extends RElementFactory {
                 enabled = util.substitute("s/" + id + "\\.//g", enabled);
                 AutoBinding<Object, Object, Object, Object> binding =
                         Bindings.createAutoBinding(AutoBinding.UpdateStrategy.READ, // one-way binding
-                        rggInstance.getObject(id), // source of value
-                        ELProperty.create(enabled), // the property to get
-                        vlabel, // the "backing bean"
-                        BeanProperty.create("enabled") // property to set
+                                rggInstance.getObject(id), // source of value
+                                ELProperty.create(enabled), // the property to get
+                                vlabel, // the "backing bean"
+                                BeanProperty.create("enabled") // property to set
                         );
                 binding.bind();
             }

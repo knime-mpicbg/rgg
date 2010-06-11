@@ -9,6 +9,7 @@ package at.ac.arcs.rgg.element.twopanellistbox;
 import at.ac.arcs.rgg.component.VisualComponent;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,7 +40,7 @@ public class VTwoPanelListBox extends VisualComponent {
 
 
     public void setListData(List<String> items) {
-        selectPanel.update(items);
+        selectPanel.update(items, new ArrayList<String>());
     }
 
 
@@ -113,5 +114,10 @@ public class VTwoPanelListBox extends VisualComponent {
         //todo what is this
         if (colspan > 0)
             layoutInfo.setComponentColumnSpan(selectPanel, colspan);
+    }
+
+
+    public void setIncludes(List<String> options) {
+        selectPanel.include(options);
     }
 }

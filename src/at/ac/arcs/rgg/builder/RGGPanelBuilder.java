@@ -10,41 +10,45 @@ import com.jgoodies.forms.debug.FormDebugPanel;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.Sizes;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 import at.ac.arcs.rgg.RGGPanelModel;
 import com.jgoodies.forms.layout.RowSpec;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGPanelBuilder {
 
     private boolean isGroup = false;
     /**
-     * Holds major column start indices. To be compatible with {@link FormLayout}
-     * first major column starts always by 1.
-     * Example:first integer indicates first major column, second integer the second 
-     * first major column starts at <code>majorColumnsStartIndices.get(0)</code>
-     * second major column starts at <code>majorColumnsStartIndices.get(1)</code>
+     * Holds major column start indices. To be compatible with {@link FormLayout} first major column starts always by 1.
+     * Example:first integer indicates first major column, second integer the second first major column starts at
+     * <code>majorColumnsStartIndices.get(0)</code> second major column starts at <code>majorColumnsStartIndices.get(1)</code>
      * and so on
      */
     private ArrayList<Integer> majorColumnsStartIndices = new ArrayList<Integer>();
 //    private static Log log = LogFactory.getLog(RGGPanelBuilder.class);
+
+
     /**
      * Creates a new instance of RGGPanelBuilder
      */
     public RGGPanelBuilder() {
     }
 
+
     public void setGroup(boolean b) {
         isGroup = b;
     }
+
 
     public JPanel buildPanel(RGGPanelModel model, boolean useDefaultDialogBorder, boolean debug) {
         FormLayout layout = getFormLayout(model);
@@ -65,11 +69,11 @@ public class RGGPanelBuilder {
                 layout.appendRow(RowSpec.decode("pref:grow"));
             } else {
                 layout.appendRow(RowSpec.decode("pref"));
-            //layout.appendRow(new RowSpec("pref"));
+                //layout.appendRow(new RowSpec("pref"));
             }
             if (i < swingMatrix.length - 1) {
                 layout.appendRow(RowSpec.decode("5dlu"));
-            //layout.appendRow(new RowSpec("5dlu"));
+                //layout.appendRow(new RowSpec("5dlu"));
             }
         }
         int counter = 0;
@@ -89,6 +93,7 @@ public class RGGPanelBuilder {
         return builder.getPanel();
     }
 
+
     private FormLayout getFormLayout(RGGPanelModel model) {
         FormLayout layout = new FormLayout();
         for (int i = 1; i <= model.getMajorColumnNumber(); i++) {
@@ -97,9 +102,10 @@ public class RGGPanelBuilder {
         return layout;
     }
 
+
     /**
-     * appends a new major column. each major column has minor columns
-     * as much as <code>minorColumns</code>
+     * appends a new major column. each major column has minor columns as much as <code>minorColumns</code>
+     *
      * @param minorColumns number of minor columns in this major column
      * @throws IllegalArgumentException if <code>minorColumns</code> is equal to 0.
      */
@@ -123,7 +129,7 @@ public class RGGPanelBuilder {
                 layout.appendColumn(ColumnSpec.decode("pref:grow"));
             } else {
                 layout.appendColumn(ColumnSpec.decode("pref"));
-            //layout.appendColumn(new ColumnSpec("pref"));
+                //layout.appendColumn(new ColumnSpec("pref"));
             }
             if (i != minorColumns) //for the last column don't add a glue column
             {
@@ -131,6 +137,7 @@ public class RGGPanelBuilder {
             } //add a glue column
         }
     }
+
 
     private JComponent[][] buildSwingMatrix(RGGPanelModel model) {
         int rowCount = 0;
@@ -166,6 +173,7 @@ public class RGGPanelBuilder {
         }
         return swingMatrix;
     }
+
 
     private int checkColumnSpan(DefaultFormBuilder builder, int colspan) {
         int column = builder.getColumn();

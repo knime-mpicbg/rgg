@@ -11,11 +11,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
+
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 
+
 /**
- *
  * @author ilhami
  */
 public class VImage extends VisualComponent {
@@ -23,6 +24,7 @@ public class VImage extends VisualComponent {
     private JLabel label;
     private File imgsrc;
     private JComponent[][] swingMatrix;
+
 
     /**
      * Creates a new instance of VImage
@@ -43,13 +45,16 @@ public class VImage extends VisualComponent {
         swingMatrix = new JComponent[][]{{label}};
     }
 
+
     public JComponent[][] getSwingComponents() {
         return swingMatrix;
     }
 
+
     public File getSrc() {
         return imgsrc;
     }
+
 
     public void setHorizontalAlignment(final int alignment) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -59,6 +64,7 @@ public class VImage extends VisualComponent {
             }
         });
     }
+
 
     public void setColumnSpan(int colspan) {
         if (colspan > 0) {

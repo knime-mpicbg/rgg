@@ -7,6 +7,7 @@ package at.ac.arcs.rgg.element.img;
 
 import java.io.File;
 import javax.swing.SwingConstants;
+
 import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.element.RElement;
@@ -14,8 +15,8 @@ import at.ac.arcs.rgg.factories.RElementFactory;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 import org.w3c.dom.Element;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGImageFactory extends RElementFactory {
@@ -23,7 +24,7 @@ public class RGGImageFactory extends RElementFactory {
     public RElement createRGGElement(Element element, RGG rggInstance) {
         if (element.getNodeType() != Element.ELEMENT_NODE) {
             throw new IllegalArgumentException("elements node type must be ELEMENT_NODE");
-        /****************** initialize and set attributes values **************************************/
+            /****************** initialize and set attributes values **************************************/
         }
         String src = element.getAttribute(RGG.getConfiguration().getString("SRC"));
         String colspan = element.getAttribute(RGG.getConfiguration().getString("COLUMN-SPAN"));

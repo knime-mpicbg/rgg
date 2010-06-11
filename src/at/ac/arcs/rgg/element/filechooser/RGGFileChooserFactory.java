@@ -9,6 +9,7 @@
 package at.ac.arcs.rgg.element.filechooser;
 
 import javax.swing.JFileChooser;
+
 import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.element.RElement;
@@ -20,15 +21,18 @@ import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 import org.w3c.dom.Element;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGFileChooserFactory extends RElementFactory {
 
-    /** Creates a new instance of RGGFileChooserFactory */
+    /**
+     * Creates a new instance of RGGFileChooserFactory
+     */
     public RGGFileChooserFactory() {
     }
+
 
     public RElement createRGGElement(Element element, RGG rggInstance) {
         if (element.getNodeType() != Element.ELEMENT_NODE) {
@@ -72,7 +76,7 @@ public class RGGFileChooserFactory extends RElementFactory {
             } else if (StringUtils.equals(colspan, RGG.getConfiguration().getString("FULL-SPAN"))) {
                 vfilechooser.setColumnSpan(LayoutInfo.FULL_SPAN);
             } else {
-                throw new NumberFormatException(RGG.getConfiguration().getString("COLUMN-SPAN") 
+                throw new NumberFormatException(RGG.getConfiguration().getString("COLUMN-SPAN")
                         + " seems not to be a number: " + colspan + "nor a known keyword!");
             }
         }
@@ -95,21 +99,21 @@ public class RGGFileChooserFactory extends RElementFactory {
             }
         }
 
-        if (StringUtils.isNotBlank(enabled)) {            
+        if (StringUtils.isNotBlank(enabled)) {
             if (util.match("/(\\w+)\\./", enabled)) {
                 String id = util.group(1);
                 enabled = util.substitute("s/" + id + "\\.//g", enabled);
                 AutoBinding<Object, Object, Object, Object> binding =
                         Bindings.createAutoBinding(AutoBinding.UpdateStrategy.READ, // one-way binding
-                        rggInstance.getObject(id), // source of value
-                        ELProperty.create(enabled), // the property to get
-                        vfilechooser, // the "backing bean"
-                        BeanProperty.create("enabled") // property to set
+                                rggInstance.getObject(id), // source of value
+                                ELProperty.create(enabled), // the property to get
+                                vfilechooser, // the "backing bean"
+                                BeanProperty.create("enabled") // property to set
                         );
                 binding.bind();
-            }else if (StringUtils.equalsIgnoreCase(enabled, "F") || StringUtils.equalsIgnoreCase(enabled, "FALSE")) {
+            } else if (StringUtils.equalsIgnoreCase(enabled, "F") || StringUtils.equalsIgnoreCase(enabled, "FALSE")) {
                 vfilechooser.setEnabled(false);
-            }else if (StringUtils.equalsIgnoreCase(enabled, "T") || StringUtils.equalsIgnoreCase(enabled, "TRUE")) {
+            } else if (StringUtils.equalsIgnoreCase(enabled, "T") || StringUtils.equalsIgnoreCase(enabled, "TRUE")) {
                 //Do nothing
             }
         }

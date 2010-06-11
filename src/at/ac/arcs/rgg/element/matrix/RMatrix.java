@@ -1,12 +1,13 @@
 package at.ac.arcs.rgg.element.matrix;
 
 import javax.swing.JComponent;
+
 import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.component.VisualComponent;
 
+
 /**
- *
  * @author ilhami
  */
 public class RMatrix extends RElement {
@@ -15,8 +16,10 @@ public class RMatrix extends RElement {
     private VMatrix vMatrix;
     private VisualComponent[][] visualcomponents;
 
+
     public RMatrix() {
     }
+
 
     public String getRCode() {
         StringBuilder rcodebuilder = new StringBuilder();
@@ -50,13 +53,16 @@ public class RMatrix extends RElement {
         return rcodebuilder.toString();
     }
 
+
     public void setVMatrix(VMatrix vMatrix) {
         this.vMatrix = vMatrix;
     }
 
+
     public boolean hasVisualComponents() {
         return true;
     }
+
 
     public VisualComponent[][] getVisualComponents() {
         if (visualcomponents == null) {
@@ -65,21 +71,26 @@ public class RMatrix extends RElement {
         return visualcomponents;
     }
 
+
     public boolean isChildAddable() {
         return false;
     }
+
 
     public void setVar(String var) {
         this.var = var;
     }
 
+
     public String getVar() {
         return var;
     }
 
+
     public JComponent[][] getSwingComponentMatrix() {
         return vMatrix.getSwingComponents();
     }
+
 
     private boolean isNumeric(Object[] values) {
         for (Object v : values) {

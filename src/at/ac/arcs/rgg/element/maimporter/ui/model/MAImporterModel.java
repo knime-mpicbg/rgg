@@ -6,6 +6,7 @@ import at.ac.arcs.rgg.element.maimporter.array.ArrayInfo;
 import at.ac.arcs.rgg.element.maimporter.array.ArrayRecognizers;
 import at.ac.arcs.rgg.element.maimporter.array.TargetFile;
 import at.ac.arcs.rgg.element.maimporter.array.TargetFileException;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
@@ -15,10 +16,11 @@ import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.event.ChangeEvent;
+
 import org.jdesktop.swingworker.SwingWorker;
 
+
 /**
- *
  * @author ilhami
  */
 public class MAImporterModel implements ArrayHeaderRowChangeListener {
@@ -33,6 +35,7 @@ public class MAImporterModel implements ArrayHeaderRowChangeListener {
     private String[] othercolumns;
     public static final String PROP_TargetFile = "targetFile";
     private boolean isMAImporterModelCreated = false;
+
 
     public static MAImporterModel createModelFromArrays(File[] arrays, String[] othercolumns)
             throws IOException, ArrayDetectionException {
@@ -51,10 +54,11 @@ public class MAImporterModel implements ArrayHeaderRowChangeListener {
                     ArrayHeaderRowTableModel.createArrayHeaderRowTableModel(model.getArrayInfos().get(0)));
             Array array = model.getArrayInfos().get(0).getArrayCreator().makeArray(model.getArrayInfos().get(0));
             model.setRGListTableModel(new RGListTableModel(array, othercolumns));
-        }        
+        }
         model.setMAImporterModelCreated(true);
         return model;
     }
+
 
     public static MAImporterModel createModelFromTargetFile(File targetFile, String[] othercolumns)
             throws TargetFileException, ArrayDetectionException, IOException {
@@ -77,62 +81,74 @@ public class MAImporterModel implements ArrayHeaderRowChangeListener {
         return model;
     }
 
+
     private static ArrayList<ArrayInfo> recognize(TargetFile targetFile) throws ArrayDetectionException {
         return ArrayRecognizers.recognizeArraysInTargetFile(targetFile);
     }
 
+
     public TargetFile getTargetFile() {
         return targetFile;
     }
+
 
     public void setTargetFile(TargetFile targetFile) {
         this.targetFile = targetFile;
         changeSupport.firePropertyChange(PROP_TargetFile, null, targetFile);
     }
 
+
     public TargetFileTableModel getTargetFileModel() {
         return targetFileModel;
     }
+
 
     public void setTargetFileModel(TargetFileTableModel targetFileModel) {
         this.targetFileModel = targetFileModel;
     }
 
+
     public ArrayList<ArrayInfo> getArrayInfos() {
         return arrayInfos;
     }
+
 
     public void setArrayInfos(ArrayList<ArrayInfo> arrayInfos) {
         this.arrayInfos = arrayInfos;
     }
 
+
     public ArrayHeaderRowTableModel getArrayHeaderRowTableModel() {
         return arrayHeaderRowTableModel;
     }
+
 
     public void setArrayHeaderRowTableModel(ArrayHeaderRowTableModel arrayHeaderRowTableModel) {
         this.arrayHeaderRowTableModel = arrayHeaderRowTableModel;
         this.arrayHeaderRowTableModel.addArrayHeaderRowChangeListener(this);
     }
 
+
     public RGListTableModel getRGListTableModel() {
         return rGListTableModel;
     }
+
 
     public void setRGListTableModel(RGListTableModel rGListTableModel) {
         this.rGListTableModel = rGListTableModel;
     }
 
+
     public boolean isMAImporterModelCreated() {
         return isMAImporterModelCreated;
     }
+
 
     public void setMAImporterModelCreated(boolean isMAImporterModelCreated) {
         this.isMAImporterModelCreated = isMAImporterModelCreated;
     }
 
-    
-    
+
     public void stateChanged(ArrayHeaderChangedEvent evt) {
         for (ArrayInfo inf : arrayInfos) {
             inf.setHeaderLineNo(evt.getHeaderRow() + 1);
@@ -145,6 +161,7 @@ public class MAImporterModel implements ArrayHeaderRowChangeListener {
                 Array array = arrayInfos.get(0).getArrayCreator().makeArray(arrayInfos.get(0));
                 return new RGListTableModel(array, othercolumns);
             }
+
 
             @Override
             protected void done() {
@@ -163,9 +180,11 @@ public class MAImporterModel implements ArrayHeaderRowChangeListener {
         worker.execute();
     }
 
+
     public void stateChanged(ChangeEvent e) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         if (listener == null) {
@@ -173,6 +192,7 @@ public class MAImporterModel implements ArrayHeaderRowChangeListener {
         }
         changeSupport.addPropertyChangeListener(listener);
     }
+
 
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         if (listener == null) {

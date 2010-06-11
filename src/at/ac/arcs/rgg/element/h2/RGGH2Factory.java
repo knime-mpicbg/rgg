@@ -6,6 +6,7 @@
 package at.ac.arcs.rgg.element.h2;
 
 import javax.swing.SwingConstants;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.oro.text.perl.Perl5Util;
 import at.ac.arcs.rgg.RGG;
@@ -18,8 +19,8 @@ import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 import org.w3c.dom.Element;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGH2Factory extends RElementFactory {
@@ -35,9 +36,9 @@ public class RGGH2Factory extends RElementFactory {
         String alignment = element.getAttribute(RGG.getConfiguration().getString("ALIGNMENT"));
         String enabled = element.getAttribute(RGG.getConfiguration().getString("ENABLED"));
         /***********************************************************************************************/
-        
+
         Perl5Util util = new Perl5Util();
-        
+
         VH2 vlabel = new VH2(text);
         if (StringUtils.isNotBlank(colspan)) {
             if (StringUtils.isNumeric(colspan)) {
@@ -70,15 +71,15 @@ public class RGGH2Factory extends RElementFactory {
                 enabled = util.substitute("s/" + id + "\\.//g", enabled);
                 AutoBinding<Object, Object, Object, Object> binding =
                         Bindings.createAutoBinding(AutoBinding.UpdateStrategy.READ, // one-way binding
-                        rggInstance.getObject(id), // source of value
-                        ELProperty.create(enabled), // the property to get
-                        vlabel, // the "backing bean"
-                        BeanProperty.create("enabled") // property to set
+                                rggInstance.getObject(id), // source of value
+                                ELProperty.create(enabled), // the property to get
+                                vlabel, // the "backing bean"
+                                BeanProperty.create("enabled") // property to set
                         );
                 binding.bind();
             }
         }
-        
+
         return new RH2(vlabel);
     }
 }

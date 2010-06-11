@@ -17,6 +17,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Map;
 
 
 /**
@@ -38,6 +41,10 @@ public class RGGRunner extends JFrame {
             rggRunner.curRGGFile = new File(args[0]);
             rggRunner.refresh();
         }
+
+
+//        Map<String, Object> map = Collections.singletonMap("Barcode Selection", (Object) Arrays.asList("babla", "neubau"));
+//        rggRunner.rgg.getRggModel().restoreState(map);
     }
 
 

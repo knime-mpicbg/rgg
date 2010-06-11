@@ -7,18 +7,22 @@ package at.ac.arcs.rgg.element.maimporter.ui.model;
 
 import javax.swing.event.ChangeEvent;
 
+
 /**
- *
  * @author ilhami
  */
-public class ArrayHeaderChangedEvent extends ChangeEvent{
+public class ArrayHeaderChangedEvent extends ChangeEvent {
+
     private int headerRow;
-    public ArrayHeaderChangedEvent(Object source, int headerRow){
+
+
+    public ArrayHeaderChangedEvent(Object source, int headerRow) {
         super(source);
-        this.headerRow=headerRow;
+        this.headerRow = headerRow;
     }
+
 
     public int getHeaderRow() {
         return headerRow;
-    }   
+    }
 }

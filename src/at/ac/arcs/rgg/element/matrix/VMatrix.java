@@ -4,13 +4,14 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.JComponent;
 import javax.swing.table.DefaultTableModel;
+
 import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 
+
 /**
- *
  * @author ilhami
  */
 public class VMatrix extends VisualComponent {
@@ -21,6 +22,7 @@ public class VMatrix extends VisualComponent {
     private Integer columncount = 0;
     private Integer rowcount = 0;
 
+
     /**
      * Creates a new instance of VTextField
      */
@@ -29,9 +31,11 @@ public class VMatrix extends VisualComponent {
         initializeComponents();
     }
 
+
     public void setNumeric(boolean b) {
 
     }
+
 
     private void initializeComponents() {
         matrixEditor = new MatrixEditor(rggInstance);
@@ -50,9 +54,11 @@ public class VMatrix extends VisualComponent {
         });
     }
 
+
     public boolean isVisualComponent() {
         return true;
     }
+
 
     public JComponent[][] getSwingComponents() {
         if (swingComponents == null) {
@@ -61,15 +67,18 @@ public class VMatrix extends VisualComponent {
         return swingComponents;
     }
 
+
     public Integer getColumncount() {
         return columncount;
     }
+
 
     public void setColumncount(Integer columncount) {
         Integer oldValue = this.columncount;
         this.columncount = columncount;
         changeSupport.firePropertyChange("columncount", oldValue, columncount);
     }
+
 
     public int getColumnCount() {
         if (getTableModel() == null) {
@@ -78,19 +87,23 @@ public class VMatrix extends VisualComponent {
         return getTableModel().getColumnCount();
     }
 
+
     public Integer getRowcount() {
         return rowcount;
     }
 
+
     public void setRowcount(Integer rowcount) {
         Integer oldValue = this.rowcount;
-        this.rowcount = rowcount;        
-        changeSupport.firePropertyChange("rowcount", oldValue,rowcount);
+        this.rowcount = rowcount;
+        changeSupport.firePropertyChange("rowcount", oldValue, rowcount);
     }
+
 
     public String getColumnName(int columnIndex) {
         return getTableModel().getColumnName(columnIndex);
     }
+
 
     public Object[] getValuesAtColumn(int columnindex) {
         matrixEditor.stopCellEditing();
@@ -111,9 +124,11 @@ public class VMatrix extends VisualComponent {
         return values;
     }
 
+
     private DefaultTableModel getTableModel() {
         return matrixEditor.getTableModel();
     }
+
 
     public void setColumnSpan(int colspan) {
         if (colspan > 0) {

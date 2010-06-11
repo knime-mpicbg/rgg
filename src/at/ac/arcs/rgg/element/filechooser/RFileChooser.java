@@ -10,12 +10,13 @@ package at.ac.arcs.rgg.element.filechooser;
 
 import java.io.File;
 import javax.swing.JComponent;
+
 import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
 
+
 /**
- *
  * @author ilhami
  */
 public class RFileChooser extends RElement {
@@ -27,17 +28,21 @@ public class RFileChooser extends RElement {
     private VisualComponent[][] visualcomponents;
     private VFileChooser vFilechooser;
 
-    /** Creates a new instance of RFileChooser */
+
+    /**
+     * Creates a new instance of RFileChooser
+     */
     public RFileChooser() {
     }
+
 
     public String getRCode() {
         StringBuilder rcodebuilder = new StringBuilder();
         if (StringUtils.isNotBlank(var)) {
             rcodebuilder.append(var + "<-");
         }
-        
-        
+
+
         if (vFilechooser.isFilesSelected()) {
             if (vFilechooser.isMultiSelectionEnabled()) {
                 rcodebuilder.append("c(");
@@ -52,15 +57,17 @@ public class RFileChooser extends RElement {
             } else {
                 rcodebuilder.append("\"" + vFilechooser.getFilePath() + "\"");
             }
-        }else{
+        } else {
             rcodebuilder.append("NA");
         }
         return StringUtils.replace(rcodebuilder.toString(), "\\", "/");
     }
 
+
     public boolean hasVisualComponents() {
         return true;
     }
+
 
     public VisualComponent[][] getVisualComponents() {
         if (visualcomponents == null) {
@@ -69,57 +76,71 @@ public class RFileChooser extends RElement {
         return visualcomponents;
     }
 
+
     public boolean isChildAddable() {
         return false;
     }
+
 
     public VFileChooser getFileChooser() {
         return vFilechooser;
     }
 
+
     public void setFileChooser(VFileChooser filechooser) {
         this.vFilechooser = filechooser;
     }
+
 
     public String getLabel() {
         return label;
     }
 
+
     public void setLabel(String label) {
         this.label = label;
     }
+
 
     public String[] getExtensions() {
         return extensions;
     }
 
+
     public void setExtensions(String[] extensions) {
         this.extensions = extensions;
     }
+
 
     public String getDescription() {
         return description;
     }
 
+
     public void setDescription(String description) {
         this.description = description;
     }
+
 
     public VFileChooser getVFileChooser() {
         return vFilechooser;
     }
 
+
     public void setVFileChooser(VFileChooser filechooser) {
         this.vFilechooser = filechooser;
     }
+
 
     public String getVariable() {
         return var;
     }
 
+
     public void setVariable(String var) {
         this.var = var;
     }
+
 
     public JComponent[][] getSwingComponentMatrix() {
         return vFilechooser.getSwingComponents();

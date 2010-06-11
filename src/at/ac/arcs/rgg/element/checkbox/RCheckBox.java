@@ -19,7 +19,6 @@ import java.util.Map;
 
 
 /**
- *
  * @author ilhami
  */
 public class RCheckBox extends RElement {
@@ -31,9 +30,13 @@ public class RCheckBox extends RElement {
     private VCheckBox vcheckbox;
     private VisualComponent[][] visualcomponents;
 
-    /** Creates a new instance of RCheckBox */
+
+    /**
+     * Creates a new instance of RCheckBox
+     */
     public RCheckBox() {
     }
+
 
     public String getRCode() {
         String value;
@@ -50,9 +53,11 @@ public class RCheckBox extends RElement {
         }
     }
 
+
     public boolean hasVisualComponents() {
         return true;
     }
+
 
     public VisualComponent[][] getVisualComponents() {
         if (visualcomponents == null) {
@@ -61,13 +66,16 @@ public class RCheckBox extends RElement {
         return visualcomponents;
     }
 
+
     public boolean isChildAddable() {
         return false;
     }
 
+
     public String getVar() {
         return var;
     }
+
 
     public void setVar(String var) {
         this.var = var;
@@ -76,42 +84,50 @@ public class RCheckBox extends RElement {
         }
     }
 
+
     public String getLabel() {
         return label;
     }
+
 
     public void setLabel(String label) {
         this.label = label;
     }
 
+
     public VCheckBox getCheckBox() {
         return vcheckbox;
     }
+
 
     public void setCheckBox(VCheckBox vcheckbox) {
         this.vcheckbox = vcheckbox;
     }
 
+
     public JComponent[][] getSwingComponentMatrix() {
         return vcheckbox.getSwingComponents();
     }
+
 
     public String getReturnValueBySelected() {
         return returnValueBySelected;
     }
 
+
     public void setReturnValueBySelected(String returnValueBySelected) {
         this.returnValueBySelected = returnValueBySelected;
     }
+
 
     public String getReturnValueByNotSelected() {
         return returnValueByNotSelected;
     }
 
+
     public void setReturnValueByNotSelected(String returnValuebyNotSelected) {
         this.returnValueByNotSelected = returnValuebyNotSelected;
     }
-
 
 
     @Override

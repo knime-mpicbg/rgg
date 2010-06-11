@@ -53,7 +53,10 @@ public class RTwoPanelListBox extends RElement {
         }
 
         // drop the last comma
-        sbuf = sbuf.deleteCharAt(sbuf.length() - 1);
+        if (sbuf.length() > 0) {
+            sbuf = sbuf.deleteCharAt(sbuf.length() - 1);
+        }
+
         return sbuf.toString();
     }
 
@@ -142,7 +145,7 @@ public class RTwoPanelListBox extends RElement {
     @Override
     public void restoreState(Map<String, Object> persistMap) {
         if (persistMap.containsKey(vList.getLabelText())) {
-            vList.setListData((java.util.List<String>) persistMap.get(vList.getLabel().getText()));
+            vList.setIncludes((java.util.List<String>) persistMap.get(vList.getLabel().getText()));
         }
     }
 }

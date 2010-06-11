@@ -15,8 +15,8 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
+
 /**
- *
  * @author ahmet
  */
 public class MyJTable extends JTable {
@@ -33,17 +33,20 @@ public class MyJTable extends JTable {
                 }
             }
         });
-        getPreferredScrollableViewportSize().height=200;
+        getPreferredScrollableViewportSize().height = 200;
     }
+
 
     public MyTableModel getMyModel() {
         return (MyTableModel) super.getModel();
     }
 
+
     @Override
     protected TableModel createDefaultDataModel() {
         return new MyDefaultTableModel();
     }
+
 
     @Override
     public void setModel(TableModel dataModel) {
@@ -54,9 +57,11 @@ public class MyJTable extends JTable {
         }
     }
 
+
     public void setMyModel(MyTableModel dataModel) {
         super.setModel(dataModel);
     }
+
 
     public void resizeColumn() {
         JTableHeader header = getTableHeader();
@@ -73,10 +78,11 @@ public class MyJTable extends JTable {
         column.setWidth(width + getIntercellSpacing().width);
     }
 
+
     private class TextEditorRenderer implements TableCellRenderer {
 
         public Component getTableCellRendererComponent(JTable table, Object value,
-                boolean isSelected, boolean hasFocus, int row, int column) {
+                                                       boolean isSelected, boolean hasFocus, int row, int column) {
             JTextField tf = new JTextField(value.toString());
             tf.setBorder(new EmptyBorder(0, 0, 0, 0));
             return tf;

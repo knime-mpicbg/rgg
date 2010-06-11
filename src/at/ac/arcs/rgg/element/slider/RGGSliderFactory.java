@@ -1,6 +1,7 @@
 package at.ac.arcs.rgg.element.slider;
 
 import java.lang.IllegalArgumentException;
+
 import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.factories.RElementFactory;
@@ -11,19 +12,19 @@ import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 import org.w3c.dom.Element;
 
+
 /**
- *
  * @author ilhami
  */
-public class RGGSliderFactory extends RElementFactory{
-    
+public class RGGSliderFactory extends RElementFactory {
+
     public RSlider createRGGElement(Element element, RGG rggInstance) {
-        if(element.getNodeType() != Element.ELEMENT_NODE)
+        if (element.getNodeType() != Element.ELEMENT_NODE)
             throw new IllegalArgumentException("elements node type must be ELEMENT_NODE");
-        
+
         RSlider rslider = new RSlider();
         VSlider vslider = new VSlider();
-        
+
         /****************** initialize and set attributes values **************************************/
         String var = element.getAttribute(RGG.getConfiguration().getString("VAR"));
         String label = element.getAttribute(RGG.getConfiguration().getString("LABEL"));
@@ -39,127 +40,127 @@ public class RGGSliderFactory extends RElementFactory{
         String minortickspacing = element.getAttribute(RGG.getConfiguration().getString("MINOR-TICK-SPACING"));
         String enabled = element.getAttribute(RGG.getConfiguration().getString("ENABLED"));
         /***********************************************************************************************/
-        
-        if(StringUtils.isNotBlank(var)){
+
+        if (StringUtils.isNotBlank(var)) {
             rslider.setVar(var);
         }
-        
-        if(StringUtils.isNotBlank(label)){
+
+        if (StringUtils.isNotBlank(label)) {
             vslider.setLabelText(label);
         }
-        
-        if(StringUtils.isNotBlank(colspan)){
-            if(StringUtils.isNumeric(colspan)){
+
+        if (StringUtils.isNotBlank(colspan)) {
+            if (StringUtils.isNumeric(colspan)) {
                 vslider.setColumnSpan(Integer.parseInt(colspan));
-            }else if(StringUtils.equals(colspan, RGG.getConfiguration().getString("FULL-SPAN")))
+            } else if (StringUtils.equals(colspan, RGG.getConfiguration().getString("FULL-SPAN")))
                 vslider.setColumnSpan(LayoutInfo.FULL_SPAN);
             else
                 throw new NumberFormatException(RGG.getConfiguration().getString("COLUMN-SPAN")
-                        +" seems not to be a number: "+
-                        colspan +"nor a known keyword!");
+                        + " seems not to be a number: " +
+                        colspan + "nor a known keyword!");
         }
-        
-        if(StringUtils.isNotBlank(defaultvalue)){
-            if(StringUtils.isNumeric(defaultvalue)){
+
+        if (StringUtils.isNotBlank(defaultvalue)) {
+            if (StringUtils.isNumeric(defaultvalue)) {
                 vslider.setValue(Integer.parseInt(defaultvalue));
-            }else
+            } else
                 throw new NumberFormatException(RGG.getConfiguration().getString("DEFAULT-VALUE")
-                        +" seems not to be a number: " + defaultvalue);
+                        + " seems not to be a number: " + defaultvalue);
         }
-        
-        if(StringUtils.isNotBlank(min)){
-            if(StringUtils.isNumeric(min)){
+
+        if (StringUtils.isNotBlank(min)) {
+            if (StringUtils.isNumeric(min)) {
                 vslider.setMinumum(Integer.parseInt(min));
-            }else
+            } else
                 throw new NumberFormatException(RGG.getConfiguration().getString("MIN")
-                        +" seems not to be a number: " + min);
+                        + " seems not to be a number: " + min);
         }
-        
-        if(StringUtils.isNotBlank(max)){
-            if(StringUtils.isNumeric(max)){
+
+        if (StringUtils.isNotBlank(max)) {
+            if (StringUtils.isNumeric(max)) {
                 vslider.setMaximum(Integer.parseInt(max));
-            }else
+            } else
                 throw new NumberFormatException(RGG.getConfiguration().getString("MAX")
-                        +" seems not to be a number: " + max);
+                        + " seems not to be a number: " + max);
         }
-        
-        if(StringUtils.isNotBlank(paintticks)){
-            if(StringUtils.equalsIgnoreCase(paintticks,"T")
-                    ||StringUtils.equalsIgnoreCase(paintticks,"True")){
+
+        if (StringUtils.isNotBlank(paintticks)) {
+            if (StringUtils.equalsIgnoreCase(paintticks, "T")
+                    || StringUtils.equalsIgnoreCase(paintticks, "True")) {
                 vslider.setPaintTicks(true);
             }
-            if(StringUtils.equalsIgnoreCase(paintticks,"F")
-                    ||StringUtils.equalsIgnoreCase(paintticks,"False")){
+            if (StringUtils.equalsIgnoreCase(paintticks, "F")
+                    || StringUtils.equalsIgnoreCase(paintticks, "False")) {
                 vslider.setPaintTicks(false);
             }
         }
-        
-        if(StringUtils.isNotBlank(paintlabels)){
-            if(StringUtils.equalsIgnoreCase(paintlabels,"T")
-                    ||StringUtils.equalsIgnoreCase(paintlabels,"True")){
+
+        if (StringUtils.isNotBlank(paintlabels)) {
+            if (StringUtils.equalsIgnoreCase(paintlabels, "T")
+                    || StringUtils.equalsIgnoreCase(paintlabels, "True")) {
                 vslider.setPaintLabels(true);
             }
-            if(StringUtils.equalsIgnoreCase(paintlabels,"F")
-                    ||StringUtils.equalsIgnoreCase(paintlabels,"False")){
+            if (StringUtils.equalsIgnoreCase(paintlabels, "F")
+                    || StringUtils.equalsIgnoreCase(paintlabels, "False")) {
                 vslider.setPaintLabels(false);
             }
         }
-        
-        if(StringUtils.isNotBlank(painttrack)){
-            if(StringUtils.equalsIgnoreCase(painttrack,"T")
-                    ||StringUtils.equalsIgnoreCase(painttrack,"True")){
+
+        if (StringUtils.isNotBlank(painttrack)) {
+            if (StringUtils.equalsIgnoreCase(painttrack, "T")
+                    || StringUtils.equalsIgnoreCase(painttrack, "True")) {
                 vslider.setPaintTrack(true);
             }
-            if(StringUtils.equalsIgnoreCase(painttrack,"F")
-                    ||StringUtils.equalsIgnoreCase(painttrack,"False")){
+            if (StringUtils.equalsIgnoreCase(painttrack, "F")
+                    || StringUtils.equalsIgnoreCase(painttrack, "False")) {
                 vslider.setPaintTrack(false);
             }
         }
-        
-        if(StringUtils.isNotBlank(paintvalue)){
-            if(StringUtils.equalsIgnoreCase(paintvalue,"T")
-                    ||StringUtils.equalsIgnoreCase(paintvalue,"True")){
+
+        if (StringUtils.isNotBlank(paintvalue)) {
+            if (StringUtils.equalsIgnoreCase(paintvalue, "T")
+                    || StringUtils.equalsIgnoreCase(paintvalue, "True")) {
                 vslider.setPaintValue(true);
             }
-            if(StringUtils.equalsIgnoreCase(paintvalue,"F")
-                    ||StringUtils.equalsIgnoreCase(paintvalue,"False")){
+            if (StringUtils.equalsIgnoreCase(paintvalue, "F")
+                    || StringUtils.equalsIgnoreCase(paintvalue, "False")) {
                 vslider.setPaintValue(false);
             }
         }
-        
-        if(StringUtils.isNotBlank(majortickspacing)){
-            if(StringUtils.isNumeric(majortickspacing)){
+
+        if (StringUtils.isNotBlank(majortickspacing)) {
+            if (StringUtils.isNumeric(majortickspacing)) {
                 vslider.setMajorTickSpacing(Integer.parseInt(majortickspacing));
-            }else
+            } else
                 throw new NumberFormatException(RGG.getConfiguration().getString("MAJOR-TICK-SPACING")
-                        +" seems not to be a number: " + majortickspacing);
+                        + " seems not to be a number: " + majortickspacing);
         }
-        
-        if(StringUtils.isNotBlank(minortickspacing)){
-            if(StringUtils.isNumeric(minortickspacing)){
+
+        if (StringUtils.isNotBlank(minortickspacing)) {
+            if (StringUtils.isNumeric(minortickspacing)) {
                 vslider.setMinorTickSpacing(Integer.parseInt(minortickspacing));
-            }else
+            } else
                 throw new NumberFormatException(RGG.getConfiguration().getString("MINOR-TICK-SPACING")
-                        +" seems not to be a number: " + minortickspacing);
+                        + " seems not to be a number: " + minortickspacing);
         }
-        
+
         if (StringUtils.isNotBlank(enabled)) {
             if (util.match("/(\\w+)\\./", enabled)) {
                 String sourceid = util.group(1);
                 enabled = util.substitute("s/" + sourceid + "\\.//g", enabled);
                 AutoBinding<Object, Object, Object, Object> binding =
                         Bindings.createAutoBinding(AutoBinding.UpdateStrategy.READ, // one-way binding
-                        rggInstance.getObject(sourceid), // source of value
-                        ELProperty.create(enabled), // the property to get
-                        vslider, // the "backing bean"
-                        BeanProperty.create("enabled") // property to set
+                                rggInstance.getObject(sourceid), // source of value
+                                ELProperty.create(enabled), // the property to get
+                                vslider, // the "backing bean"
+                                BeanProperty.create("enabled") // property to set
                         );
                 binding.bind();
             }
         }
-        
+
         rslider.setTextfield(vslider);
-        
+
         return rslider;
     }
 }

@@ -11,12 +11,13 @@ package at.ac.arcs.rgg.element.horizontalbox;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+
 import at.ac.arcs.rgg.component.EmptyPlaceHolder;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
 
+
 /**
- *
  * @author ilhami
  */
 public class RHorizontalBox extends RElement {
@@ -25,9 +26,13 @@ public class RHorizontalBox extends RElement {
     private VisualComponent[][] visualComponentMatrix;
     private VHorizontalBox vhbox;
 
-    /** Creates a new instance of RHorizontalBox */
+
+    /**
+     * Creates a new instance of RHorizontalBox
+     */
     public RHorizontalBox() {
     }
+
 
     public String getRCode() {
         StringBuffer rcode = new StringBuffer();
@@ -39,9 +44,11 @@ public class RHorizontalBox extends RElement {
         return rcode.toString();
     }
 
+
     public boolean hasVisualComponents() {
         return true;
     }
+
 
     public VisualComponent[][] getVisualComponents() {
         if (this.visualComponentMatrix != null) {
@@ -99,9 +106,11 @@ public class RHorizontalBox extends RElement {
         return new VisualComponent[][]{{createHBox()}};
     }
 
+
     public boolean isChildAddable() {
         return true;
     }
+
 
     private VHorizontalBox createHBox() {
         int rowCount = 0;
@@ -146,9 +155,11 @@ public class RHorizontalBox extends RElement {
         return vhbox = new VHorizontalBox(swingMatrix);
     }
 
+
     public JComponent[][] getSwingComponentMatrix() {
         return vhbox.getSwingComponents();
     }
+
 
     public class VHorizontalBox extends VisualComponent {
 
@@ -156,9 +167,12 @@ public class RHorizontalBox extends RElement {
             this.swingComponents = swingComponents;
         }
 
+
         public JComponent[][] getSwingComponents() {
             return swingComponents;
         }
+
+
         private JComponent swingComponents[][];
     }
 

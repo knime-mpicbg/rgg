@@ -7,14 +7,15 @@ package at.ac.arcs.rgg;
 
 import java.util.ArrayList;
 import javax.swing.JComponent;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGPanelModel {
@@ -22,6 +23,7 @@ public class RGGPanelModel {
     private static Log log = LogFactory.getLog(RGGPanelModel.class);
     // all visual components will be placed into this matrix row by row.
     private ArrayList<ArrayList<VisualComponent>> matrix = new ArrayList<ArrayList<VisualComponent>>();
+
 
     /**
      * Creates a new instance of RGGPanelModel
@@ -36,6 +38,7 @@ public class RGGPanelModel {
         }
     }
 
+
     public void add(VisualComponent[][] componentMatrix) {
         ArrayList<VisualComponent> row;
         for (VisualComponent[] compoenntRow : componentMatrix) {
@@ -46,6 +49,7 @@ public class RGGPanelModel {
             matrix.add(row);
         }
     }
+
 
     public int getMajorColumnNumber() {
         int major = 0;
@@ -60,6 +64,7 @@ public class RGGPanelModel {
         return major;
     }
 
+
     public int getMinorColumnNumber(int majorColumnno) {
         if (majorColumnno < 1 || majorColumnno > getMajorColumnNumber()) {
             throw new IndexOutOfBoundsException("Major columns no can't be" +
@@ -71,8 +76,8 @@ public class RGGPanelModel {
         for (ArrayList<VisualComponent> vrow : matrix) {
             if (vrow.size() < majorColumnno) {
                 continue;
-            //because major columns index begins at 1
-            //first it must be subtracted by one.
+                //because major columns index begins at 1
+                //first it must be subtracted by one.
             }
             visualComp = vrow.get(majorColumnno - 1);
             for (JComponent[] swingComps : visualComp.getSwingComponents()) {
@@ -91,6 +96,7 @@ public class RGGPanelModel {
         }
         return minorColumnNumber;
     }
+
 
     public ArrayList<ArrayList<VisualComponent>> getVisualComponentMatrix() {
         return matrix;

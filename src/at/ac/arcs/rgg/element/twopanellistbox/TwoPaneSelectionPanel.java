@@ -536,7 +536,7 @@ public class TwoPaneSelectionPanel<Option> extends JPanel {
      *
      * @param options the spec to retrieve the option-names from
      */
-    public void update(List<Option> options) {
+    public void update(List<Option> options, List<Option> includes) {
         assert (options != null);
         optionOrder.clear();
 
@@ -550,7 +550,20 @@ public class TwoPaneSelectionPanel<Option> extends JPanel {
             availableOptions.addElement(option);
         }
 
+
+        include(includes);
         repaint();
+    }
+
+
+    public void include(List<Option> includes) {
+        for (Option include : includes) {
+            if (availableOptions.contains(include)) {
+                availableOptions.removeElement(include);
+            }
+
+            includeOptions.addElement(include);
+        }
     }
 
 
@@ -592,8 +605,8 @@ public class TwoPaneSelectionPanel<Option> extends JPanel {
 
 
     /**
-     * This method is called when the user wants to search the given {@link javax.swing.JList} for the text of the given {@link
-     * javax.swing.JTextField}.
+     * This method is called when the user wants to search the given {@link JList} for the text of the given {@link
+     * JTextField}.
      *
      * @param list        the list to search in
      * @param model       the list model on which the list is based on
@@ -681,14 +694,14 @@ public class TwoPaneSelectionPanel<Option> extends JPanel {
 
 
     /**
-     * Uses the {@link #searchInList(javax.swing.JList, String, int)} method to get all occurrences of the given string in the given
+     * Uses the {@link #searchInList(JList, String, int)} method to get all occurrences of the given string in the given
      * list and returns the index off all occurrences as a <code>int[]</code>.
      *
      * @param list the list to search in
      * @param str  the string to search for
      * @return <code>int[]</code> with the indices off all objects from the given list which match the given string. If
      *         no hits exists the method returns an empty <code>int[]</code>.
-     * @see #searchInList(javax.swing.JList, String, int)
+     * @see #searchInList(JList, String, int)
      */
     private static int[] getAllSearchHits(final JList list, final String str) {
 
@@ -725,7 +738,7 @@ public class TwoPaneSelectionPanel<Option> extends JPanel {
      * Set the renderer that is used for both list in this panel.
      *
      * @param renderer the new renderer being used
-     * @see javax.swing.JList#setCellRenderer(javax.swing.ListCellRenderer)
+     * @see JList#setCellRenderer(javax.swing.ListCellRenderer)
      */
     protected final void setListCellRenderer(final ListCellRenderer renderer) {
         m_inclList.setCellRenderer(renderer);

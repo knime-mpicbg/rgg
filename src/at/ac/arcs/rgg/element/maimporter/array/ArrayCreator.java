@@ -10,13 +10,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+
 /**
- *
  * @author ilhami
  */
 public abstract class ArrayCreator {
-    public abstract Array makeArray(ArrayInfo arrayInfo) 
-            throws FileNotFoundException,IOException,ArrayDetectionException;
+
+    public abstract Array makeArray(ArrayInfo arrayInfo)
+            throws FileNotFoundException, IOException, ArrayDetectionException;
+
 
     public abstract List<List<String>> readAssayData(File arrayFile, int rownumber, int headerLineNo)
             throws IOException;

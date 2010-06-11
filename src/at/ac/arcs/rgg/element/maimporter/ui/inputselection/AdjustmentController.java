@@ -15,14 +15,17 @@ import javax.swing.JScrollPane;
  *
  * @author ahmet
  */
+
+
 /**
- * The <code>AdjustmentController</code> synchronizes the adjustment value 
- * of the ScrollBars of all registered <code>JScrollPane</code>s. 
+ * The <code>AdjustmentController</code> synchronizes the adjustment value of the ScrollBars of all registered
+ * <code>JScrollPane</code>s.
  */
 public class AdjustmentController implements AdjustmentListener {
 
     private List horizontalBars;
     private List verticalBars;
+
 
     /**
      * Creates a new instance of <code>AdjustmentController</code>.
@@ -33,11 +36,11 @@ public class AdjustmentController implements AdjustmentListener {
         verticalBars = new ArrayList();
     }
 
+
     /**
-     * Adds the both <code>JScrollBar</code>s of the given <code>scrollPane
-     * </code> to the lists of horizontal and vertical bars. Adds this 
-     * controller as an <code>AdjustmentListener</code> to the bars.
-     * 
+     * Adds the both <code>JScrollBar</code>s of the given <code>scrollPane </code> to the lists of horizontal and
+     * vertical bars. Adds this controller as an <code>AdjustmentListener</code> to the bars.
+     *
      * @param scrollPane a <code>JScrollPane</code> to register.
      */
     public final void registerScrollPane(final JScrollPane scrollPane) {
@@ -54,6 +57,8 @@ public class AdjustmentController implements AdjustmentListener {
      * @see java.awt.event.AdjustmentListener#adjustmentValueChanged(
      * java.awt.event.AdjustmentEvent)
      */
+
+
     public final void adjustmentValueChanged(final AdjustmentEvent e) {
         final JScrollBar scrollBar = (JScrollBar) e.getAdjustable();
         if (verticalBars.contains(scrollBar)) {
@@ -63,11 +68,11 @@ public class AdjustmentController implements AdjustmentListener {
         }
     }
 
+
     /**
-     * Sets the adjustment value of all ScrollBars in the specified list
-     * to the given value.
-     *  
-     * @param bars A <code>List</code> of the <code>JScrollBar</code>s.
+     * Sets the adjustment value of all ScrollBars in the specified list to the given value.
+     *
+     * @param bars  A <code>List</code> of the <code>JScrollBar</code>s.
      * @param value The adjustment value to set.
      */
     private void synchronizeScrollBars(final List bars, final int value) {

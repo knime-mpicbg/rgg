@@ -6,7 +6,9 @@ package at.ac.arcs.rgg.element.maimporter.array.genepix;
 
 import java.io.BufferedReader;
 import java.util.List;
+
 import at.ac.arcs.rgg.element.maimporter.array.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,10 +16,11 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.apache.commons.lang.StringUtils;
 
+
 /**
- *
  * @author ilhami
  */
 public class GenepixArrayCreator extends ArrayCreator {
@@ -25,6 +28,7 @@ public class GenepixArrayCreator extends ArrayCreator {
     private static String[] columns = //G,Gb,R,Rb
             {"F532 Mean", "B532 Median", "F635 Mean", "B635 Median"};
     private static String[] annotations = {"Block", "Row", "Column", "ID", "Name"};
+
 
     @Override
     public Array makeArray(ArrayInfo arrayInfo)
@@ -39,16 +43,17 @@ public class GenepixArrayCreator extends ArrayCreator {
             array.setGb(getInputInfoIndex(columns[1], headers));
             array.setR(getInputInfoIndex(columns[2], headers));
             array.setRb(getInputInfoIndex(columns[3], headers));
-        }else if(arrayInfo.getColorInfo() == ArrayColorInfo.G){
+        } else if (arrayInfo.getColorInfo() == ArrayColorInfo.G) {
             array.setGHeaderIndex(getInputInfoIndex(columns[0], headers));
-            array.setGb(getInputInfoIndex(columns[1], headers));            
-        }else{
+            array.setGb(getInputInfoIndex(columns[1], headers));
+        } else {
             array.setR(getInputInfoIndex(columns[2], headers));
             array.setRb(getInputInfoIndex(columns[3], headers));
         }
         setArraysAnnotations(array, headers);
         return array;
     }
+
 
     private ArrayList<String> extractHeaders(ArrayInfo arrayInfo)
             throws FileNotFoundException, IOException, ArrayDetectionException {
@@ -66,6 +71,7 @@ public class GenepixArrayCreator extends ArrayCreator {
         }
     }
 
+
     private ArrayList<String> filterHeaders(String[] headerSplitted, ArrayColorInfo colorInfo) {
         if (colorInfo == null) {
             throw new NullPointerException("Color is not set!");
@@ -77,6 +83,7 @@ public class GenepixArrayCreator extends ArrayCreator {
         }
     }
 
+
     private ArrayList<String> gFilterHeaders(String[] headerSplitted) {
         ArrayList<String> headerList = new ArrayList<String>();
         for (int i = 0; i < headerSplitted.length; i++) {
@@ -87,6 +94,7 @@ public class GenepixArrayCreator extends ArrayCreator {
         return headerList;
     }
 
+
     private ArrayList<String> rFilterHeaders(String[] headerSplitted) {
         ArrayList<String> headerList = new ArrayList<String>();
         for (int i = 0; i < headerSplitted.length; i++) {
@@ -96,6 +104,7 @@ public class GenepixArrayCreator extends ArrayCreator {
         }
         return headerList;
     }
+
 
     private String getHeaderLine(File arrayFile)
             throws FileNotFoundException, IOException, ArrayDetectionException {
@@ -119,6 +128,7 @@ public class GenepixArrayCreator extends ArrayCreator {
         throw new ArrayDetectionException(arrayFile, "Premature end of file.");
     }
 
+
     private void setArraysAnnotations(Array array, ArrayList<String> headers) {
         ArrayList<Integer> anns = new ArrayList<Integer>();
         for (String ann : annotations) {
@@ -131,6 +141,7 @@ public class GenepixArrayCreator extends ArrayCreator {
         array.setAnnotations(anns);
     }
 
+
     private int getInputInfoIndex(String header, ArrayList<String> headers) {
         for (int i = 0; i < headers.size(); i++) {
             if (headers.get(i).equals(header)) {
@@ -139,6 +150,7 @@ public class GenepixArrayCreator extends ArrayCreator {
         }
         throw new IllegalArgumentException("Illegal column(header):" + header);
     }
+
 
     @Override
     public List<List<String>> readAssayData(File arrayFile, int rownumber, int headerLineNo)
@@ -156,12 +168,12 @@ public class GenepixArrayCreator extends ArrayCreator {
         }
         for (int i = rownumber; i > 0; i--) {
             line = reader.readLine();
-            if(line == null)
+            if (line == null)
                 break;
             assayRow = Arrays.asList(line.split("\t"));
             assayData.add(assayRow);
         }
-        reader.close();        
+        reader.close();
         return assayData;
     }
 }

@@ -23,11 +23,13 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
+
 public class RowHeaderTable extends JTable {
 
     private MyJTable mainTable;
     private PropertyChangeListener tablePropertyChangeListener;
     private ArrayList<RowRadioButton> rbuttons = new ArrayList();
+
 
     public RowHeaderTable(MyJTable table) {
         super();
@@ -65,9 +67,8 @@ public class RowHeaderTable extends JTable {
         getTableHeader().setResizingAllowed(false);
 
 
-
-
     }
+
 
     private void installTable(MyJTable table) {
         this.mainTable = table;
@@ -80,11 +81,11 @@ public class RowHeaderTable extends JTable {
         updateFromTableEnabledChanged();
     }
 
+
     /**
-     * Returns the listener to table's property changes. The listener is 
-     * lazily created if necessary. 
-     * @return the <code>PropertyChangeListener</code> for use with the 
-     *  table, guaranteed to be not <code>null</code>.
+     * Returns the listener to table's property changes. The listener is lazily created if necessary.
+     *
+     * @return the <code>PropertyChangeListener</code> for use with the table, guaranteed to be not <code>null</code>.
      */
     protected PropertyChangeListener getTablePropertyChangeListener() {
         if (tablePropertyChangeListener == null) {
@@ -93,13 +94,12 @@ public class RowHeaderTable extends JTable {
         return tablePropertyChangeListener;
     }
 
+
     /**
-     * Creates the listener to table's property changes. Subclasses are free
-     * to roll their own. <p>
-     * Implementation note: this listener reacts to table's <code>enabled</code> and
-     * <code>columnModel</code> properties and calls the respective 
-     * <code>updateFromXX</code> methodes.
-     * 
+     * Creates the listener to table's property changes. Subclasses are free to roll their own. <p> Implementation note:
+     * this listener reacts to table's <code>enabled</code> and <code>columnModel</code> properties and calls the
+     * respective <code>updateFromXX</code> methodes.
+     *
      * @return the <code>PropertyChangeListener</code> for use with the table.
      */
     protected PropertyChangeListener createTablePropertyChangeListener() {
@@ -114,6 +114,7 @@ public class RowHeaderTable extends JTable {
             }
         };
     }
+
 
     private void updateFromModelChange(TableModel tableModel) {
         DefaultTableModel dmodel = new DefaultTableModel(0, 2) {
@@ -130,6 +131,7 @@ public class RowHeaderTable extends JTable {
                 }
 
             }
+
 
             @Override
             public void setValueAt(Object aValue, int row, int column) {
@@ -148,25 +150,29 @@ public class RowHeaderTable extends JTable {
         setModel(dmodel);
     }
 
+
     private void updateFromTableEnabledChanged() {
         setEnabled(mainTable.isEnabled());
     }
+
 
     @Override
     public boolean isCellEditable(int row, int column) {
         return column == 1;
     }
 
+
     @Override
     public int getRowHeight(int row) {
         return mainTable.getRowHeight(row);
     }
 
+
     class myCellRenderer extends DefaultTableCellRenderer {
 
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value,
-                boolean isSelected, boolean hasFocus, int row, int column) {
+                                                       boolean isSelected, boolean hasFocus, int row, int column) {
             if (isSelected) {
                 super.setBackground(table.getSelectionBackground());
             } else {
@@ -178,11 +184,12 @@ public class RowHeaderTable extends JTable {
         }
     }
 
+
     private static class UIResourceTableCellRenderer extends DefaultTableCellRenderer implements UIResource {
 
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value,
-                boolean isSelected, boolean hasFocus, int row, int column) {
+                                                       boolean isSelected, boolean hasFocus, int row, int column) {
             if (table != null) {
                 JTableHeader header = table.getTableHeader();
                 if (header != null) {
@@ -199,10 +206,11 @@ public class RowHeaderTable extends JTable {
         }
     }
 
+
     private class RadioButtonRenderer implements TableCellRenderer {
 
         public Component getTableCellRendererComponent(JTable table, Object value,
-                boolean isSelected, boolean hasFocus, int row, int column) {
+                                                       boolean isSelected, boolean hasFocus, int row, int column) {
             if (value == null) {
                 return null;
             }
@@ -211,18 +219,21 @@ public class RowHeaderTable extends JTable {
         }
     }
 
+
     private class RadioButtonEditor extends DefaultCellEditor implements ItemListener {
 
         private JRadioButton button;
         private JTable table;
 
+
         public RadioButtonEditor(JCheckBox checkBox) {
             super(checkBox);
         }
 
+
         @Override
         public Component getTableCellEditorComponent(JTable table, Object value,
-                boolean isSelected, int row, int column) {
+                                                     boolean isSelected, int row, int column) {
             this.table = table;
             if (value == null) {
                 return null;
@@ -232,20 +243,24 @@ public class RowHeaderTable extends JTable {
             return button;
         }
 
+
         @Override
         public Object getCellEditorValue() {
             button.removeItemListener(this);
             return button;
         }
 
+
         public void itemStateChanged(ItemEvent e) {
             super.fireEditingStopped();
         }
     }
 
+
     private class RowRadioButton extends JRadioButton {
 
         private int rowindex;
+
 
         public RowRadioButton(int row) {
             this.rowindex = row;

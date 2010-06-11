@@ -7,8 +7,8 @@ package at.ac.arcs.rgg.element.targetfileeditor;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
+
 /**
- *
  * @author ilhami
  */
 public class TargetFileTableModel extends DefaultTableModel {

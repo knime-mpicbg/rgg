@@ -9,10 +9,11 @@ import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 
+
 /**
- *
  * @author ilhami
  */
 public class GenericArrayCreator extends ArrayCreator {
@@ -25,6 +26,7 @@ public class GenericArrayCreator extends ArrayCreator {
         array.setHeaders(headers);
         return array;
     }
+
 
     @Override
     public List<List<String>> readAssayData(File arrayFile, int rownumber, int headerLineNo) throws IOException {
@@ -51,6 +53,7 @@ public class GenericArrayCreator extends ArrayCreator {
         return assayData;
     }
 
+
     private ArrayList<String> extractHeaders(ArrayInfo arrayInfo) throws FileNotFoundException, IOException {
         String headerLine = getHeaderLine(arrayInfo);
         String[] headerSplitted = StringUtils.split(headerLine, '\t');
@@ -61,6 +64,7 @@ public class GenericArrayCreator extends ArrayCreator {
         }
         return headerList;
     }
+
 
     private String getHeaderLine(ArrayInfo arrayInfo) throws FileNotFoundException, IOException {
         LineNumberReader reader = new LineNumberReader(new FileReader(arrayInfo.getArrayFile()));

@@ -7,12 +7,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.*;
 
+
 public class RGGFactory {
 
     private static Log log = LogFactory.getLog(RGGFactory.class);
 
+
     public RGGFactory() {
     }
+
 
     public static RGGModel createRGGModel(Element rgg, RGG rggInstance)
             throws ClassNotFoundException, InstantiationException, IllegalAccessException {

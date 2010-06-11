@@ -5,7 +5,9 @@
 package at.ac.arcs.rgg.element.maimporter.array.agilent;
 
 import java.util.List;
+
 import at.ac.arcs.rgg.element.maimporter.array.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,10 +15,11 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.apache.commons.lang.StringUtils;
 
+
 /**
- *
  * @author ilhami
  */
 public class AgilentArrayCreator extends ArrayCreator {
@@ -24,9 +27,10 @@ public class AgilentArrayCreator extends ArrayCreator {
     public static final String[] columns = //G,Gb,R,Rb
             {"gMeanSignal", "gBGMedianSignal", "rMeanSignal", "rBGMedianSignal"};
     public static final String[] annotations = {"Row", "Col", "Start", "Sequence",
-        "SwissProt", "GenBank", "Primate", "GenPept", "ProbeUID", "ControlType",
-        "ProbeName", "GeneName", "SystematicName", "Description"
+            "SwissProt", "GenBank", "Primate", "GenPept", "ProbeUID", "ControlType",
+            "ProbeName", "GeneName", "SystematicName", "Description"
     };
+
 
     @Override
     public Array makeArray(ArrayInfo arrayInfo)
@@ -41,16 +45,17 @@ public class AgilentArrayCreator extends ArrayCreator {
             array.setGb(getInputInfoIndex(columns[1], headers));
             array.setR(getInputInfoIndex(columns[2], headers));
             array.setRb(getInputInfoIndex(columns[3], headers));
-        }else if(arrayInfo.getColorInfo() == ArrayColorInfo.G){
+        } else if (arrayInfo.getColorInfo() == ArrayColorInfo.G) {
             array.setGHeaderIndex(getInputInfoIndex(columns[0], headers));
-            array.setGb(getInputInfoIndex(columns[1], headers));            
-        }else{
+            array.setGb(getInputInfoIndex(columns[1], headers));
+        } else {
             array.setR(getInputInfoIndex(columns[2], headers));
             array.setRb(getInputInfoIndex(columns[3], headers));
         }
         setArraysAnnotations(array, headers);
         return array;
     }
+
 
     private ArrayList<String> extractHeaders(ArrayInfo arrayInfo)
             throws FileNotFoundException, IOException, ArrayDetectionException {
@@ -68,6 +73,7 @@ public class AgilentArrayCreator extends ArrayCreator {
         }
     }
 
+
     private ArrayList<String> filterHeaders(String[] headerSplitted, ArrayColorInfo colorInfo) {
         if (colorInfo == null) {
             throw new NullPointerException("Color is not set!");
@@ -79,6 +85,7 @@ public class AgilentArrayCreator extends ArrayCreator {
         }
     }
 
+
     private ArrayList<String> gFilterHeaders(String[] headerSplitted) {
         ArrayList<String> headerList = new ArrayList<String>();
         for (int i = 2; i < headerSplitted.length; i++) {
@@ -89,6 +96,7 @@ public class AgilentArrayCreator extends ArrayCreator {
         return headerList;
     }
 
+
     private ArrayList<String> rFilterHeaders(String[] headerSplitted) {
         ArrayList<String> headerList = new ArrayList<String>();
         for (int i = 2; i < headerSplitted.length; i++) {
@@ -98,6 +106,7 @@ public class AgilentArrayCreator extends ArrayCreator {
         }
         return headerList;
     }
+
 
     private String getHeaderLine(File arrayFile)
             throws FileNotFoundException, IOException, ArrayDetectionException {
@@ -119,6 +128,7 @@ public class AgilentArrayCreator extends ArrayCreator {
         return null;
     }
 
+
     private void setArraysAnnotations(Array array, ArrayList<String> headers) {
         ArrayList<Integer> anns = new ArrayList<Integer>();
         for (String ann : annotations) {
@@ -131,6 +141,7 @@ public class AgilentArrayCreator extends ArrayCreator {
         array.setAnnotations(anns);
     }
 
+
     private int getInputInfoIndex(String header, ArrayList<String> headers) {
         for (int i = 0; i < headers.size(); i++) {
             if (headers.get(i).equals(header)) {
@@ -139,6 +150,7 @@ public class AgilentArrayCreator extends ArrayCreator {
         }
         throw new IllegalArgumentException("Illegal column(header):" + header);
     }
+
 
     @Override
     public List<List<String>> readAssayData(File arrayFile, int rownumber, int headerLineNo) throws IOException {

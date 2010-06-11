@@ -8,19 +8,20 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Element;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGMAImporterFactory extends RElementFactory {
 
     private static Log log = LogFactory.getLog(RGGMAImporterFactory.class);
 
+
     @Override
     public RMAImporter createRGGElement(Element element, RGG rggInstance) {
         if (element.getNodeType() != Element.ELEMENT_NODE) {
             throw new IllegalArgumentException("elements node type must be ELEMENT_NODE");
-        /****************** initialize and set attributes values **************************************/
+            /****************** initialize and set attributes values **************************************/
         }
 
         String var = element.getAttribute(RGG.getConfiguration().getString("VAR"));
@@ -56,7 +57,7 @@ public class RGGMAImporterFactory extends RElementFactory {
         }
 
         rMAImporter.setVMAImporter(vMAImporter);
-        
+
         return rMAImporter;
     }
 }

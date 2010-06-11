@@ -6,9 +6,9 @@
 package at.ac.arcs.rgg.element.maimporter.array;
 
 /**
- *
  * @author ilhami
  */
 public enum ArrayChannelInfo {
-ONECHANNEL,TWOCHANNEL;
+
+    ONECHANNEL, TWOCHANNEL;
 }

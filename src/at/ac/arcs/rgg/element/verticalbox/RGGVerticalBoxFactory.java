@@ -16,30 +16,31 @@ import at.ac.arcs.rgg.factories.RElementFactory;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
+
 /**
- *
  * @author ilhami
  */
-public class RGGVerticalBoxFactory extends RElementFactory{
-    
+public class RGGVerticalBoxFactory extends RElementFactory {
+
     /**
      * Creates a new instance of RGGVerticalBoxFactory
      */
     public RGGVerticalBoxFactory() {
     }
-    
+
+
     public RElement createRGGElement(Element element, RGG rggInstance) {
-        if(element.getNodeType() != Element.ELEMENT_NODE)
+        if (element.getNodeType() != Element.ELEMENT_NODE)
             throw new IllegalArgumentException("elements node type must be ELEMENT_NODE");
         RVerticalBox vbox = new RVerticalBox();
-        
+
         Element child;
-        for(int i=0;i<element.getChildNodes().getLength();i++){
-            if(element.getChildNodes().item(i).getNodeType()== Element.ELEMENT_NODE){
-                child = (Element)element.getChildNodes().item(i);
+        for (int i = 0; i < element.getChildNodes().getLength(); i++) {
+            if (element.getChildNodes().item(i).getNodeType() == Element.ELEMENT_NODE) {
+                child = (Element) element.getChildNodes().item(i);
                 try {
                     vbox.addChild(RElementFactory.getElementFactoryForName(
-                            child.getNodeName()).createRGGElement(child,rggInstance));
+                            child.getNodeName()).createRGGElement(child, rggInstance));
                 } catch (InstantiationException ex) {
                     ex.printStackTrace();
                 } catch (ClassNotFoundException ex) {
@@ -47,12 +48,12 @@ public class RGGVerticalBoxFactory extends RElementFactory{
                 } catch (IllegalAccessException ex) {
                     ex.printStackTrace();
                 }
-            }else if(element.getChildNodes().item(i).getNodeType()== Element.TEXT_NODE){
-                vbox.addChild(RGGRCodeFactory.createRCode((Text)element.getChildNodes().item(i)));
+            } else if (element.getChildNodes().item(i).getNodeType() == Element.TEXT_NODE) {
+                vbox.addChild(RGGRCodeFactory.createRCode((Text) element.getChildNodes().item(i)));
             }
         }
-        
+
         return vbox;
     }
-    
+
 }
