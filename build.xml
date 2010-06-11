@@ -1,0 +1,83 @@
+<project name="rgg-core" default="createJar" basedir=".">
+
+
+    <property name="src.dir" location="${basedir}/src"/>
+    <property name="classes.dir" location="${basedir}/../classes"/>
+    <property name="lib.dir" location="${basedir}/lib"/>
+
+    <property name="project.name" value="RGG"/>
+
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <!--<target name="compile" description="compile all sources">-->
+    <!--<mkdir dir="${classes.dir}"/>-->
+    <!--<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.5" target="1.5">-->
+    <!--<classpath refid="maven.dependencies"/>-->
+    <!--&lt;!&ndash;<compilerarg value="-g:lines,source,vars"/>&ndash;&gt;-->
+    <!--</javac>-->
+    <!--</target>-->
+
+
+    <target name="compile" description="Compile Java sources">
+        <mkdir dir="${classes.dir}"/>
+
+        <javac srcdir="${src.dir}" destdir="${classes.dir}">
+            <classpath refid="classpath"/>
+        </javac>
+
+        <copy todir="${classes.dir}">
+            <fileset dir="${src.dir}">
+                <include name="log4j.properties"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${classes.dir}/at/ac/arcs/rgg/config">
+            <fileset dir="${src.dir}/at/ac/arcs/rgg/config">
+                <include name="*.properties"/>
+            </fileset>
+        </copy>
+    </target>
+
+
+    <target name="createJar" depends="compile" description="Recreates the vShift.jar">
+
+        <property name="jarfile" value="${project.name}.jar"/>
+        <delete failonerror="true" file="${jarfile}"/>
+        <jar basedir="${classes.dir}" destfile="${jarfile}"/>
+
+        <!--<jar basedir="${bin.dir}" includes="config/config.sxl" update="true" destfile="${project.name}.jar"/>-->
+        <!--<jar basedir="${user.home}" includes=".winlayout" update="true" destfile="${project.name}.jar"/>-->
+
+        <manifestclasspath property="jar.classpath" jarfile="${basedir}/rgg.jar">
+            <classpath refid="classpath"/>
+        </manifestclasspath>
+
+        <jar destfile="${jarfile}" update="true">
+            <manifest>
+                <attribute name="Built-By"
+                           value="Holger Brandl (Max Planck Institute of Molecular Cell Biology and Genetics (MPI-CBG)). All rights reserverd, 2010"/>
+                <!--<attribute name="Main-Class" value="foo.bar.WhatEver"/>-->
+                <!--<attribute name="Class-Path" value="${jar.classpath}"/>-->
+            </manifest>
+        </jar>
+
+        <!-- embedd some config files directly into the jar-->
+        <!--<jar basedir="${bin.dir}" includes="config/miguelmic.sxl" update="true" destfile="${project.name}.jar"/>-->
+
+        <!--<move file="${jarfile}" todir="${lib.dir}"/>-->
+    </target>
+
+
+    <target name="cleanAll" description="remove all generated files">
+        <!--<delete failonerror="false" dir="${dist.dir}"/>-->
+        <!--<delete file="${basedir}/${project.name}.jar"/>-->
+        <!--<delete dir="${classes.dir}" failonerror="false"/>-->
+    </target>
+
+
+</project>

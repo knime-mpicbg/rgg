@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : config.xml
+    Created on : 17. Oktober 2006, 12:37
+    Author     : ilhami
+    Description:
+        Purpose of the document follows.
+-->
+
+<configuration>
+    <properties fileName="elementfactory.properties"/>
+    <properties fileName="rgg-attributes.properties"/>
+</configuration>
