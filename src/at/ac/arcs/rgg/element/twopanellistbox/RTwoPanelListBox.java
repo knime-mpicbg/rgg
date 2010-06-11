@@ -14,6 +14,7 @@ import at.ac.arcs.rgg.element.RElement;
 import org.apache.commons.lang.StringUtils;
 
 import javax.swing.*;
+import java.util.List;
 import java.util.Map;
 
 
@@ -42,7 +43,7 @@ public class RTwoPanelListBox extends RElement {
         if (StringUtils.isNotBlank(var))
             sbuf.append(var + "<-");
 
-        Object[] selectedValues = vList.getSelectedValues();
+        List<String> selectedValues = vList.getSelectedValues();
         if (isNumeric()) {
             for (Object obj : selectedValues)
                 sbuf.append(obj.toString() + ",");

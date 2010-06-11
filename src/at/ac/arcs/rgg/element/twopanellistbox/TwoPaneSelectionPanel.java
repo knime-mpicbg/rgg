@@ -572,7 +572,7 @@ public class TwoPaneSelectionPanel<Option> extends JPanel {
      *
      * @return a set of all columns from the exclude list
      */
-    public Set<Option> getExcludedColumnSet() {
+    public List<Option> getExcludedColumnSet() {
         return getColumnList(availableOptions);
     }
 
@@ -582,7 +582,7 @@ public class TwoPaneSelectionPanel<Option> extends JPanel {
      *
      * @return a list of all columns from the include list
      */
-    public Set<Option> getIncludedColumnSet() {
+    public List<Option> getIncludedColumnSet() {
         return getColumnList(includeOptions);
     }
 
@@ -592,8 +592,8 @@ public class TwoPaneSelectionPanel<Option> extends JPanel {
      *
      * @param model The list from which to retrieve the elements
      */
-    private Set<Option> getColumnList(final ListModel model) {
-        final Set<Option> list = new LinkedHashSet<Option>();
+    private List<Option> getColumnList(final ListModel model) {
+        final List<Option> list = new ArrayList<Option>();
 
         for (int i = 0; i < model.getSize(); i++) {
             Object o = model.getElementAt(i);

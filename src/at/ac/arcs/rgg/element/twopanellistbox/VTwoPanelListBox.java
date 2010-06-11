@@ -80,8 +80,8 @@ public class VTwoPanelListBox extends VisualComponent {
 //    }
 
 
-    public Object[] getSelectedValues() {
-        return selectPanel.getIncludedColumnSet().toArray();
+    public List<String> getSelectedValues() {
+        return new ArrayList<String>(selectPanel.getIncludedColumnSet());
     }
 
 
