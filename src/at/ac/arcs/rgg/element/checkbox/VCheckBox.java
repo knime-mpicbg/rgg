@@ -5,14 +5,12 @@
  */
 package at.ac.arcs.rgg.element.checkbox;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.SwingUtilities;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -55,13 +53,7 @@ public class VCheckBox extends VisualComponent {
 
 
     public void setLabelText(final String labeltext) {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            public void run() {
-                checkBox.setText(labeltext);
-
-            }
-        });
+        checkBox.setText(labeltext);
     }
 
 
@@ -88,12 +80,9 @@ public class VCheckBox extends VisualComponent {
 
 
     public void setEnabled(final boolean e) {
-        SwingUtilities.invokeLater(new Runnable() {
 
-            public void run() {
-                checkBox.setEnabled(e);
-            }
-        });
+        checkBox.setEnabled(e);
+
         Boolean oldvalue = this.enabled;
         this.enabled = e;
         changeSupport.firePropertyChange("enabled", oldvalue, this.enabled);

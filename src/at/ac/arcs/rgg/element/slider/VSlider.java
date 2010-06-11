@@ -5,17 +5,12 @@
  */
 package at.ac.arcs.rgg.element.slider;
 
-import javax.swing.BoxLayout;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.SwingUtilities;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
+
+import javax.swing.*;
 
 
 /**
@@ -86,12 +81,7 @@ public class VSlider extends VisualComponent {
 
 
     public void setLabelText(final String labeltext) {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            public void run() {
-                label.setText(labeltext);
-            }
-        });
+        label.setText(labeltext);
     }
 
 
@@ -172,12 +162,9 @@ public class VSlider extends VisualComponent {
 
     public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
-        SwingUtilities.invokeLater(new Runnable() {
 
-            public void run() {
-                slider.setEnabled(enabled);
-                sliderValueLabel.setEnabled(enabled);
-            }
-        });
+        slider.setEnabled(enabled);
+        sliderValueLabel.setEnabled(enabled);
+
     }
 }

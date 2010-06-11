@@ -1,15 +1,10 @@
 package at.ac.arcs.rgg.element.maimporter.ui.arrayheaderselection;
 
-import java.awt.Component;
-import java.awt.Insets;
-import javax.swing.ListCellRenderer;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.JList;
-import javax.swing.JTable;
-import javax.swing.UIManager;
-import javax.swing.BorderFactory;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource;
+import javax.swing.table.DefaultTableCellRenderer;
+import java.awt.*;
 
 
 public class RowHeaderRenderer

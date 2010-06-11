@@ -6,10 +6,10 @@
 
 package at.ac.arcs.rgg.element.gaprow;
 
-import javax.swing.JComponent;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
+
+import javax.swing.*;
 
 
 /**

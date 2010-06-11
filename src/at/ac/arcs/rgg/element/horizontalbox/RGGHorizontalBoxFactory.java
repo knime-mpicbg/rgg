@@ -9,7 +9,6 @@
 
 package at.ac.arcs.rgg.element.horizontalbox;
 
-import org.apache.commons.configuration.Configuration;
 import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.element.rcode.RGGRCodeFactory;
 import at.ac.arcs.rgg.factories.RElementFactory;

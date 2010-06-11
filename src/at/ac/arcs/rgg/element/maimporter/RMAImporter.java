@@ -1,13 +1,13 @@
 package at.ac.arcs.rgg.element.maimporter;
 
-import javax.swing.JComponent;
-
-import org.apache.commons.lang.StringUtils;
-import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.component.VisualComponent;
+import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.element.maimporter.array.ArrayChannelInfo;
 import at.ac.arcs.rgg.element.maimporter.array.ArrayColorInfo;
 import at.ac.arcs.rgg.element.maimporter.ui.MAImporterPanel;
+import org.apache.commons.lang.StringUtils;
+
+import javax.swing.*;
 
 
 /**

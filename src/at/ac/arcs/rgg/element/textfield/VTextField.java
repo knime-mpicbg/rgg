@@ -5,12 +5,10 @@
  */
 package at.ac.arcs.rgg.element.textfield;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+
+import javax.swing.*;
 
 
 /**

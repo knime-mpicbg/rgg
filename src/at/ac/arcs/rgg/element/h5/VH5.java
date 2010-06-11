@@ -6,12 +6,10 @@
 
 package at.ac.arcs.rgg.element.h5;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+
+import javax.swing.*;
 
 
 /**
@@ -47,11 +45,9 @@ public class VH5 extends VisualComponent {
 
     public void setText(final String text) {
         this.text = text;
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                label.setText(text);
-            }
-        });
+
+        label.setText(text);
+
     }
 
 
@@ -62,20 +58,16 @@ public class VH5 extends VisualComponent {
 
     public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                label.setEnabled(enabled);
-            }
-        });
+
+        label.setEnabled(enabled);
+
     }
 
 
     public void setHorizontalAlignment(final int alignment) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                label.setHorizontalAlignment(alignment);
-            }
-        });
+
+        label.setHorizontalAlignment(alignment);
+
     }
 
 

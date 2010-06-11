@@ -7,11 +7,10 @@ package at.ac.arcs.rgg.element.maimporter.ui;
 
 import at.ac.arcs.rgg.element.maimporter.ui.arrayheaderselection.ARCTable;
 import at.ac.arcs.rgg.element.maimporter.ui.model.ArrayHeaderRowTableModel;
-
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-
 import org.jdesktop.swingx.JXHeader;
+
+import javax.swing.*;
+import java.awt.*;
 
 
 /**

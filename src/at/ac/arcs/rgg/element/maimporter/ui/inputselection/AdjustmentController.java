@@ -4,12 +4,11 @@
  */
 package at.ac.arcs.rgg.element.maimporter.ui.inputselection;
 
+import javax.swing.*;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
 
 /**
  *

@@ -1,10 +1,10 @@
 package at.ac.arcs.rgg.element.maimporter.array.affymetrix;
 
-import java.io.File;
-
 import at.ac.arcs.rgg.element.maimporter.array.ArrayDetectionException;
 import at.ac.arcs.rgg.element.maimporter.array.ArrayInfo;
 import at.ac.arcs.rgg.element.maimporter.array.IArrayRecognizer;
+
+import java.io.File;
 
 
 /**

@@ -5,14 +5,10 @@
  */
 package at.ac.arcs.rgg.element.combobox;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComponent;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+
+import javax.swing.*;
 
 
 /**
@@ -95,12 +91,7 @@ public class VComboBox extends VisualComponent {
 
     public void setLabelText(final String labeltext) {
         labelTextSet = true;
-        SwingUtilities.invokeLater(new Runnable() {
-
-            public void run() {
-                label.setText(labeltext);
-            }
-        });
+        label.setText(labeltext);
     }
 
 
@@ -116,13 +107,10 @@ public class VComboBox extends VisualComponent {
 
     public void setEnabled(final boolean e) {
         this.enabled = e;
-        SwingUtilities.invokeLater(new Runnable() {
 
-            public void run() {
-                comboBox.setEnabled(e);
-                label.setEnabled(e);
-            }
-        });
+        comboBox.setEnabled(e);
+        label.setEnabled(e);
+
     }
 
 

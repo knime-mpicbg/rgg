@@ -6,12 +6,11 @@
 
 package at.ac.arcs.rgg.element.label;
 
-import javax.swing.JComponent;
-import javax.swing.SwingUtilities;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 import org.jdesktop.swingx.JXLabel;
+
+import javax.swing.*;
 
 
 /**
@@ -50,20 +49,16 @@ public class VLabel extends VisualComponent {
 
     public void setText(final String text) {
         this.text = text;
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                label.setText(text);
-            }
-        });
+
+        label.setText(text);
+
     }
 
 
     public void setHorizontalAlignment(final int alignment) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                label.setHorizontalAlignment(alignment);
-            }
-        });
+
+        label.setHorizontalAlignment(alignment);
+
     }
 
 

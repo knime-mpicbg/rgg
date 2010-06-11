@@ -5,12 +5,10 @@
  */
 package at.ac.arcs.rgg.element.label;
 
-import javax.swing.JComponent;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
 
-import java.util.Map;
+import javax.swing.*;
 
 
 /**

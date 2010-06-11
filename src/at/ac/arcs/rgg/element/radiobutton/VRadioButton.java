@@ -6,15 +6,12 @@
 
 package at.ac.arcs.rgg.element.radiobutton;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JComponent;
-import javax.swing.JRadioButton;
-import javax.swing.SwingUtilities;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 /**
@@ -82,11 +79,9 @@ public class VRadioButton extends VisualComponent {
 
 
     public void setLabelText(final String labeltext) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                radioButton.setText(labeltext);
-            }
-        });
+
+        radioButton.setText(labeltext);
+
     }
 
 

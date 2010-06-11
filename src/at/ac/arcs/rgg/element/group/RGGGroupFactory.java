@@ -8,9 +8,6 @@
  */
 package at.ac.arcs.rgg.element.group;
 
-import javax.swing.JPanel;
-
-import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.RGGModel;
 import at.ac.arcs.rgg.RGGPanelModel;
@@ -19,7 +16,10 @@ import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.factories.RElementFactory;
 import at.ac.arcs.rgg.factories.RGGFactory;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+import org.apache.commons.lang.StringUtils;
 import org.w3c.dom.Element;
+
+import javax.swing.*;
 
 
 /**

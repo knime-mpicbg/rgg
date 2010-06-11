@@ -5,12 +5,11 @@
 package at.ac.arcs.rgg.element.maimporter.array;
 
 import at.ac.arcs.rgg.element.maimporter.array.affymetrix.AffymetrixArrayRecognizer;
+import at.ac.arcs.rgg.element.maimporter.array.agilent.AgilentArrayRecognizer;
+import at.ac.arcs.rgg.element.maimporter.array.genepix.GenepixArrayRecognizer;
 
 import java.io.File;
 import java.util.ArrayList;
-
-import at.ac.arcs.rgg.element.maimporter.array.agilent.AgilentArrayRecognizer;
-import at.ac.arcs.rgg.element.maimporter.array.genepix.GenepixArrayRecognizer;
 
 
 /**

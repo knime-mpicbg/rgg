@@ -5,6 +5,17 @@
  */
 package at.ac.arcs.rgg.element.targetfileeditor;
 
+import at.ac.arcs.rgg.RGG;
+import at.ac.arcs.rgg.util.RGGFileExtensionFilter;
+import at.ac.arcs.rgg.util.tablerowheader.LineNumberTable;
+import org.apache.commons.lang.StringUtils;
+import org.jdesktop.swingworker.SwingWorker;
+import org.jdesktop.swingx.JXTable;
+import org.jdesktop.swingx.decorator.Highlighter;
+import org.jdesktop.swingx.decorator.HighlighterFactory;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -12,23 +23,6 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-
-import org.apache.commons.lang.StringUtils;
-import at.ac.arcs.rgg.RGG;
-import at.ac.arcs.rgg.util.RGGFileExtensionFilter;
-import at.ac.arcs.rgg.util.tablerowheader.LineNumberTable;
-
-import javax.swing.DefaultCellEditor;
-import javax.swing.JTextField;
-
-import org.jdesktop.swingworker.SwingWorker;
-import org.jdesktop.swingx.JXTable;
-import org.jdesktop.swingx.decorator.Highlighter;
-import org.jdesktop.swingx.decorator.HighlighterFactory;
 
 
 /**

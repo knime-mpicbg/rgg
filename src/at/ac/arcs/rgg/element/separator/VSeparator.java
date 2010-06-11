@@ -9,14 +9,11 @@
 
 package at.ac.arcs.rgg.element.separator;
 
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+
+import javax.swing.*;
 
 
 /**
@@ -64,11 +61,7 @@ public class VSeparator extends VisualComponent {
         for (int i = 0; i < seperator.getComponentCount(); i++) {
             if (seperator.getComponent(i) instanceof JLabel) {
                 final JLabel label = (JLabel) seperator.getComponent(i);
-                SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-                        label.setText(title);
-                    }
-                });
+                label.setText(title);
             }
         }
     }

@@ -6,14 +6,12 @@
 
 package at.ac.arcs.rgg.element.gaprow;
 
-import com.jgoodies.forms.util.DefaultUnitConverter;
-
-import java.awt.Dimension;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+import com.jgoodies.forms.util.DefaultUnitConverter;
+
+import javax.swing.*;
+import java.awt.*;
 
 
 /**

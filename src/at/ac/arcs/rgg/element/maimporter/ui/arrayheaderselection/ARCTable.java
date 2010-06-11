@@ -5,7 +5,7 @@
  */
 package at.ac.arcs.rgg.element.maimporter.ui.arrayheaderselection;
 
-import javax.swing.JScrollPane;
+import javax.swing.*;
 import javax.swing.table.JTableHeader;
 
 

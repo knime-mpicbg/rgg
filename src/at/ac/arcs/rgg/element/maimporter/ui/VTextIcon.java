@@ -4,15 +4,10 @@
  */
 package at.ac.arcs.rgg.element.maimporter.ui;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import javax.swing.*;
+import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import javax.swing.Icon;
-import javax.swing.UIManager;
 
 
 /**

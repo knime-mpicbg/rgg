@@ -1,12 +1,9 @@
 package at.ac.arcs.rgg.element.maimporter.ui.model;
 
-import at.ac.arcs.rgg.element.maimporter.array.Array;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayDetectionException;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayInfo;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayRecognizers;
-import at.ac.arcs.rgg.element.maimporter.array.TargetFile;
-import at.ac.arcs.rgg.element.maimporter.array.TargetFileException;
+import at.ac.arcs.rgg.element.maimporter.array.*;
+import org.jdesktop.swingworker.SwingWorker;
 
+import javax.swing.event.ChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
@@ -15,9 +12,6 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.event.ChangeEvent;
-
-import org.jdesktop.swingworker.SwingWorker;
 
 
 /**

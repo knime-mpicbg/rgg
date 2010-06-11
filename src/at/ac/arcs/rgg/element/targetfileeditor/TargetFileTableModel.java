@@ -4,8 +4,8 @@
  */
 package at.ac.arcs.rgg.element.targetfileeditor;
 
-import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import java.util.Vector;
 
 
 /**

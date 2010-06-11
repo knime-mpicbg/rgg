@@ -4,11 +4,10 @@
  */
 package at.ac.arcs.rgg.element.maimporter.ui.model;
 
-import java.util.ArrayList;
-
 import at.ac.arcs.rgg.element.maimporter.array.TargetFile;
 
 import javax.swing.table.AbstractTableModel;
+import java.util.ArrayList;
 
 
 /**

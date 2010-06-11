@@ -5,20 +5,9 @@
  */
 package at.ac.arcs.rgg.element.maimporter.ui;
 
-import at.ac.arcs.rgg.element.maimporter.ui.model.RGListTableModel;
-
-import java.awt.Cursor;
-import java.beans.PropertyChangeEvent;
-import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-
 import at.ac.arcs.rgg.element.maimporter.array.*;
 import at.ac.arcs.rgg.element.maimporter.ui.model.MAImporterModel;
+import at.ac.arcs.rgg.element.maimporter.ui.model.RGListTableModel;
 import at.ac.arcs.rgg.util.BusyDialog;
 import at.ac.arcs.rgg.util.RGGFileExtensionFilter;
 import com.jgoodies.forms.builder.DefaultFormBuilder;
@@ -26,18 +15,22 @@ import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.util.DefaultUnitConverter;
 import com.jgoodies.forms.util.UnitConverter;
+import org.jdesktop.swingworker.SwingWorker;
 
-import java.awt.Dimension;
-import java.beans.PropertyChangeListener;
-import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
-
-import org.jdesktop.swingworker.SwingWorker;
+import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**

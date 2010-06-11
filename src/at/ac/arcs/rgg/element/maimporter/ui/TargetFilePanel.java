@@ -7,21 +7,14 @@ package at.ac.arcs.rgg.element.maimporter.ui;
 import at.ac.arcs.rgg.element.maimporter.ui.model.TargetFileTableModel;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
-
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.event.TableColumnModelListener;
-
 import org.apache.commons.lang.StringUtils;
 import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.decorator.Highlighter;
 import org.jdesktop.swingx.decorator.HighlighterFactory;
+
+import javax.swing.*;
+import javax.swing.event.TableColumnModelListener;
+import java.awt.*;
 
 
 /**

@@ -9,14 +9,10 @@
 
 package at.ac.arcs.rgg.element.vector;
 
-import java.util.ArrayList;
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-
 import at.ac.arcs.rgg.component.VisualComponent;
+
+import javax.swing.*;
+import java.util.ArrayList;
 
 
 /**
@@ -103,12 +99,10 @@ public class VVector extends VisualComponent {
      * @param labeltext
      */
     public void setLabelText(final String labeltext) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                label.setText(labeltext);
 
-            }
-        });
+        label.setText(labeltext);
+
+
     }
 
     //TODO span'i ayarla

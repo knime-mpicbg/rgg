@@ -6,11 +6,10 @@
 
 package at.ac.arcs.rgg.element.group;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+
+import javax.swing.*;
 
 
 /**

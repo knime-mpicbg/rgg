@@ -8,11 +8,11 @@
  */
 package at.ac.arcs.rgg.element.bool;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.oro.text.perl.Perl5Util;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.factories.RElementFactory;
+import org.apache.commons.lang.StringUtils;
+import org.apache.oro.text.perl.Perl5Util;
 import org.jdesktop.beansbinding.AutoBinding;
 import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.beansbinding.Bindings;

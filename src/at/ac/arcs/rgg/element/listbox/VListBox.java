@@ -6,14 +6,9 @@
 
 package at.ac.arcs.rgg.element.listbox;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.ListModel;
-import javax.swing.SwingUtilities;
-
 import at.ac.arcs.rgg.component.VisualComponent;
+
+import javax.swing.*;
 
 
 /**
@@ -105,11 +100,9 @@ public class VListBox extends VisualComponent {
 
     public void setLabelText(final String labeltext) {
         labelTextSet = true;
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                label.setText(labeltext);
-            }
-        });
+
+        label.setText(labeltext);
+
     }
 
 

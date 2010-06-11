@@ -1,8 +1,5 @@
 package at.ac.arcs.rgg.element.maimporter;
 
-import java.beans.PropertyChangeEvent;
-import javax.swing.JComponent;
-
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.maimporter.array.Array;
@@ -11,6 +8,8 @@ import at.ac.arcs.rgg.element.maimporter.ui.MAImporterPanel;
 import at.ac.arcs.rgg.element.maimporter.ui.model.MAImporterModel;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 
+import javax.swing.*;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 

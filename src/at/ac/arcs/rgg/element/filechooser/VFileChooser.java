@@ -8,20 +8,15 @@
  */
 package at.ac.arcs.rgg.element.filechooser;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 import at.ac.arcs.rgg.util.RGGFileExtensionFilter;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
 
 /**
@@ -98,12 +93,8 @@ public class VFileChooser extends VisualComponent {
 
     public void setExtensionFilter(String description, String[] fileExtensions) {
         final RGGFileExtensionFilter filter = new RGGFileExtensionFilter(description, fileExtensions);
-        SwingUtilities.invokeLater(new Runnable() {
+        filechooser.addChoosableFileFilter(filter);
 
-            public void run() {
-                filechooser.addChoosableFileFilter(filter);
-            }
-        });
     }
 
 
@@ -178,3 +169,4 @@ public class VFileChooser extends VisualComponent {
         }
     }
 }
+

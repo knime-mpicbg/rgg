@@ -43,8 +43,7 @@ public class RGGRunner extends JFrame {
         }
 
 
-//        Map<String, Object> map = Collections.singletonMap("Barcode Selection", (Object) Arrays.asList("babla", "neubau"));
-//        rggRunner.rgg.getRggModel().restoreState(map);
+        rggRunner.rgg.getRggModel().restoreState(Collections.singletonMap("Barcode Selection", (Object) Arrays.asList("babla", "neubau")));
     }
 
 

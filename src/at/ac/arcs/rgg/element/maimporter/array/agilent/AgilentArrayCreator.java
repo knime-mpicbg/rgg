@@ -4,19 +4,13 @@
  */
 package at.ac.arcs.rgg.element.maimporter.array.agilent;
 
-import java.util.List;
-
 import at.ac.arcs.rgg.element.maimporter.array.*;
+import org.apache.commons.lang.StringUtils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import org.apache.commons.lang.StringUtils;
+import java.util.List;
 
 
 /**

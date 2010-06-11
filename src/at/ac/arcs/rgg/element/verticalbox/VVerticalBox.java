@@ -6,9 +6,9 @@
 
 package at.ac.arcs.rgg.element.verticalbox;
 
-import javax.swing.JComponent;
-
 import at.ac.arcs.rgg.component.VisualComponent;
+
+import javax.swing.*;
 
 
 /**

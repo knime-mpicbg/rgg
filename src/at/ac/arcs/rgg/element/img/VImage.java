@@ -5,15 +5,12 @@
  */
 package at.ac.arcs.rgg.element.img;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+
+import javax.swing.*;
+import java.io.File;
+import java.net.MalformedURLException;
 
 
 /**
@@ -57,12 +54,8 @@ public class VImage extends VisualComponent {
 
 
     public void setHorizontalAlignment(final int alignment) {
-        SwingUtilities.invokeLater(new Runnable() {
+        label.setHorizontalAlignment(alignment);
 
-            public void run() {
-                label.setHorizontalAlignment(alignment);
-            }
-        });
     }
 
 

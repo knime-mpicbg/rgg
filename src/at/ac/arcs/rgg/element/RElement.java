@@ -1,13 +1,13 @@
 package at.ac.arcs.rgg.element;
 
+import at.ac.arcs.rgg.component.VisualComponent;
+
+import javax.swing.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.swing.JComponent;
-
-import at.ac.arcs.rgg.component.VisualComponent;
 
 
 public abstract class RElement {

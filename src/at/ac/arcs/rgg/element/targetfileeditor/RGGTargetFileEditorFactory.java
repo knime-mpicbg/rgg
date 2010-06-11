@@ -1,9 +1,9 @@
 package at.ac.arcs.rgg.element.targetfileeditor;
 
-import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.factories.RElementFactory;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+import org.apache.commons.lang.StringUtils;
 import org.w3c.dom.Element;
 
 

@@ -9,13 +9,11 @@
 
 package at.ac.arcs.rgg.element.listbox;
 
-import javax.swing.JComponent;
-
-import at.ac.arcs.rgg.element.listbox.VListBox;
-import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
+import org.apache.commons.lang.StringUtils;
 
+import javax.swing.*;
 import java.util.Map;
 
 

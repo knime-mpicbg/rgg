@@ -4,20 +4,12 @@
  */
 package at.ac.arcs.rgg.element.maimporter.array.agilent;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
+import at.ac.arcs.rgg.element.maimporter.array.*;
+import org.apache.commons.lang.StringUtils;
+
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import org.apache.commons.lang.StringUtils;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayChannelInfo;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayColorInfo;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayDetectionException;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayInfo;
-import at.ac.arcs.rgg.element.maimporter.array.IArrayRecognizer;
 
 
 /**

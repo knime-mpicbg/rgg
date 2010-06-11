@@ -92,11 +92,7 @@ public class VTwoPanelListBox extends VisualComponent {
 
     public void setLabelText(final String labeltext) {
         labelTextSet = true;
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                label.setText(labeltext);
-            }
-        });
+        label.setText(labeltext);
     }
 
 
@@ -117,7 +113,7 @@ public class VTwoPanelListBox extends VisualComponent {
     }
 
 
-    public void setIncludes(List<String> options) {
+    public void setIncludes(final List<String> options) {
         selectPanel.include(options);
     }
 }

@@ -9,14 +9,12 @@
 
 package at.ac.arcs.rgg.element.group;
 
-import javax.swing.JComponent;
-
 import at.ac.arcs.rgg.RGGModel;
 import at.ac.arcs.rgg.component.EmptyPlaceHolder;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
-import at.ac.arcs.rgg.element.group.VGroup;
 
+import javax.swing.*;
 import java.util.Map;
 
 

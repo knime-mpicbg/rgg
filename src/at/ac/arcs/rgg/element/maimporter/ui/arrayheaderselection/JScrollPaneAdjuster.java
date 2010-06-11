@@ -1,17 +1,14 @@
 package at.ac.arcs.rgg.element.maimporter.ui.arrayheaderselection;
 
-import java.awt.Point;
-import javax.swing.JScrollPane;
-import javax.swing.JViewport;
-import javax.swing.SwingUtilities;
-import javax.swing.event.ChangeListener;
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
-import java.beans.PropertyChangeListener;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
 import java.beans.PropertyChangeEvent;
-
-import java.io.Serializable;
-import java.io.ObjectInputStream;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 
 
 public class JScrollPaneAdjuster

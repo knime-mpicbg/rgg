@@ -1,16 +1,11 @@
 package at.ac.arcs.rgg.element.maimporter.ui.arrayheaderselection;
 
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.event.ContainerListener;
-import java.awt.event.ContainerEvent;
-import java.awt.event.MouseEvent;
-import javax.swing.JScrollPane;
-import javax.swing.JViewport;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
-
+import java.awt.*;
+import java.awt.event.ContainerEvent;
+import java.awt.event.ContainerListener;
+import java.awt.event.MouseEvent;
 import java.io.Serializable;
 
 

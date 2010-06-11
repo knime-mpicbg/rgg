@@ -20,37 +20,26 @@
  */
 package at.ac.arcs.rgg.element.maimporter.ui.inputselection;
 
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.List;
-
-import java.util.Vector;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JTable;
-import javax.swing.ListCellRenderer;
-import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.TableColumnModelEvent;
-import javax.swing.event.TableColumnModelListener;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
-
 import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.plaf.ColumnControlButtonAddon;
 import org.jdesktop.swingx.plaf.LookAndFeelAddons;
 import org.jdesktop.swingx.table.DefaultTableColumnModelExt;
 import org.jdesktop.swingx.table.TableColumnExt;
 import org.jdesktop.swingx.table.TableColumnModelExt;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.TableColumnModelEvent;
+import javax.swing.event.TableColumnModelListener;
+import javax.swing.table.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.List;
+import java.util.Vector;
 
 
 /**
@@ -85,11 +74,17 @@ public class InputSelectorTable extends JXTable {
         LookAndFeelAddons.contribute(new ColumnControlButtonAddon());
     }
     // TODO: the table reference is a potential leak?
-    /** The table which is controlled by this. */
+    /**
+     * The table which is controlled by this.
+     */
     private JXTable table;
-    /** Listener for table property changes. */
+    /**
+     * Listener for table property changes.
+     */
     private PropertyChangeListener tablePropertyChangeListener;
-    /** Listener for table's columnModel. */
+    /**
+     * Listener for table's columnModel.
+     */
     TableColumnModelListener columnModelListener;
     private InputList inputs;
 
@@ -98,10 +93,9 @@ public class InputSelectorTable extends JXTable {
 
 
     /**
-     * Creates a column control button for the table. Uses the default
-     * icon as provided by the addon.
+     * Creates a column control button for the table. Uses the default icon as provided by the addon.
      *
-     * @param table  the <code>JXTable</code> controlled by this component
+     * @param table the <code>JXTable</code> controlled by this component
      */
     public InputSelectorTable(JXTable table, InputList options) {
         super();
@@ -228,19 +222,17 @@ public class InputSelectorTable extends JXTable {
 
 
     /**
-     * A specialized <code>Action</code> which takes care of keeping in synch with
-     * TableColumn state.
-     *
+     * A specialized <code>Action</code> which takes care of keeping in synch with TableColumn state.
+     * <p/>
      * NOTE: client must call releaseColumn if this action is no longer needed!
-     *
      */
     public class FilterColumnExt extends TableColumnExt {
 
         private TableColumn column;
         private PropertyChangeListener columnListener;
-        /** flag to distinguish selection changes triggered by
-         *  column's property change from those triggered by
-         *  user interaction. Hack around #212-swingx.
+        /**
+         * flag to distinguish selection changes triggered by column's property change from those triggered by user
+         * interaction. Hack around #212-swingx.
          */
         private boolean fromColumn;
 
@@ -258,10 +250,8 @@ public class InputSelectorTable extends JXTable {
 
 
         /**
-         * Releases all references to the synched <code>TableColumn</code>. 
-         * Client code must call this method if the
-         * action is no longer needed. After calling this action must not be
-         * used any longer.
+         * Releases all references to the synched <code>TableColumn</code>. Client code must call this method if the
+         * action is no longer needed. After calling this action must not be used any longer.
          */
         public void releaseColumn() {
             column.removePropertyChangeListener(columnListener);
@@ -270,16 +260,15 @@ public class InputSelectorTable extends JXTable {
 
 
         /**
-         * Does nothing. Synch from action state to TableColumn state
-         * is done in itemStateChanged.
+         * Does nothing. Synch from action state to TableColumn state is done in itemStateChanged.
          */
         public void actionPerformed(ActionEvent e) {
         }
 
 
         /**
-         * Synchs selected property to visible. This
-         * is called on change of tablecolumn's <code>visible</code> property.
+         * Synchs selected property to visible. This is called on change of tablecolumn's <code>visible</code>
+         * property.
          *
          * @param visible column visible state to synch to.
          */
@@ -291,8 +280,7 @@ public class InputSelectorTable extends JXTable {
 
 
         /**
-         * Synchs name property to value. This is called on change of 
-         * tableColumn's <code>headerValue</code> property.
+         * Synchs name property to value. This is called on change of tableColumn's <code>headerValue</code> property.
          *
          * @param value
          */
@@ -318,12 +306,10 @@ public class InputSelectorTable extends JXTable {
 
 
         /**
-         * Returns the listener to column's property changes. The listener
-         * is created lazily if necessary.
+         * Returns the listener to column's property changes. The listener is created lazily if necessary.
          *
-         * @return the <code>PropertyChangeListener</code> listening to 
-         *   <code>TableColumn</code>'s property changes, guaranteed to be 
-         *   not <code>null</code>.
+         * @return the <code>PropertyChangeListener</code> listening to <code>TableColumn</code>'s property changes,
+         *         guaranteed to be not <code>null</code>.
          */
         protected PropertyChangeListener getColumnListener() {
             if (columnListener == null) {
@@ -334,15 +320,12 @@ public class InputSelectorTable extends JXTable {
 
 
         /**
-         * Creates and returns the listener to column's property changes.
-         * Subclasses are free to roll their own.
-         * <p>
-         * Implementation note: this listener reacts to column's
-         * <code>visible</code> and <code>headerValue</code> properties and
-         * calls the respective <code>updateFromXX</code> methodes.
+         * Creates and returns the listener to column's property changes. Subclasses are free to roll their own.
+         * <p/>
+         * Implementation note: this listener reacts to column's <code>visible</code> and <code>headerValue</code>
+         * properties and calls the respective <code>updateFromXX</code> methodes.
          *
-         * @return the <code>PropertyChangeListener</code> to use with the
-         *         column
+         * @return the <code>PropertyChangeListener</code> to use with the column
          */
         protected PropertyChangeListener createPropertyChangeListener() {
             return new PropertyChangeListener() {
@@ -364,10 +347,9 @@ public class InputSelectorTable extends JXTable {
 
 
     /**
-     * Adjusts internal state after table's column model property has changed.
-     * Handles cleanup of listeners to the old/new columnModel (Note, that
-     * it listens to the column model only if it can control column visibility).
-     * Updates content of popup.
+     * Adjusts internal state after table's column model property has changed. Handles cleanup of listeners to the
+     * old/new columnModel (Note, that it listens to the column model only if it can control column visibility). Updates
+     * content of popup.
      *
      * @param oldModel the old <code>TableColumnModel</code> we had been listening to.
      */
@@ -382,7 +364,6 @@ public class InputSelectorTable extends JXTable {
 
     /**
      * Synchs this button's enabled with table's enabled.
-     *
      */
     protected void updateFromTableEnabledChanged() {
 //        getAction().setEnabled(table.isEnabled());
@@ -390,11 +371,10 @@ public class InputSelectorTable extends JXTable {
 
 
     /**
-     * Method to check if we can control column visibility POST: if true we can
-     * be sure to have an extended TableColumnModel
+     * Method to check if we can control column visibility POST: if true we can be sure to have an extended
+     * TableColumnModel
      *
-     * @return boolean to indicate if controlling the visibility state is
-     *   possible. 
+     * @return boolean to indicate if controlling the visibility state is possible.
      */
     protected boolean canControl() {
         return table.getColumnModel() instanceof TableColumnModelExt;
@@ -405,9 +385,8 @@ public class InputSelectorTable extends JXTable {
 
     /**
      * Populates the popup from scratch.
-     *
-     * If applicable, creates and adds column visibility actions. Always adds
-     * additional actions.
+     * <p/>
+     * If applicable, creates and adds column visibility actions. Always adds additional actions.
      */
     protected void populateModel() {
         clearAll();
@@ -427,10 +406,7 @@ public class InputSelectorTable extends JXTable {
 
 
     /**
-     *
-     * removes all components from the popup, making sure to release all
-     * columnVisibility actions.
-     *
+     * removes all components from the popup, making sure to release all columnVisibility actions.
      */
     protected void clearAll() {
 
@@ -469,10 +445,9 @@ public class InputSelectorTable extends JXTable {
 
 
     /**
-     * Returns the listener to table's property changes. The listener is 
-     * lazily created if necessary. 
-     * @return the <code>PropertyChangeListener</code> for use with the 
-     *  table, guaranteed to be not <code>null</code>.
+     * Returns the listener to table's property changes. The listener is lazily created if necessary.
+     *
+     * @return the <code>PropertyChangeListener</code> for use with the table, guaranteed to be not <code>null</code>.
      */
     protected PropertyChangeListener getTablePropertyChangeListener() {
         if (tablePropertyChangeListener == null) {
@@ -483,11 +458,9 @@ public class InputSelectorTable extends JXTable {
 
 
     /**
-     * Creates the listener to table's property changes. Subclasses are free
-     * to roll their own. <p>
-     * Implementation note: this listener reacts to table's <code>enabled</code> and
-     * <code>columnModel</code> properties and calls the respective 
-     * <code>updateFromXX</code> methodes.
+     * Creates the listener to table's property changes. Subclasses are free to roll their own. <p> Implementation note:
+     * this listener reacts to table's <code>enabled</code> and <code>columnModel</code> properties and calls the
+     * respective <code>updateFromXX</code> methodes.
      *
      * @return the <code>PropertyChangeListener</code> for use with the table.
      */
@@ -511,10 +484,10 @@ public class InputSelectorTable extends JXTable {
 
 
     /**
-     * Returns the listener to table's column model. The listener is 
-     * lazily created if necessary. 
-     * @return the <code>TableColumnModelListener</code> for use with the 
-     *  table's column model, guaranteed to be not <code>null</code>.
+     * Returns the listener to table's column model. The listener is lazily created if necessary.
+     *
+     * @return the <code>TableColumnModelListener</code> for use with the table's column model, guaranteed to be not
+     *         <code>null</code>.
      */
     protected TableColumnModelListener getColumnModelListener() {
         if (columnModelListener == null) {
@@ -525,14 +498,12 @@ public class InputSelectorTable extends JXTable {
 
 
     /**
-     * Creates the listener to columnModel. Subclasses are free to roll their
-     * own.
-     * <p>
-     * Implementation note: this listener reacts to "real" columnRemoved/-Added by
-     * populating the popups content from scratch.
+     * Creates the listener to columnModel. Subclasses are free to roll their own.
+     * <p/>
+     * Implementation note: this listener reacts to "real" columnRemoved/-Added by populating the popups content from
+     * scratch.
      *
-     * @return the <code>TableColumnModelListener</code> for use with the
-     *         table's columnModel.
+     * @return the <code>TableColumnModelListener</code> for use with the table's columnModel.
      */
     protected TableColumnModelListener createColumnModelListener() {
         return new TableColumnModelListener() {

@@ -1,8 +1,8 @@
 package at.ac.arcs.rgg.element.maimporter.ui.arrayheaderselection;
 
+import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.table.AbstractTableModel;
 
 
 public class MyDefaultTableModel extends AbstractTableModel implements MyTableModel {

@@ -4,13 +4,13 @@ import at.ac.arcs.rgg.element.maimporter.array.Array;
 import at.ac.arcs.rgg.element.maimporter.ui.inputselection.InputInfo;
 import at.ac.arcs.rgg.element.maimporter.ui.inputselection.InputList;
 
+import javax.swing.table.AbstractTableModel;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.table.AbstractTableModel;
 
 
 /**

@@ -8,11 +8,11 @@
  */
 package at.ac.arcs.rgg.element.bool;
 
-import javax.swing.JComponent;
-
-import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
+import org.apache.commons.lang.StringUtils;
+
+import javax.swing.*;
 
 
 /**
