@@ -61,7 +61,7 @@
             <manifest>
                 <attribute name="Built-By"
                            value="Holger Brandl (Max Planck Institute of Molecular Cell Biology and Genetics (MPI-CBG)). All rights reserverd, 2010"/>
-                <!--<attribute name="Main-Class" value="foo.bar.WhatEver"/>-->
+                <attribute name="Main-Class" value="at.ac.arcs.rgg.runner.RGGRunner"/>
                 <!--<attribute name="Class-Path" value="${jar.classpath}"/>-->
             </manifest>
         </jar>

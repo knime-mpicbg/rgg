@@ -9,15 +9,14 @@ package at.ac.arcs.rgg.element.twopanellistbox;
 import at.ac.arcs.rgg.component.VisualComponent;
 
 import javax.swing.*;
-import java.util.Arrays;
 import java.util.List;
 
 
 /**
- *
  * @author ilhami
  */
-public class VTwoPanelListBox extends VisualComponent{
+public class VTwoPanelListBox extends VisualComponent {
+
     private JLabel label;
     private JComponent[][] swingComponents;
 
@@ -32,19 +31,22 @@ public class VTwoPanelListBox extends VisualComponent{
         initComponents();
     }
 
+
     private void initComponents() {
         label = new JLabel();
         selectPanel = new TwoPaneSelectionPanel<String>(false, new DefaultListCellRenderer());
     }
 
-    public void setListData(List<String> items){
+
+    public void setListData(List<String> items) {
         selectPanel.update(items);
     }
 
+
     public JComponent[][] getSwingComponents() {
-        if(swingComponents == null){
-            if(labelTextSet)
-                swingComponents = new JComponent[][]{{label},{selectPanel}};
+        if (swingComponents == null) {
+            if (labelTextSet)
+                swingComponents = new JComponent[][]{{label}, {selectPanel}};
             else
                 swingComponents = new JComponent[][]{{selectPanel}};
         }
@@ -76,7 +78,8 @@ public class VTwoPanelListBox extends VisualComponent{
 //        return list.getSelectedValue();
 //    }
 
-    public Object[] getSelectedValues(){
+
+    public Object[] getSelectedValues() {
         return selectPanel.getIncludedColumnSet().toArray();
     }
 
@@ -84,6 +87,7 @@ public class VTwoPanelListBox extends VisualComponent{
     public JLabel getLabel() {
         return label;
     }
+
 
     public void setLabelText(final String labeltext) {
         labelTextSet = true;
@@ -95,18 +99,19 @@ public class VTwoPanelListBox extends VisualComponent{
     }
 
 
-
     public String getLabelText() {
         return label.getText();
     }
+
 
     public boolean isVisualComponent() {
         return true;
     }
 
-    public void setColumnSpan(int colspan){
+
+    public void setColumnSpan(int colspan) {
         //todo what is this
-//        if(colspan > 0)
-//            layoutInfo.setComponentColumnSpan(list,colspan);
+        if (colspan > 0)
+            layoutInfo.setComponentColumnSpan(selectPanel, colspan);
     }
 }

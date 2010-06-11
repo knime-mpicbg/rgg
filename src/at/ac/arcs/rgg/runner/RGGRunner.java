@@ -11,6 +11,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -20,7 +22,7 @@ import java.io.IOException;
 /**
  * @author Holger Brandl
  */
-public class RGGRunner extends JFrame{
+public class RGGRunner extends JFrame {
 
     public File curRGGFile;
     public RGG rgg;
@@ -28,13 +30,13 @@ public class RGGRunner extends JFrame{
 
     public static void main(String[] args) {
         RGGRunner rggRunner = new RGGRunner();
-        rggRunner.setBounds(100,100, 500, 600);
+        rggRunner.setBounds(100, 100, 500, 600);
 
         rggRunner.setVisible(true);
 
-        if(args.length == 1){
+        if (args.length == 1) {
             rggRunner.curRGGFile = new File(args[0]);
-            rggRunner. refresh(rggRunner.curRGGFile);
+            rggRunner.refresh();
         }
     }
 
@@ -42,6 +44,16 @@ public class RGGRunner extends JFrame{
     public RGGRunner() {
         initComponents();
         getContentPane().add(mainPanel);
+
+        addWindowFocusListener(new WindowAdapter() {
+
+            @Override
+            public void windowGainedFocus(WindowEvent windowEvent) {
+                if (autoRefreshCheckbox.isSelected()) {
+                    refresh();
+                }
+            }
+        });
     }
 
 
@@ -62,13 +74,17 @@ public class RGGRunner extends JFrame{
 
         // rebuild the content of the panel
         curRGGFile = rggFile;
-        refresh(curRGGFile);
+        refresh();
     }
 
 
-    private void refresh(final File rggFile) {
+    private void refresh() {
+        if (curRGGFile == null) {
+            throw new RuntimeException("could not find/read file");
+        }
+
         try {
-            rgg = RGG.createInstance(rggFile);
+            rgg = RGG.createInstance(curRGGFile);
             final JPanel rggPanel = rgg.buildPanel(true, false);
 
             SwingUtilities.invokeLater(new Runnable() {
@@ -77,7 +93,8 @@ public class RGGRunner extends JFrame{
                     guiPanel.add(rggPanel, BorderLayout.CENTER);
 
 
-                    sourceArea.setText(readFileAsString(rggFile));
+                    sourceArea.setText(readFileAsString(curRGGFile));
+                    mainPanel.invalidate();
                 }
             });
 
@@ -110,9 +127,7 @@ public class RGGRunner extends JFrame{
 
 
     private void refreshMenuActionPerformed() {
-        if (curRGGFile != null) {
-            refresh(curRGGFile);
-        }
+        refresh();
     }
 
 
@@ -138,6 +153,7 @@ public class RGGRunner extends JFrame{
         actionMenu = new JMenu();
         refreshMenuItem = new JMenuItem();
         generateMenuItem = new JMenuItem();
+        autoRefreshCheckbox = new JCheckBoxMenuItem();
         tabPanel = new JTabbedPane();
         guiPanel = new JPanel();
         sourceTabPanel = new JPanel();
@@ -200,6 +216,11 @@ public class RGGRunner extends JFrame{
                         }
                     });
                     actionMenu.add(generateMenuItem);
+
+                    //---- autoRefreshCheckbox ----
+                    autoRefreshCheckbox.setText("Auto Refresh");
+                    autoRefreshCheckbox.setToolTipText("Refresh the ui automatically when the window becomes activated");
+                    actionMenu.add(autoRefreshCheckbox);
                 }
                 menuBar1.add(actionMenu);
             }
@@ -259,6 +280,7 @@ public class RGGRunner extends JFrame{
     private JMenu actionMenu;
     private JMenuItem refreshMenuItem;
     private JMenuItem generateMenuItem;
+    private JCheckBoxMenuItem autoRefreshCheckbox;
     private JTabbedPane tabPanel;
     private JPanel guiPanel;
     private JPanel sourceTabPanel;

@@ -140,6 +140,22 @@
             </void> 
            </object> 
           </void> 
+          <void method="add"> 
+           <object class="com.jformdesigner.model.FormComponent"> 
+            <string>javax.swing.JCheckBoxMenuItem</string> 
+            <void method="setProperty"> 
+             <string>text</string> 
+             <string>Auto Refresh</string> 
+            </void> 
+            <void method="setProperty"> 
+             <string>toolTipText</string> 
+             <string>Refresh the ui automatically when the window becomes activated</string> 
+            </void> 
+            <void property="name"> 
+             <string>autoRefreshCheckbox</string> 
+            </void> 
+           </object> 
+          </void> 
          </object> 
         </void> 
        </object> 

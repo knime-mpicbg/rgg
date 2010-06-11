@@ -9,4 +9,5 @@ which fixes certain bugs and adds some features like:
 - fixed invalid comma when using listbox-widget
 - cleaner build-system and reorganized dependencies
 - more advanced ui-elements like a two-pane-selector (that optionally keeps the order of the selection)
-- reimplemented RGGRunner
+- reimplemented RGGRunner, which is now bundled with the library
+- rgg.jar is now executable (by simply opening a rgg-runner instance)
