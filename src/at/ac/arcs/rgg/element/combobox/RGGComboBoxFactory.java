@@ -8,19 +8,19 @@
  */
 package at.ac.arcs.rgg.element.combobox;
 
-import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.factories.RElementFactory;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+import org.apache.commons.lang.StringUtils;
 import org.jdesktop.beansbinding.AutoBinding;
 import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 import org.w3c.dom.Element;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGComboBoxFactory extends RElementFactory {
@@ -40,6 +40,7 @@ public class RGGComboBoxFactory extends RElementFactory {
         String items = element.getAttribute(RGG.getConfiguration().getString("ITEMS"));
         String selectedindex = element.getAttribute(RGG.getConfiguration().getString("SELECTED-INDEX"));
         String selecteditem = element.getAttribute(RGG.getConfiguration().getString("SELECTED-ITEM"));
+        String defaultSelectedItem = element.getAttribute(RGG.getConfiguration().getString("SELECTED-ITEM-VALUE"));
         String datatype = element.getAttribute(RGG.getConfiguration().getString("DATA-TYPE"));
         String enabled = element.getAttribute(RGG.getConfiguration().getString("ENABLED"));
         String id = element.getAttribute(RGG.getConfiguration().getString("ID"));
@@ -68,16 +69,16 @@ public class RGGComboBoxFactory extends RElementFactory {
                 String property = util.group(2);
                 AutoBinding<Object, Object, Object, Object> binding =
                         Bindings.createAutoBinding(AutoBinding.UpdateStrategy.READ, // one-way binding
-                        rggInstance.getObject(sourceId), // source of value
-                        BeanProperty.create(property), // the property to get
-                        vComboBox, // the "backing bean"
-                        BeanProperty.create("items") // property to set
+                                rggInstance.getObject(sourceId), // source of value
+                                BeanProperty.create(property), // the property to get
+                                vComboBox, // the "backing bean"
+                                BeanProperty.create("items") // property to set
                         );
                 binding.bind();
             } else {
                 String[] _items = StringUtils.split(items, ',');
-                for(int i = 0;i<_items.length;i++){
-                    _items[i]=_items[i].trim();
+                for (int i = 0; i < _items.length; i++) {
+                    _items[i] = _items[i].trim();
                 }
                 rComboBox.setItems(_items);
             }
@@ -95,6 +96,11 @@ public class RGGComboBoxFactory extends RElementFactory {
             rComboBox.setSelectedItem(selecteditem);
         }
 
+        if (StringUtils.isNotBlank(defaultSelectedItem)) {
+            rComboBox.setSelectedItem(defaultSelectedItem);
+        }
+
+
         if (StringUtils.isNotBlank(datatype)) {
             if (StringUtils.equalsIgnoreCase(RGG.getConfiguration().getString("NUMERIC"), datatype)) {
                 rComboBox.setNumeric(true);
@@ -111,10 +117,10 @@ public class RGGComboBoxFactory extends RElementFactory {
                 enabled = util.substitute("s/" + sourceId + "\\.//g", enabled);
                 AutoBinding<Object, Object, Object, Object> binding =
                         Bindings.createAutoBinding(AutoBinding.UpdateStrategy.READ, // one-way binding
-                        rggInstance.getObject(sourceId), // source of value
-                        ELProperty.create(enabled), // the property to get
-                        vComboBox, // the "backing bean"
-                        BeanProperty.create("enabled") // property to set
+                                rggInstance.getObject(sourceId), // source of value
+                                ELProperty.create(enabled), // the property to get
+                                vComboBox, // the "backing bean"
+                                BeanProperty.create("enabled") // property to set
                         );
                 binding.bind();
             }
