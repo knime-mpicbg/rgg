@@ -27,17 +27,21 @@ public class RGGRunner extends JFrame{
 
 
     public static void main(String[] args) {
-        new RGGRunner()
+        RGGRunner rggRunner = new RGGRunner();
+        rggRunner.setBounds(100,100, 500, 600);
+
+        rggRunner.setVisible(true);
 
         if(args.length == 1){
-
+            rggRunner.curRGGFile = new File(args[0]);
+            rggRunner. refresh(rggRunner.curRGGFile);
         }
-
     }
 
 
     public RGGRunner() {
         initComponents();
+        getContentPane().add(mainPanel);
     }
 
 
@@ -126,13 +130,14 @@ public class RGGRunner extends JFrame{
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Open Source Project license - Sphinx-4 (cmusphinx.sourceforge.net/sphinx4/)
-        panel2 = new JPanel();
+        mainPanel = new JPanel();
         menuBar1 = new JMenuBar();
-        menu1 = new JMenu();
+        fileMenu = new JMenu();
         openRGGMenuItem = new JMenuItem();
         quitMenuItem = new JMenuItem();
-        refreshMenu = new JMenu();
-        runMenu = new JMenu();
+        actionMenu = new JMenu();
+        refreshMenuItem = new JMenuItem();
+        generateMenuItem = new JMenuItem();
         tabPanel = new JTabbedPane();
         guiPanel = new JPanel();
         sourceTabPanel = new JPanel();
@@ -142,16 +147,16 @@ public class RGGRunner extends JFrame{
         scrollPane2 = new JScrollPane();
         genScriptArea = new JTextArea();
 
-        //======== panel2 ========
+        //======== mainPanel ========
         {
-            panel2.setLayout(new BorderLayout());
+            mainPanel.setLayout(new BorderLayout());
 
             //======== menuBar1 ========
             {
 
-                //======== menu1 ========
+                //======== fileMenu ========
                 {
-                    menu1.setText("File");
+                    fileMenu.setText("File");
 
                     //---- openRGGMenuItem ----
                     openRGGMenuItem.setText("Open");
@@ -160,8 +165,8 @@ public class RGGRunner extends JFrame{
                             openRGGMenuItemActionPerformed();
                         }
                     });
-                    menu1.add(openRGGMenuItem);
-                    menu1.addSeparator();
+                    fileMenu.add(openRGGMenuItem);
+                    fileMenu.addSeparator();
 
                     //---- quitMenuItem ----
                     quitMenuItem.setText("Quit");
@@ -170,33 +175,35 @@ public class RGGRunner extends JFrame{
                             quitMenuItemActionPerformed();
                         }
                     });
-                    menu1.add(quitMenuItem);
+                    fileMenu.add(quitMenuItem);
                 }
-                menuBar1.add(menu1);
+                menuBar1.add(fileMenu);
 
-                //======== refreshMenu ========
+                //======== actionMenu ========
                 {
-                    refreshMenu.setText("Refresh");
-                    refreshMenu.addActionListener(new ActionListener() {
+                    actionMenu.setText("Actions");
+
+                    //---- refreshMenuItem ----
+                    refreshMenuItem.setText("Refresh");
+                    refreshMenuItem.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             refreshMenuActionPerformed();
                         }
                     });
-                }
-                menuBar1.add(refreshMenu);
+                    actionMenu.add(refreshMenuItem);
 
-                //======== runMenu ========
-                {
-                    runMenu.setText("Run");
-                    runMenu.addActionListener(new ActionListener() {
+                    //---- generateMenuItem ----
+                    generateMenuItem.setText("Generate");
+                    generateMenuItem.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             runMenuActionPerformed();
                         }
                     });
+                    actionMenu.add(generateMenuItem);
                 }
-                menuBar1.add(runMenu);
+                menuBar1.add(actionMenu);
             }
-            panel2.add(menuBar1, BorderLayout.NORTH);
+            mainPanel.add(menuBar1, BorderLayout.NORTH);
 
             //======== tabPanel ========
             {
@@ -237,20 +244,21 @@ public class RGGRunner extends JFrame{
                 tabPanel.addTab("Script", scriptPanel);
 
             }
-            panel2.add(tabPanel, BorderLayout.CENTER);
+            mainPanel.add(tabPanel, BorderLayout.CENTER);
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Open Source Project license - Sphinx-4 (cmusphinx.sourceforge.net/sphinx4/)
-    private JPanel panel2;
+    private JPanel mainPanel;
     private JMenuBar menuBar1;
-    private JMenu menu1;
+    private JMenu fileMenu;
     private JMenuItem openRGGMenuItem;
     private JMenuItem quitMenuItem;
-    private JMenu refreshMenu;
-    private JMenu runMenu;
+    private JMenu actionMenu;
+    private JMenuItem refreshMenuItem;
+    private JMenuItem generateMenuItem;
     private JTabbedPane tabPanel;
     private JPanel guiPanel;
     private JPanel sourceTabPanel;
