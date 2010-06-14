@@ -17,9 +17,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Map;
 
 
 /**
@@ -248,9 +245,6 @@ public class RGGRunner extends JFrame {
 
                     //======== scrollPane1 ========
                     {
-
-                        //---- sourceArea ----
-                        sourceArea.setEnabled(false);
                         scrollPane1.setViewportView(sourceArea);
                     }
                     sourceTabPanel.add(scrollPane1, BorderLayout.CENTER);
