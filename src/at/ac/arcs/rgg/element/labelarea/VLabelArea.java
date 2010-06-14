@@ -8,7 +8,6 @@ package at.ac.arcs.rgg.element.labelarea;
 
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
-import org.jdesktop.swingx.JXLabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,13 +35,13 @@ public class VLabelArea extends VisualComponent {
         labelArea.setEnabled(true);
         labelArea.setLineWrap(true);
         labelArea.setWrapStyleWord(true);
-        
+
         labelArea.setText(text);
 //        labelArea.setForeground(Color.BLACK);
 
         labelArea.setBackground(SystemColor.window);
 
-        
+
 //        label.setMaxLineSpan(2);
         swingMatrix = new JComponent[][]{{labelArea}};
     }
