@@ -11,6 +11,7 @@ import at.ac.arcs.rgg.layout.LayoutInfo;
 import org.jdesktop.swingx.JXLabel;
 
 import javax.swing.*;
+import java.awt.*;
 
 
 /**
@@ -31,7 +32,17 @@ public class VLabelArea extends VisualComponent {
         enabled = true;
         this.text = text;
         labelArea = new JTextArea();
+        labelArea.setEditable(false);
+        labelArea.setEnabled(true);
         labelArea.setLineWrap(true);
+        labelArea.setWrapStyleWord(true);
+        
+        labelArea.setText(text);
+//        labelArea.setForeground(Color.BLACK);
+
+        labelArea.setBackground(SystemColor.window);
+
+        
 //        label.setMaxLineSpan(2);
         swingMatrix = new JComponent[][]{{labelArea}};
     }
@@ -51,7 +62,6 @@ public class VLabelArea extends VisualComponent {
         this.text = text;
 
         labelArea.setText(text);
-
     }
 
 
