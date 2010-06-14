@@ -40,7 +40,6 @@ public class RGGComboBoxFactory extends RElementFactory {
         String items = element.getAttribute(RGG.getConfiguration().getString("ITEMS"));
         String selectedindex = element.getAttribute(RGG.getConfiguration().getString("SELECTED-INDEX"));
         String selecteditem = element.getAttribute(RGG.getConfiguration().getString("SELECTED-ITEM"));
-        String defaultSelectedItem = element.getAttribute(RGG.getConfiguration().getString("SELECTED-ITEM-VALUE"));
         String datatype = element.getAttribute(RGG.getConfiguration().getString("DATA-TYPE"));
         String enabled = element.getAttribute(RGG.getConfiguration().getString("ENABLED"));
         String id = element.getAttribute(RGG.getConfiguration().getString("ID"));
@@ -95,11 +94,6 @@ public class RGGComboBoxFactory extends RElementFactory {
         if (StringUtils.isNotBlank(selecteditem)) {
             rComboBox.setSelectedItem(selecteditem);
         }
-
-        if (StringUtils.isNotBlank(defaultSelectedItem)) {
-            rComboBox.setSelectedItem(defaultSelectedItem);
-        }
-
 
         if (StringUtils.isNotBlank(datatype)) {
             if (StringUtils.equalsIgnoreCase(RGG.getConfiguration().getString("NUMERIC"), datatype)) {
