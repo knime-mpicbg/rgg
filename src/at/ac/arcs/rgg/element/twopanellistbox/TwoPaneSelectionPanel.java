@@ -58,7 +58,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
-import java.util.List;
 
 
 /**
@@ -246,7 +245,8 @@ public class TwoPaneSelectionPanel<Option> extends JPanel {
             }
         });
         final JScrollPane jspIncl = new JScrollPane(m_inclList);
-        jspIncl.setMinimumSize(new Dimension(150, 155));
+        jspIncl.setMinimumSize(new Dimension(130, 155));
+        jspIncl.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         m_searchFieldIncl = new JTextField(8);
         m_searchButtonIncl = new JButton("Search");
@@ -297,7 +297,8 @@ public class TwoPaneSelectionPanel<Option> extends JPanel {
         });
         setListCellRenderer(cellRenderer);
         final JScrollPane jspExcl = new JScrollPane(m_exclList);
-        jspExcl.setMinimumSize(new Dimension(150, 155));
+        jspExcl.setMinimumSize(new Dimension(130, 155));
+        jspExcl.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         m_searchFieldExcl = new JTextField(8);
         m_searchButtonExcl = new JButton("Search");
