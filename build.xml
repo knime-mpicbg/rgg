@@ -44,7 +44,7 @@
     </target>
 
 
-    <target name="createJar" depends="compile" description="Recreates the vShift.jar">
+    <target name="createJar" depends="compile" description="Recreates the rgg.jar">
 
         <property name="jarfile" value="${project.name}.jar"/>
         <delete failonerror="true" file="${jarfile}"/>
