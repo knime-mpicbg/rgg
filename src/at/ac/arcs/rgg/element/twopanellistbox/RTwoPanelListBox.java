@@ -148,7 +148,7 @@ public class RTwoPanelListBox extends RElement {
 
     @Override
     public void restoreState(Map<String, Object> persistMap) {
-        List<String> options = vList.getSelectedValues();
+        List<String> options = vList.getSelectPanel().getExcludedColumnSet();
 
 
         if (persistMap.containsKey(vList.getLabelText())) {
@@ -159,7 +159,7 @@ public class RTwoPanelListBox extends RElement {
                 filteredSelection.addAll(unpersistedSelection);
 
             } else {
-                for (String selectedItem : filteredSelection) {
+                for (String selectedItem : unpersistedSelection) {
                     if (options.contains(selectedItem)) {
                         filteredSelection.add(selectedItem);
                     }

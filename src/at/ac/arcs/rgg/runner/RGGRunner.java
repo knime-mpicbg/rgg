@@ -17,6 +17,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -94,6 +98,10 @@ public class RGGRunner extends JFrame {
         try {
             rgg = RGG.createInstance(curRGGFile);
             final JPanel rggPanel = rgg.buildPanel(true, false);
+
+            Map<String, Object> restoreMap = new HashMap<String, Object>();
+            restoreMap.put("Assay parameters of interest", new ArrayList<String>(Arrays.asList("maus", "lala")));
+            rgg.getRggModel().restoreState(restoreMap);
 
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
