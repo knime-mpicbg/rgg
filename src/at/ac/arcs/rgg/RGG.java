@@ -19,13 +19,13 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
- *
  * @author ilhami
  * @author Holger Brandl
  */
 public class RGG {
-    
+
     public static boolean debug;
 
     private static CompositeConfiguration config;
@@ -45,16 +45,17 @@ public class RGG {
 
                 config.addConfiguration(
                         new PropertiesConfiguration(
-                        RGG.class.getResource("/at/ac/arcs/rgg/config/elementfactory.properties")));
+                                RGG.class.getResource("/at/ac/arcs/rgg/config/elementfactory.properties")));
                 config.addConfiguration(
                         new PropertiesConfiguration(
-                        RGG.class.getResource("/at/ac/arcs/rgg/config/rgg-attributes.properties")));
+                                RGG.class.getResource("/at/ac/arcs/rgg/config/rgg-attributes.properties")));
             } catch (ConfigurationException ex) {
                 Logger.getLogger(RGG.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
     }
+
 
     public static RGG createInstance(File rggFile)
             throws ParserConfigurationException,
@@ -76,7 +77,7 @@ public class RGG {
             initRGG();
         }
 
-        
+
         RGG rgg = new RGG();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -105,50 +106,60 @@ public class RGG {
         return config;
     }
 
+
     public String generateRScript() {
         return rggModel.generateRScript();
     }
+
 
     public JPanel buildPanel(boolean useDefaultDialogBorder, boolean debug) {
         return new RGGPanelBuilder().buildPanel(rggPanelModel, useDefaultDialogBorder, RGG.debug);
     }
 
+
     public void addObject(String id, Object obj) {
         idMap.put(id, obj);
     }
+
 
     public Object getObject(String id) {
         return idMap.get(id);
     }
 
+
     public void setProperty(String key, Object value) {
         rggProperties.put(key, value);
     }
+
 
     public Object getProperty(String key) {
         return rggProperties.get(key);
     }
 
+
     public RGGModel getRggModel() {
         return rggModel;
     }
+
 
     public void setRggModel(RGGModel rggModel) {
         this.rggModel = rggModel;
     }
 
+
     public RGGPanelModel getRggPanelModel() {
         return rggPanelModel;
     }
+
 
     public void setRggPanelModel(RGGPanelModel rggPanelModel) {
         this.rggPanelModel = rggPanelModel;
     }
 
+
     public File getBaseDirForFileDialogs() {
         return new File(System.getProperty("user.home")); // this is not set, so it wont' contain any meaningful values
     }
-
 
 
     public String getRGGName() {

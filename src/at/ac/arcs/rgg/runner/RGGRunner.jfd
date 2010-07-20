@@ -215,10 +215,6 @@
             <void method="add"> 
              <object class="com.jformdesigner.model.FormComponent"> 
               <string>javax.swing.JTextArea</string> 
-              <void method="setProperty"> 
-               <string>enabled</string> 
-               <boolean>false</boolean> 
-              </void> 
               <void property="name"> 
                <string>sourceArea</string> 
               </void> 

@@ -6,8 +6,8 @@ package at.ac.arcs.rgg.element.maimporter.ui.inputselection;
 
 import java.util.ArrayList;
 
+
 /**
- *
  * @author ahmet
  */
 public class InputList {
@@ -15,10 +15,12 @@ public class InputList {
     private ArrayList<InputInfo> list;
     public static final InputInfo NONE_OPTION = new InputInfo(InputSelectorTable.NONE_OPTION, InputInfo.OptionType.MANY_TO_ONE);
 
+
     public InputList() {
         list = new ArrayList<InputInfo>();
         this.put(NONE_OPTION);
     }
+
 
     public void put(InputInfo inputInfo) {
         if (inputInfo == null) {
@@ -40,6 +42,7 @@ public class InputList {
 
         list.add(inputInfo);
     }
+
 
     public InputInfo[] getInputs() {
         return list.toArray(new InputInfo[list.size()]);

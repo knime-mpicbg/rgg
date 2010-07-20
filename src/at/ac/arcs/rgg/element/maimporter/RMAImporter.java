@@ -1,15 +1,16 @@
 package at.ac.arcs.rgg.element.maimporter;
 
-import javax.swing.JComponent;
-import org.apache.commons.lang.StringUtils;
-import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.component.VisualComponent;
+import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.element.maimporter.array.ArrayChannelInfo;
 import at.ac.arcs.rgg.element.maimporter.array.ArrayColorInfo;
 import at.ac.arcs.rgg.element.maimporter.ui.MAImporterPanel;
+import org.apache.commons.lang.StringUtils;
+
+import javax.swing.*;
+
 
 /**
- *
  * @author ilhami
  */
 public class RMAImporter extends RElement {
@@ -18,8 +19,10 @@ public class RMAImporter extends RElement {
     private VMAImporter vMAImporter;
     private VisualComponent[][] visualcomponents;
 
+
     public RMAImporter() {
     }
+
 
     @Override
     public String getRCode() {
@@ -63,7 +66,7 @@ public class RMAImporter extends RElement {
                 //channelinfo & colorinfo
                 rbuilder.append(",channel=2,color=\"RG\"");
 
-            } else if(mapanel.getArrayChannelInfo() == ArrayChannelInfo.ONECHANNEL){ //ONECHANNEL
+            } else if (mapanel.getArrayChannelInfo() == ArrayChannelInfo.ONECHANNEL) { //ONECHANNEL
                 if (mapanel.getArrayColorInfo() == ArrayColorInfo.G) {
                     rbuilder.append("G=\"" + mapanel.getGHeader() + "\"");
                     rbuilder.append(", Gb=\"" + mapanel.getGbHeader() + "\"");
@@ -80,7 +83,7 @@ public class RMAImporter extends RElement {
                     //channelinfo & colorinfo
                     rbuilder.append(",channel=1,color=\"R\"");
                 }
-            }else{ //GENERIC TYPE ==> UNKNOWN
+            } else { //GENERIC TYPE ==> UNKNOWN
                 rbuilder.append("G=\"" + mapanel.getGHeader() + "\"");
                 rbuilder.append(", Gb=\"" + mapanel.getGbHeader() + "\"");
                 rbuilder.append(", R=\"" + mapanel.getRHeader() + "\"");
@@ -122,14 +125,17 @@ public class RMAImporter extends RElement {
         return rbuilder.toString();
     }
 
+
     public void setVMAImporter(VMAImporter vMAImporter) {
         this.vMAImporter = vMAImporter;
     }
+
 
     @Override
     public boolean hasVisualComponents() {
         return true;
     }
+
 
     @Override
     public VisualComponent[][] getVisualComponents() {
@@ -139,22 +145,26 @@ public class RMAImporter extends RElement {
         return visualcomponents;
     }
 
+
     @Override
     public boolean isChildAddable() {
         return false;
     }
 
+
     public void setVar(String var) {
         this.var = var;
     }
+
 
     public String getVar() {
         return var;
     }
 
+
     @Override
     public JComponent[][] getSwingComponentMatrix() {
         return vMAImporter.getSwingComponents();
     }
-    
+
 }

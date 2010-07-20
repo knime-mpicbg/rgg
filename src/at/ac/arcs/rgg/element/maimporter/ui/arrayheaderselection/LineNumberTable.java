@@ -10,39 +10,46 @@
 
 package at.ac.arcs.rgg.element.maimporter.ui.arrayheaderselection;
 
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.TableColumn;
 
 
 public class LineNumberTable extends JTable {
+
     private JTable mainTable;
-    
+
+
     public LineNumberTable(JTable table) {
         super();
         mainTable = table;
-        setAutoCreateColumnsFromModel( false );
-        setModel( mainTable.getModel() );
-        setSelectionModel( mainTable.getSelectionModel() );
-        setAutoscrolls( false );
-        addColumn( new TableColumn() );
-        getColumnModel().getColumn(0).setCellRenderer( mainTable.getTableHeader().getDefaultRenderer() );
+        setAutoCreateColumnsFromModel(false);
+        setModel(mainTable.getModel());
+        setSelectionModel(mainTable.getSelectionModel());
+        setAutoscrolls(false);
+        addColumn(new TableColumn());
+        getColumnModel().getColumn(0).setCellRenderer(mainTable.getTableHeader().getDefaultRenderer());
         getColumnModel().getColumn(0).setHeaderValue("Nr");
         getColumnModel().getColumn(0).setPreferredWidth(30);
         setPreferredScrollableViewportSize(getPreferredSize());
     }
-    
+
+
     public boolean isCellEditable(int row, int column) {
         return false;
     }
-    
+
+
     public Object getValueAt(int row, int column) {
         return new Integer(row + 1);
     }
-    
+
+
     public int getRowHeight(int row) {
         return mainTable.getRowHeight();
     }
-    public Class getColumnClass(int column){
+
+
+    public Class getColumnClass(int column) {
         return Integer.class;
     }
 //    public static void main(String[] args)
@@ -60,5 +67,5 @@ public class LineNumberTable extends JTable {
 //        frame.setSize(400, 300);
 //        frame.setVisible(true);
 //    }
-    
+
 }

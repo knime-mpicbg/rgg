@@ -7,43 +7,46 @@ package at.ac.arcs.rgg.element.maimporter.ui;
 import at.ac.arcs.rgg.element.maimporter.ui.model.TargetFileTableModel;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.event.TableColumnModelListener;
 import org.apache.commons.lang.StringUtils;
 import org.jdesktop.swingx.JXTable;
 import org.jdesktop.swingx.decorator.Highlighter;
 import org.jdesktop.swingx.decorator.HighlighterFactory;
 
+import javax.swing.*;
+import javax.swing.event.TableColumnModelListener;
+import java.awt.*;
+
+
 /**
- *
  * @author ilhami
  */
 public class TargetFilePanel extends JPanel {
 
     private TargetFileTableModel model;
 
-    /** Creates new form TargetFilePanel */
+
+    /**
+     * Creates new form TargetFilePanel
+     */
     public TargetFilePanel() {
         initComponents();
     }
 
-    /** Creates new form TargetFilePanel */
+
+    /**
+     * Creates new form TargetFilePanel
+     */
     public TargetFilePanel(TargetFileTableModel model) {
         this.model = model;
         initComponents();
         jxTable.setModel(model);
     }
 
+
     public TargetFileTableModel getModel() {
         return model;
     }
+
 
     public void setModel(TargetFileTableModel model) {
         this.model = model;
@@ -53,10 +56,12 @@ public class TargetFilePanel extends JPanel {
         }
     }
 
+
     void setPrefferedHeight(int height) {
         jxTable.setPreferredScrollableViewportSize(new Dimension(
                 jxTable.getPreferredScrollableViewportSize().width, height));
     }
+
 
     private void initComponents() {
 
@@ -168,6 +173,7 @@ public class TargetFilePanel extends JPanel {
         setBorder(null);
     }
 
+
     private void browseButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
 //        fileChooser.setCurrentDirectory((File) rggInstance.getProperty(LASTUSEDDIR));
@@ -176,6 +182,7 @@ public class TargetFilePanel extends JPanel {
         }
     }
 
+
     private void addRowHyperlinkActionPerformed(java.awt.event.ActionEvent evt) {
         if (model == null) {
             return;
@@ -183,12 +190,14 @@ public class TargetFilePanel extends JPanel {
 //        model.addRow(new Object[]{});
     }
 
+
     private void removeRowHyperlinkActionPerformed(java.awt.event.ActionEvent evt) {
         if (jxTable.getSelectedRow() == -1 || model == null) {
             return;
         }
         model.removeRow(jxTable.getSelectedRow());
     }
+
 
     private void addColumnHyperlinkActionPerformed(java.awt.event.ActionEvent evt) {
         if (model == null) {
@@ -204,6 +213,7 @@ public class TargetFilePanel extends JPanel {
         }
     }
 
+
     private void removeColumnHyperlinkActionPerformed(java.awt.event.ActionEvent evt) {
         if (jxTable.getSelectedColumn() == -1 || model == null) {
             return;
@@ -215,9 +225,11 @@ public class TargetFilePanel extends JPanel {
         model.removeColumnAndColumnData(jxTable.getSelectedColumn());
     }
 
+
     public TargetFileTableModel getTableModel() {
         return model;
     }
+
 
     public String[] getColumnTitles() {
         String[] titles = new String[jxTable.getColumnCount()];
@@ -227,11 +239,13 @@ public class TargetFilePanel extends JPanel {
         return titles;
     }
 
+
     public void addTargetFileTableColumnListener(TableColumnModelListener l) {
         jxTable.getColumnModel().addColumnModelListener(l);
     }
-    
-    private JXTable jxTable;              
+
+
+    private JXTable jxTable;
     private org.jdesktop.swingx.JXHyperlink addColumnHyperlink;
     private org.jdesktop.swingx.JXHyperlink addRowHyperlink;
     private javax.swing.JButton browseButton;

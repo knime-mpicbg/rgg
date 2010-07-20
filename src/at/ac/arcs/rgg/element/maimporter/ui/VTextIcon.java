@@ -4,26 +4,19 @@
  */
 package at.ac.arcs.rgg.element.maimporter.ui;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import javax.swing.*;
+import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import javax.swing.Icon;
-import javax.swing.UIManager;
+
 
 /**
-VTextIcon is an Icon implementation which draws a short string vertically.
-It's useful for JTabbedPanes with LEFT or RIGHT tabs but can be used in any
-component which supports Icons, such as JLabel or JButton 
-
-You can provide a hint to indicate whether to rotate the string 
-to the left or right, or not at all, and it checks to make sure 
-that the rotation is legal for the given string 
-(for example, Chinese/Japanese/Korean scripts have special rules when 
-drawn vertically and should never be rotated)
+ * VTextIcon is an Icon implementation which draws a short string vertically. It's useful for JTabbedPanes with LEFT or
+ * RIGHT tabs but can be used in any component which supports Icons, such as JLabel or JButton
+ * <p/>
+ * You can provide a hint to indicate whether to rotate the string to the left or right, or not at all, and it checks to
+ * make sure that the rotation is legal for the given string (for example, Chinese/Japanese/Korean scripts have special
+ * rules when drawn vertically and should never be rotated)
  */
 public class VTextIcon implements Icon, PropertyChangeListener {
 
@@ -43,20 +36,22 @@ public class VTextIcon implements Icon, PropertyChangeListener {
     public static final int ROTATE_LEFT = 0x02;
     public static final int ROTATE_RIGHT = 0x04;
 
+
     /**
-     * Creates a <code>VTextIcon</code> for the specified <code>component</code>
-     * with the specified <code>label</code>.
+     * Creates a <code>VTextIcon</code> for the specified <code>component</code> with the specified <code>label</code>.
      * It sets the orientation to the default for the string
+     *
      * @see #verifyRotation
      */
     public VTextIcon(Component component, String label) {
         this(component, label, ROTATE_DEFAULT);
     }
 
+
     /**
-     * Creates a <code>VTextIcon</code> for the specified <code>component</code>
-     * with the specified <code>label</code>.
+     * Creates a <code>VTextIcon</code> for the specified <code>component</code> with the specified <code>label</code>.
      * It sets the orientation to the provided value if it's legal for the string
+     *
      * @see #verifyRotation
      */
     public VTextIcon(Component component, String label, int rotateHint) {
@@ -67,9 +62,11 @@ public class VTextIcon implements Icon, PropertyChangeListener {
         fComponent.addPropertyChangeListener(this);
     }
 
+
     /**
-     * sets the label to the given string, updating the orientation as needed
-     * and invalidating the layout if the size changes
+     * sets the label to the given string, updating the orientation as needed and invalidating the layout if the size
+     * changes
+     *
      * @see #verifyRotation
      */
     public void setLabel(String label) {
@@ -78,13 +75,14 @@ public class VTextIcon implements Icon, PropertyChangeListener {
         recalcDimensions();
     }
 
+
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
+
     /**
-     * Checks for changes to the font on the fComponent
-     * so that it can invalidate the layout if the size changes
+     * Checks for changes to the font on the fComponent so that it can invalidate the layout if the size changes
      */
     public void propertyChange(PropertyChangeEvent e) {
         String prop = e.getPropertyName();
@@ -93,9 +91,9 @@ public class VTextIcon implements Icon, PropertyChangeListener {
         }
     }
 
-    /** 
-     * Calculates the dimensions.  If they've changed,
-     * invalidates the component
+
+    /**
+     * Calculates the dimensions.  If they've changed, invalidates the component
      */
     void recalcDimensions() {
         int wOld = getIconWidth();
@@ -105,6 +103,7 @@ public class VTextIcon implements Icon, PropertyChangeListener {
             fComponent.invalidate();
         }
     }
+
 
     void calcDimensions() {
         FontMetrics fm = fComponent.getFontMetrics(fComponent.getFont());
@@ -148,17 +147,17 @@ public class VTextIcon implements Icon, PropertyChangeListener {
         }
     }
 
+
     /**
-     * Draw the icon at the specified location.  Icon implementations
-     * may use the Component argument to get properties useful for 
-     * painting, e.g. the foreground or background color.
+     * Draw the icon at the specified location.  Icon implementations may use the Component argument to get properties
+     * useful for painting, e.g. the foreground or background color.
      */
     public void paintIcon(Component c, Graphics g, int x, int y) {
         // We don't insist that it be on the same Component
         if (enabled) {
             g.setColor(c.getForeground());
-        }else{
-            g.setColor((Color)UIManager.get("Label.disabledForeground"));
+        } else {
+            g.setColor((Color) UIManager.get("Label.disabledForeground"));
         }
         g.setFont(c.getFont());
         if (fRotation == ROTATE_NONE) {
@@ -200,6 +199,7 @@ public class VTextIcon implements Icon, PropertyChangeListener {
 
     }
 
+
     /**
      * Returns the icon's width.
      *
@@ -208,6 +208,7 @@ public class VTextIcon implements Icon, PropertyChangeListener {
     public int getIconWidth() {
         return fWidth;
     }
+
 
     /**
      * Returns the icon's height.
@@ -218,51 +219,39 @@ public class VTextIcon implements Icon, PropertyChangeListener {
         return fHeight;
     }
 
-    /** 
-    verifyRotation
-    
-    returns the best rotation for the string (ROTATE_NONE, ROTATE_LEFT, ROTATE_RIGHT)
-    
-    This is public static so you can use it to test a string without creating a VTextIcon
-    
-    from http://www.unicode.org/unicode/reports/tr9/tr9-3.html
-    When setting text using the Arabic script in vertical lines, 
-    it is more common to employ a horizontal baseline that 
-    is rotated by 90¡ counterclockwise so that the characters 
-    are ordered from top to bottom. Latin text and numbers 
-    may be rotated 90¡ clockwise so that the characters 
-    are also ordered from top to bottom.
-    
-    Rotation rules
-    - Roman can rotate left, right, or none - default right (counterclockwise)
-    - CJK can't rotate
-    - Arabic must rotate - default left (clockwise)
-    
-    from the online edition of _The Unicode Standard, Version 3.0_, file ch10.pdf page 4
-    Ideographs are found in three blocks of the Unicode Standard...
-    U+4E00-U+9FFF, U+3400-U+4DFF, U+F900-U+FAFF
-    
-    Hiragana is U+3040-U+309F, katakana is U+30A0-U+30FF
-    
-    from http://www.unicode.org/unicode/faq/writingdirections.html
-    East Asian scripts are frequently written in vertical lines 
-    which run from top-to-bottom and are arrange columns either 
-    from left-to-right (Mongolian) or right-to-left (other scripts). 
-    Most characters use the same shape and orientation when displayed 
-    horizontally or vertically, but many punctuation characters 
-    will change their shape when displayed vertically.
-    
-    Letters and words from other scripts are generally rotated through 
-    ninety degree angles so that they, too, will read from top to bottom. 
-    That is, letters from left-to-right scripts will be rotated clockwise 
-    and letters from right-to-left scripts counterclockwise, both 
-    through ninety degree angles.
-    
-    Unlike the bidirectional case, the choice of vertical layout 
-    is usually treated as a formatting style; therefore, 
-    the Unicode Standard does not define default rendering behavior 
-    for vertical text nor provide directionality controls designed to override such behavior
-    
+
+    /**
+     * verifyRotation
+     * <p/>
+     * returns the best rotation for the string (ROTATE_NONE, ROTATE_LEFT, ROTATE_RIGHT)
+     * <p/>
+     * This is public static so you can use it to test a string without creating a VTextIcon
+     * <p/>
+     * from http://www.unicode.org/unicode/reports/tr9/tr9-3.html When setting text using the Arabic script in vertical
+     * lines, it is more common to employ a horizontal baseline that is rotated by 90¡ counterclockwise so that the
+     * characters are ordered from top to bottom. Latin text and numbers may be rotated 90¡ clockwise so that the
+     * characters are also ordered from top to bottom.
+     * <p/>
+     * Rotation rules - Roman can rotate left, right, or none - default right (counterclockwise) - CJK can't rotate -
+     * Arabic must rotate - default left (clockwise)
+     * <p/>
+     * from the online edition of _The Unicode Standard, Version 3.0_, file ch10.pdf page 4 Ideographs are found in
+     * three blocks of the Unicode Standard... U+4E00-U+9FFF, U+3400-U+4DFF, U+F900-U+FAFF
+     * <p/>
+     * Hiragana is U+3040-U+309F, katakana is U+30A0-U+30FF
+     * <p/>
+     * from http://www.unicode.org/unicode/faq/writingdirections.html East Asian scripts are frequently written in
+     * vertical lines which run from top-to-bottom and are arrange columns either from left-to-right (Mongolian) or
+     * right-to-left (other scripts). Most characters use the same shape and orientation when displayed horizontally or
+     * vertically, but many punctuation characters will change their shape when displayed vertically.
+     * <p/>
+     * Letters and words from other scripts are generally rotated through ninety degree angles so that they, too, will
+     * read from top to bottom. That is, letters from left-to-right scripts will be rotated clockwise and letters from
+     * right-to-left scripts counterclockwise, both through ninety degree angles.
+     * <p/>
+     * Unlike the bidirectional case, the choice of vertical layout is usually treated as a formatting style; therefore,
+     * the Unicode Standard does not define default rendering behavior for vertical text nor provide directionality
+     * controls designed to override such behavior
      */
     public static int verifyRotation(String label, int rotateHint) {
         boolean hasCJK = false;
@@ -301,7 +290,7 @@ public class VTextIcon implements Icon, PropertyChangeListener {
     // small a, i, u, e, o, tsu, ya, yu, yo, wa  (katakana only) ka ke
     static final String sDrawsInTopRight =
             "\u3041\u3043\u3045\u3047\u3049\u3063\u3083\u3085\u3087\u308E" + // hiragana 
-            "\u30A1\u30A3\u30A5\u30A7\u30A9\u30C3\u30E3\u30E5\u30E7\u30EE\u30F5\u30F6"; // katakana
+                    "\u30A1\u30A3\u30A5\u30A7\u30A9\u30C3\u30E3\u30E5\u30E7\u30EE\u30F5\u30F6"; // katakana
     static final String sDrawsInFarTopRight = "\u3001\u3002"; // comma, full stop
     static final int DEFAULT_CJK = ROTATE_NONE;
     static final int LEGAL_ROMAN = ROTATE_NONE | ROTATE_LEFT | ROTATE_RIGHT;

@@ -1,10 +1,9 @@
 /*
- * RH1.java
+ * RLabel.java
  *
  * Created on 16. November 2006, 20:20
  */
-
-package at.ac.arcs.rgg.element.h1;
+package at.ac.arcs.rgg.element.labelarea;
 
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
@@ -15,18 +14,18 @@ import javax.swing.*;
 /**
  * @author ilhami
  */
-public class RH1 extends RElement {
+public class RLabelArea extends RElement {
 
     private VisualComponent[][] visualcomponents;
-    private VH1 vh1;
+    private VLabelArea vLabelArea;
 
 
     /**
-     * Creates a new instance of RH1
+     * Creates a new instance of RLabel
      */
-    public RH1(VH1 vlabel) {
-        this.vh1 = vlabel;
-        visualcomponents = new VisualComponent[][]{{vlabel}};
+    public RLabelArea(VLabelArea vLabelArea) {
+        this.vLabelArea = vLabelArea;
+        visualcomponents = new VisualComponent[][]{{vLabelArea}};
     }
 
 
@@ -51,7 +50,7 @@ public class RH1 extends RElement {
 
 
     public JComponent[][] getSwingComponentMatrix() {
-        return vh1.getSwingComponents();
+        return vLabelArea.getSwingComponents();
     }
 
 }

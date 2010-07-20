@@ -5,17 +5,15 @@
  */
 package at.ac.arcs.rgg.element.img;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 
+import javax.swing.*;
+import java.io.File;
+import java.net.MalformedURLException;
+
+
 /**
- *
  * @author ilhami
  */
 public class VImage extends VisualComponent {
@@ -23,6 +21,7 @@ public class VImage extends VisualComponent {
     private JLabel label;
     private File imgsrc;
     private JComponent[][] swingMatrix;
+
 
     /**
      * Creates a new instance of VImage
@@ -43,22 +42,22 @@ public class VImage extends VisualComponent {
         swingMatrix = new JComponent[][]{{label}};
     }
 
+
     public JComponent[][] getSwingComponents() {
         return swingMatrix;
     }
+
 
     public File getSrc() {
         return imgsrc;
     }
 
-    public void setHorizontalAlignment(final int alignment) {
-        SwingUtilities.invokeLater(new Runnable() {
 
-            public void run() {
-                label.setHorizontalAlignment(alignment);
-            }
-        });
+    public void setHorizontalAlignment(final int alignment) {
+        label.setHorizontalAlignment(alignment);
+
     }
+
 
     public void setColumnSpan(int colspan) {
         if (colspan > 0) {

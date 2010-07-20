@@ -10,9 +10,9 @@
 package at.ac.arcs.rgg.element.vector;
 
 /**
- *
  * @author ilhami
  */
 public enum VectorType {
-    NUMERIC,CHARACTER,LOGICAL;
+
+    NUMERIC, CHARACTER, LOGICAL;
 }

@@ -4,11 +4,11 @@
  */
 package at.ac.arcs.rgg.element.matrix;
 
-import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import java.util.Vector;
+
 
 /**
- *
  * @author ilhami
  */
 public class MatrixTableModel extends DefaultTableModel {

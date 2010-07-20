@@ -1,14 +1,15 @@
 package at.ac.arcs.rgg.element.targetfileeditor;
 
-import javax.swing.JComponent;
-import javax.swing.table.DefaultTableModel;
-import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+import org.apache.commons.lang.StringUtils;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
- *
  * @author ilhami
  */
 class VTargetFileEditor extends VisualComponent {
@@ -16,6 +17,7 @@ class VTargetFileEditor extends VisualComponent {
     private TargetFileEditor targetFileEditor;
     private RGG rggInstance;
     private JComponent[][] swingComponents;
+
 
     /**
      * Creates a new instance of VTextField
@@ -25,13 +27,16 @@ class VTargetFileEditor extends VisualComponent {
         initializeComponents();
     }
 
+
     private void initializeComponents() {
         targetFileEditor = new TargetFileEditor(rggInstance);
     }
 
+
     public boolean isVisualComponent() {
         return true;
     }
+
 
     public JComponent[][] getSwingComponents() {
         if (swingComponents == null) {
@@ -40,15 +45,18 @@ class VTargetFileEditor extends VisualComponent {
         return swingComponents;
     }
 
+
     public int getColumnCount() {
-        if(getTableModel() == null)
+        if (getTableModel() == null)
             return 0;
         return getTableModel().getColumnCount();
     }
 
+
     public String getColumnName(int columnIndex) {
         return getTableModel().getColumnName(columnIndex);
     }
+
 
     public Object[] getValuesAtColumn(int columnindex) {
         boolean isNumber = true;
@@ -68,9 +76,11 @@ class VTargetFileEditor extends VisualComponent {
         return values;
     }
 
+
     private DefaultTableModel getTableModel() {
         return targetFileEditor.getTableModel();
     }
+
 
     public void setColumnSpan(int colspan) {
         if (colspan > 0) {

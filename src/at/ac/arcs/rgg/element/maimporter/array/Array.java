@@ -1,13 +1,14 @@
 package at.ac.arcs.rgg.element.maimporter.array;
 
 import at.ac.arcs.rgg.element.maimporter.ui.inputselection.InputInfo;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- *
  * @author ilhami
  */
 public class Array {
@@ -29,30 +30,34 @@ public class Array {
     public ArrayList<InputInfo> othercolumns = new ArrayList<InputInfo>();
     private ArrayList<String> allHeaders = new ArrayList<String>();
 
+
     public Array(String source) {
         this.source = source;
     }
+
 
     public String getSource() {
         return source;
     }
 
+
     public void setSource(String source) {
         this.source = source;
     }
+
 
     public File getFile() {
         return file;
     }
 
+
     public void setFile(File file) {
         this.file = file;
     }
 
+
     /**
-     * 
-     * @return an InputInfo object for G, or null if the array single color
-     * and onyl R existent is.
+     * @return an InputInfo object for G, or null if the array single color and onyl R existent is.
      */
     public InputInfo getG() {
         if (arrayInfo.getChannelInfo() == ArrayChannelInfo.ONECHANNEL && arrayInfo.getColorInfo() == ArrayColorInfo.R) {
@@ -62,14 +67,14 @@ public class Array {
         }
     }
 
+
     public void setGHeaderIndex(int index) {
         this.G.setColumns(index);
     }
 
+
     /**
-     * 
-     * @return an InputInfo object for Gb, or null if the array single color
-     * and onyl R existent is.
+     * @return an InputInfo object for Gb, or null if the array single color and onyl R existent is.
      */
     public InputInfo getGb() {
         if (arrayInfo.getChannelInfo() == ArrayChannelInfo.ONECHANNEL && arrayInfo.getColorInfo() == ArrayColorInfo.R) {
@@ -79,14 +84,15 @@ public class Array {
         }
     }
 
+
     public void setGb(int index) {
         this.Gb.setColumns(index);
     }
 
+
     /**
-     * 
-     * @return an InputInfo object for R(ed) channel, or null if the array single color
-     * and only the G(reen) channel available is.
+     * @return an InputInfo object for R(ed) channel, or null if the array single color and only the G(reen) channel
+     *         available is.
      */
     public InputInfo getR() {
         if (arrayInfo.getChannelInfo() == ArrayChannelInfo.ONECHANNEL && arrayInfo.getColorInfo() == ArrayColorInfo.G) {
@@ -95,15 +101,16 @@ public class Array {
             return R;
         }
     }
-    
+
+
     public void setR(int index) {
         this.R.setColumns(index);
     }
 
+
     /**
-     * 
-     * @return an InputInfo object for Rb(red background) channel, or null if the array single color
-     * and only the G(reen) channel available is.
+     * @return an InputInfo object for Rb(red background) channel, or null if the array single color and only the
+     *         G(reen) channel available is.
      */
     public InputInfo getRb() {
         if (arrayInfo.getChannelInfo() == ArrayChannelInfo.ONECHANNEL && arrayInfo.getColorInfo() == ArrayColorInfo.G) {
@@ -113,41 +120,51 @@ public class Array {
         }
     }
 
+
     public void setRb(int index) {
         this.Rb.setColumns(index);
     }
+
 
     public InputInfo getAnnotations() {
         return annotations;
     }
 
+
     public void setAnnotations(ArrayList<Integer> columns) {
         this.annotations.setColumns(columns);
     }
+
 
     public void addAnnotations(Integer column) {
         annotations.addColumn(column);
     }
 
+
     public void removeAnnotations(Integer column) {
         annotations.removeColumn(column);
     }
+
 
     public List<String> getHeaders() {
         return allHeaders;
     }
 
+
     public void setHeaders(ArrayList<String> allHeaders) {
         this.allHeaders = allHeaders;
     }
+
 
     public ArrayInfo getArrayInfo() {
         return arrayInfo;
     }
 
+
     public void setArrayInfo(ArrayInfo arrayInfo) {
         this.arrayInfo = arrayInfo;
     }
+
 
     public List<List<String>> readAssayData(int rownumber) throws IOException {
         return arrayInfo.readAssayData(rownumber);

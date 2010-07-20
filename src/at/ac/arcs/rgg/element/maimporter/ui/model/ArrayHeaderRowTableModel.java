@@ -2,13 +2,14 @@ package at.ac.arcs.rgg.element.maimporter.ui.model;
 
 import at.ac.arcs.rgg.element.maimporter.array.ArrayInfo;
 import at.ac.arcs.rgg.element.maimporter.ui.arrayheaderselection.MyDefaultTableModel;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
 
+
 /**
- *
  * @author ilhami
  */
 public class ArrayHeaderRowTableModel extends MyDefaultTableModel {
@@ -16,10 +17,12 @@ public class ArrayHeaderRowTableModel extends MyDefaultTableModel {
     private LineNumberReader reader;
     private ArrayInfo arrayInfo;
 
+
     public ArrayHeaderRowTableModel() {
         super();
         colNames.add("Rows");
     }
+
 
     public static ArrayHeaderRowTableModel createArrayHeaderRowTableModel(ArrayInfo info) throws IOException {
         ArrayHeaderRowTableModel model = new ArrayHeaderRowTableModel();
@@ -27,6 +30,7 @@ public class ArrayHeaderRowTableModel extends MyDefaultTableModel {
         model.addRowsToModel(50);
         return model;
     }
+
 
     public void addRowsToModel(int count) throws IOException {
         if (reader == null) {
@@ -46,26 +50,32 @@ public class ArrayHeaderRowTableModel extends MyDefaultTableModel {
         }
     }
 
+
     public int getSelectedRow() {
         return selectedRow;
     }
+
 
     public void setSelectedRow(int selectedRow) {
         this.selectedRow = selectedRow;
         fireArrayHeaderRowChanged(selectedRow);
     }
 
+
     public ArrayInfo getArrayInfo() {
         return arrayInfo;
     }
+
 
     public void setArrayInfo(ArrayInfo arrayInfo) {
         this.arrayInfo = arrayInfo;
     }
 
+
     public void addArrayHeaderRowChangeListener(ArrayHeaderRowChangeListener l) {
         listenerList.add(ArrayHeaderRowChangeListener.class, l);
     }
+
 
     public void removeFooListener(ArrayHeaderRowChangeListener l) {
         listenerList.remove(ArrayHeaderRowChangeListener.class, l);
@@ -74,6 +84,8 @@ public class ArrayHeaderRowTableModel extends MyDefaultTableModel {
     // notification on this event type.  The event instance 
     // is lazily created using the parameters passed into 
     // the fire method.
+
+
     protected void fireArrayHeaderRowChanged(int headerRow) {
         ArrayHeaderChangedEvent evt = null;
         // Guaranteed to return a non-null array
@@ -84,7 +96,7 @@ public class ArrayHeaderRowTableModel extends MyDefaultTableModel {
             if (listeners[i] == ArrayHeaderRowChangeListener.class) {
                 // Lazily create the event:
                 if (evt == null) {
-                    evt = new ArrayHeaderChangedEvent(this,headerRow);
+                    evt = new ArrayHeaderChangedEvent(this, headerRow);
                 }
                 ((ArrayHeaderRowChangeListener) listeners[i + 1]).stateChanged(evt);
             }

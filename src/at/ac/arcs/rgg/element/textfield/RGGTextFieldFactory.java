@@ -8,19 +8,18 @@
  */
 package at.ac.arcs.rgg.element.textfield;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.oro.text.perl.Perl5Util;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.factories.RElementFactory;
 import at.ac.arcs.rgg.layout.LayoutInfo;
+import org.apache.commons.lang.StringUtils;
 import org.jdesktop.beansbinding.AutoBinding;
 import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 import org.w3c.dom.Element;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGTextFieldFactory extends RElementFactory {
@@ -83,16 +82,16 @@ public class RGGTextFieldFactory extends RElementFactory {
                 enabled = util.substitute("s/" + id + "\\.//g", enabled);
                 AutoBinding<Object, Object, Object, Object> binding =
                         Bindings.createAutoBinding(AutoBinding.UpdateStrategy.READ, // one-way binding
-                        rggInstance.getObject(id), // source of value
-                        ELProperty.create(enabled), // the property to get
-                        vtextfield, // the "backing bean"
-                        BeanProperty.create("enabled") // property to set
+                                rggInstance.getObject(id), // source of value
+                                ELProperty.create(enabled), // the property to get
+                                vtextfield, // the "backing bean"
+                                BeanProperty.create("enabled") // property to set
                         );
                 binding.bind();
             }
         }
 
-        rtextfield.setTextfield(vtextfield);        
+        rtextfield.setTextfield(vtextfield);
         return rtextfield;
     }
 }

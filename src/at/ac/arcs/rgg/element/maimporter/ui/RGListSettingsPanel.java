@@ -8,17 +8,17 @@ import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.util.DefaultUnitConverter;
 import com.jgoodies.forms.util.UnitConverter;
-import java.awt.Dimension;
+import org.jdesktop.swingx.JXTable;
+
+import javax.swing.*;
+import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JTextField;
-import org.jdesktop.swingx.JXTable;
+
 
 /**
- *
  * @author ilhami
  */
 public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyChangeListener {
@@ -32,16 +32,21 @@ public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyC
     private int height = 50;
     private boolean isHeightSet = false;
 
-    /** Creates new form RGListSettingsPanel */
+
+    /**
+     * Creates new form RGListSettingsPanel
+     */
     public RGListSettingsPanel() {
         initComponents();
     }
+
 
     public RGListSettingsPanel(int height) {
         this.height = height + converter.dialogUnitYAsPixel(35, this);
         isHeightSet = true;
         initComponents();
     }
+
 
     public void setModel(RGListTableModel model) {
         this.model = model;
@@ -51,6 +56,7 @@ public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyC
         propertyChange(new PropertyChangeEvent(this, Array.PROP_Annotation, null, annotations));
     }
 
+
     public String getRHeader() {
         if (model.getArray().getR().getFirstColumn() > 0 &&
                 model.getArray().getR().getFirstColumn() < inputSelectorTable.getColumnCount()) {
@@ -58,6 +64,7 @@ public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyC
         }
         return "";
     }
+
 
     public String getRbHeader() {
         if (model.getArray().getRb().getFirstColumn() > 0 &&
@@ -67,6 +74,7 @@ public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyC
         return "";
     }
 
+
     public String getGHeader() {
         if (model.getArray().getG().getFirstColumn() > 0 &&
                 model.getArray().getG().getFirstColumn() < inputSelectorTable.getColumnCount()) {
@@ -74,6 +82,7 @@ public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyC
         }
         return "";
     }
+
 
     public String getGbHeader() {
         if (model.getArray().getGb().getFirstColumn() > 0 &&
@@ -83,6 +92,7 @@ public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyC
         return "";
     }
 
+
     public List<String> getAnnotationHeaders() {
         ArrayList<String> anns = new ArrayList<String>();
         for (Integer i : model.getArray().getAnnotations().getColumns()) {
@@ -91,6 +101,7 @@ public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyC
         return anns;
     }
 
+
     public List<String> getOtherColumnHeaders() {
         ArrayList<String> others = new ArrayList<String>();
         for (Integer i : model.getOtherColumnsIndices()) {
@@ -98,6 +109,7 @@ public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyC
         }
         return others;
     }
+
 
     private void initComponents() {
 
@@ -124,7 +136,7 @@ public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyC
         table.setHorizontalScrollEnabled(true);
         inputSelectorScrollPane.setPreferredSize(
                 new Dimension(inputSelectorTable.getPreferredScrollableViewportSize().width,
-                converter.dialogUnitXAsPixel(inputSelectorTable.getFont().getSize() + 4, inputSelectorTable)));
+                        converter.dialogUnitXAsPixel(inputSelectorTable.getFont().getSize() + 4, inputSelectorTable)));
         inputSelectorScrollPane.setViewportView(inputSelectorTable);
 
         AdjustmentController controller = new AdjustmentController();
@@ -147,9 +159,12 @@ public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyC
 //        add(northpanel,BorderLayout.NORTH);
 //        add(tableScrollPane);
     }
+
+
     private javax.swing.JScrollPane inputSelectorScrollPane;
     private org.jdesktop.swingx.JXHeader jXHeader1;
     private javax.swing.JScrollPane tableScrollPane;
+
 
     public void propertyChange(PropertyChangeEvent evt) {
         if (Array.PROP_Annotation.equals(evt.getPropertyName())) {
@@ -166,9 +181,11 @@ public class RGListSettingsPanel extends javax.swing.JPanel implements PropertyC
         }
     }
 
+
     public String[] getAnnotations() {
         return annotations;
     }
+
 
     public String[] getColumns() {
         return columns;

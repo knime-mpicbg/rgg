@@ -1,18 +1,14 @@
 package at.ac.arcs.rgg.element.maimporter.array;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
+import org.apache.commons.lang.StringUtils;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.apache.commons.lang.StringUtils;
+
 
 /**
- *
  * @author ilhami
  */
 public class GenericArrayCreator extends ArrayCreator {
@@ -25,6 +21,7 @@ public class GenericArrayCreator extends ArrayCreator {
         array.setHeaders(headers);
         return array;
     }
+
 
     @Override
     public List<List<String>> readAssayData(File arrayFile, int rownumber, int headerLineNo) throws IOException {
@@ -51,6 +48,7 @@ public class GenericArrayCreator extends ArrayCreator {
         return assayData;
     }
 
+
     private ArrayList<String> extractHeaders(ArrayInfo arrayInfo) throws FileNotFoundException, IOException {
         String headerLine = getHeaderLine(arrayInfo);
         String[] headerSplitted = StringUtils.split(headerLine, '\t');
@@ -61,6 +59,7 @@ public class GenericArrayCreator extends ArrayCreator {
         }
         return headerList;
     }
+
 
     private String getHeaderLine(ArrayInfo arrayInfo) throws FileNotFoundException, IOException {
         LineNumberReader reader = new LineNumberReader(new FileReader(arrayInfo.getArrayFile()));

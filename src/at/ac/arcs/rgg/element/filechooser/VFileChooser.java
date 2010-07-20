@@ -8,22 +8,18 @@
  */
 package at.ac.arcs.rgg.element.filechooser;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 import at.ac.arcs.rgg.util.RGGFileExtensionFilter;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+
 /**
- *
  * @author ilhami
  */
 public class VFileChooser extends VisualComponent {
@@ -38,12 +34,16 @@ public class VFileChooser extends VisualComponent {
     private RGG rggInstance;
     private boolean enabled = true;
 
-    /** Creates a new instance of VFileChooser */
+
+    /**
+     * Creates a new instance of VFileChooser
+     */
     public VFileChooser(RGG rggInstance) {
         this.rggInstance = rggInstance;
         rggInstance.setProperty(LASTUSEDDIR, rggInstance.getBaseDirForFileDialogs());
         initComponents();
     }
+
 
     private void initComponents() {
         filechooser = new JFileChooser();
@@ -70,13 +70,16 @@ public class VFileChooser extends VisualComponent {
 
     }
 
-    public JFileChooser getFileChooser(){
+
+    public JFileChooser getFileChooser() {
         return filechooser;
     }
-    
+
+
     public boolean isVisualComponent() {
         return true;
     }
+
 
     public JComponent[][] getSwingComponents() {
         if (label != null) {
@@ -87,15 +90,13 @@ public class VFileChooser extends VisualComponent {
         return swingComps;
     }
 
+
     public void setExtensionFilter(String description, String[] fileExtensions) {
         final RGGFileExtensionFilter filter = new RGGFileExtensionFilter(description, fileExtensions);
-        SwingUtilities.invokeLater(new Runnable() {
+        filechooser.addChoosableFileFilter(filter);
 
-            public void run() {
-                filechooser.addChoosableFileFilter(filter);
-            }
-        });
     }
+
 
     public boolean isFilesSelected() {
         if (filechooser.getSelectedFile() != null ||
@@ -105,38 +106,47 @@ public class VFileChooser extends VisualComponent {
         return false;
     }
 
+
     public String getFilePath() {
         return filechooser.getSelectedFile().getPath();
     }
 
+
     public File[] getSelectedFiles() {
         return selectedFiles;
     }
+
 
     public void setSelectedFiles(File[] selectedFiles) {
         changeSupport.firePropertyChange("selectedFiles", this.selectedFiles, selectedFiles);
         this.selectedFiles = selectedFiles;
     }
 
+
     public void setLabel(String text) {
         label = new JLabel(text);
     }
+
 
     public void setFileSelectionMode(int mode) {
         filechooser.setFileSelectionMode(mode);
     }
 
-    public int getFileSelectionMode(){
+
+    public int getFileSelectionMode() {
         return filechooser.getFileSelectionMode();
     }
-    
+
+
     public void setMultiSelectionEnabled(boolean b) {
         filechooser.setMultiSelectionEnabled(b);
     }
 
+
     public boolean isMultiSelectionEnabled() {
         return filechooser.isMultiSelectionEnabled();
     }
+
 
     public void setColumnSpan(int colspan) {
         if (colspan > 0) {
@@ -144,9 +154,11 @@ public class VFileChooser extends VisualComponent {
         }
     }
 
+
     public boolean isEnabled() {
         return enabled;
     }
+
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
@@ -157,3 +169,4 @@ public class VFileChooser extends VisualComponent {
         }
     }
 }
+

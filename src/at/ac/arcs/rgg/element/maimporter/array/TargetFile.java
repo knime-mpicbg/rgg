@@ -4,20 +4,17 @@
  */
 package at.ac.arcs.rgg.element.maimporter.array;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import org.apache.commons.lang.StringUtils;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.commons.lang.StringUtils;
+
 
 /**
- *
  * @author ilhami
  */
 public class TargetFile {
@@ -27,13 +24,15 @@ public class TargetFile {
     private File path;
     private File[] files;
 
+
     private TargetFile(File basedir, ArrayList<String> header,
-            ArrayList<ArrayList<String>> targetFileData) throws TargetFileException {
+                       ArrayList<ArrayList<String>> targetFileData) throws TargetFileException {
         this.path = basedir;
         this.header = header;
         this.targetFileData = targetFileData;
         setFiles();
     }
+
 
     private TargetFile(File[] arrays) {
         header = new ArrayList<String>();
@@ -49,6 +48,7 @@ public class TargetFile {
         }
         this.files = arrays;
     }
+
 
     private void setFiles() throws TargetFileException {
         int fileNameIndex = -1;
@@ -76,33 +76,41 @@ public class TargetFile {
         }
     }
 
+
     public File[] getFiles() {
         return files;
     }
+
 
     public File getPath() {
         return path;
     }
 
+
     public void setPath(File path) {
         this.path = path;
     }
+
 
     public ArrayList<String> getHeader() {
         return header;
     }
 
+
     public void setHeader(ArrayList<String> header) {
         this.header = header;
     }
+
 
     public ArrayList<ArrayList<String>> getTargetFileData() {
         return targetFileData;
     }
 
+
     public void setTargetFileData(ArrayList<ArrayList<String>> targetFileData) {
         this.targetFileData = targetFileData;
     }
+
 
     private static ArrayList<ArrayList<String>> getTargetFileData(BufferedReader reader, int headercount)
             throws TargetFileException {
@@ -131,6 +139,7 @@ public class TargetFile {
         }
     }
 
+
     private static String[] getHeader(File targetFile, String line)
             throws TargetFileException {
         if (line == null || line.trim().length() == 0) {
@@ -139,6 +148,7 @@ public class TargetFile {
             return StringUtils.split(line);
         }
     }
+
 
     private static boolean hasFileNameHeader(String[] header) {
         for (String str : header) {
@@ -149,6 +159,7 @@ public class TargetFile {
         return false;
     }
 
+
     public String getFileNameHeader() {
         for (String str : header) {
             if (str.equalsIgnoreCase("FileName")) {
@@ -157,6 +168,7 @@ public class TargetFile {
         }
         return null;
     }
+
 
     public static TargetFile createTargetFile(File targetFile)
             throws TargetFileException {
@@ -196,9 +208,11 @@ public class TargetFile {
 
     }
 
+
     public static TargetFile createTargetFile(File[] arrays) {
         return new TargetFile(arrays);
     }
+
 
     public String toRCode() {
         StringBuffer rbuf = new StringBuffer();

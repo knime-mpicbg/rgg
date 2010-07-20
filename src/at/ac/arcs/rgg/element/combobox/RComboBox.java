@@ -2,7 +2,6 @@ package at.ac.arcs.rgg.element.combobox;
 
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
-import at.ac.arcs.rgg.element.combobox.VComboBox;
 import org.apache.commons.lang.StringUtils;
 
 import javax.swing.*;

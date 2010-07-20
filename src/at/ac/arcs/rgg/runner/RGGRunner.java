@@ -38,6 +38,9 @@ public class RGGRunner extends JFrame {
             rggRunner.curRGGFile = new File(args[0]);
             rggRunner.refresh();
         }
+
+
+//        rggRunner.rgg.getRggModel().restoreState(Collections.singletonMap("Barcode Selection", (Object) Arrays.asList("babla", "neubau")));
     }
 
 
@@ -242,9 +245,6 @@ public class RGGRunner extends JFrame {
 
                     //======== scrollPane1 ========
                     {
-
-                        //---- sourceArea ----
-                        sourceArea.setEnabled(false);
                         scrollPane1.setViewportView(sourceArea);
                     }
                     sourceTabPanel.add(scrollPane1, BorderLayout.CENTER);

@@ -14,6 +14,7 @@ import at.ac.arcs.rgg.element.RElement;
 import org.apache.commons.lang.StringUtils;
 
 import javax.swing.*;
+import java.util.List;
 import java.util.Map;
 
 
@@ -42,7 +43,7 @@ public class RTwoPanelListBox extends RElement {
         if (StringUtils.isNotBlank(var))
             sbuf.append(var + "<-");
 
-        Object[] selectedValues = vList.getSelectedValues();
+        List<String> selectedValues = vList.getSelectedValues();
         if (isNumeric()) {
             for (Object obj : selectedValues)
                 sbuf.append(obj.toString() + ",");
@@ -53,7 +54,10 @@ public class RTwoPanelListBox extends RElement {
         }
 
         // drop the last comma
-        sbuf = sbuf.deleteCharAt(sbuf.length() - 1);
+        if (sbuf.length() > 0) {
+            sbuf = sbuf.deleteCharAt(sbuf.length() - 1);
+        }
+
         return sbuf.toString();
     }
 
@@ -142,7 +146,7 @@ public class RTwoPanelListBox extends RElement {
     @Override
     public void restoreState(Map<String, Object> persistMap) {
         if (persistMap.containsKey(vList.getLabelText())) {
-            vList.setListData((java.util.List<String>) persistMap.get(vList.getLabel().getText()));
+            vList.setIncludes((java.util.List<String>) persistMap.get(vList.getLabel().getText()));
         }
     }
 }

@@ -7,37 +7,48 @@ package at.ac.arcs.rgg;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import at.ac.arcs.rgg.element.RElement;
+
 import java.io.BufferedReader;
 import java.io.StringReader;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.lang.StringUtils;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGModel {
 
     private ArrayList<RElement> elementSequence = new ArrayList<RElement>();
 
-    /** Creates a new instance of RGGModel */
+
+    /**
+     * Creates a new instance of RGGModel
+     */
     public RGGModel() {
     }
+
 
     public void add(RElement rggelement) {
         elementSequence.add(rggelement);
     }
     //TODO find a proper name!!!
+
+
     public ArrayList<RElement> getElementSequence() {
         return elementSequence;
     }
 
+
     public void setElementSequence(ArrayList<RElement> elementSequence) {
         this.elementSequence = elementSequence;
     }
+
 
     public String generateRScript() {
         StringBuilder rbuilder = new StringBuilder();
@@ -53,9 +64,9 @@ public class RGGModel {
         try {
             int emptyLineCounter = 0;
             while ((line = reader.readLine()) != null) {
-                if(StringUtils.isBlank(line)){
+                if (StringUtils.isBlank(line)) {
                     emptyLineCounter++;
-                }else{
+                } else {
                     emptyLineCounter = 0;
                 }
 
@@ -77,6 +88,7 @@ public class RGGModel {
             rElement.persistState(persistMap);
         }
     }
+
 
     public void restoreState(Map<String, Object> persistMap) {
         for (RElement rElement : elementSequence) {

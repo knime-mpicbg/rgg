@@ -4,22 +4,15 @@
  */
 package at.ac.arcs.rgg.element.maimporter.array.agilent;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
+import at.ac.arcs.rgg.element.maimporter.array.*;
+import org.apache.commons.lang.StringUtils;
+
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.commons.lang.StringUtils;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayChannelInfo;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayColorInfo;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayDetectionException;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayInfo;
-import at.ac.arcs.rgg.element.maimporter.array.IArrayRecognizer;
+
 
 /**
- *
  * @author ilhami
  */
 public class AgilentArrayRecognizer implements IArrayRecognizer {
@@ -58,6 +51,7 @@ public class AgilentArrayRecognizer implements IArrayRecognizer {
         }
     }
 
+
     private ArrayInfo checkAndCreateArrayInfo(String line) {
         ArrayInfo inf = new ArrayInfo();
         inf.setArraySource("agilent");
@@ -79,6 +73,7 @@ public class AgilentArrayRecognizer implements IArrayRecognizer {
         }
     }
 
+
     private boolean checkFEPARAMS(String line) {
         String[] parts;
         if (line != null && line.startsWith("FEPARAMS")) {
@@ -90,9 +85,11 @@ public class AgilentArrayRecognizer implements IArrayRecognizer {
         return false;
     }
 
+
     private boolean checkTYPE(String line) {
         return line != null && line.startsWith("TYPE");
     }
+
 
     private ArrayInfo setHeaderLineNo(ArrayInfo inf, LineNumberReader reader) throws IOException {
         String line;
@@ -107,6 +104,7 @@ public class AgilentArrayRecognizer implements IArrayRecognizer {
         }
         return null;
     }
+
 
     private void setArrayColor(ArrayInfo inf, String line) {
         String[] fields = StringUtils.split(line, '\t');

@@ -9,27 +9,26 @@
 
 package at.ac.arcs.rgg.element.listbox;
 
-import javax.swing.JComponent;
-
-import at.ac.arcs.rgg.element.listbox.VListBox;
-import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
+import org.apache.commons.lang.StringUtils;
 
+import javax.swing.*;
 import java.util.Map;
 
 
 /**
- *
  * @author ilhami
  */
-public class RListBox extends RElement{
+public class RListBox extends RElement {
 
     private String var;
     private String label;
     private boolean numeric = false;
     private VListBox vList;
     private VisualComponent[][] visualcomponents;
+
+
     /**
      * Creates a new instance of RList
      */
@@ -54,46 +53,58 @@ public class RListBox extends RElement{
         }
 
         // drop the last comma
-        sbuf = sbuf.deleteCharAt(sbuf.length() - 1);
+        if (sbuf.length() > 0) {
+            sbuf = sbuf.deleteCharAt(sbuf.length() - 1);
+        }
+
         return sbuf.toString();
     }
+
 
     public boolean hasVisualComponents() {
         return true;
     }
 
+
     public VisualComponent[][] getVisualComponents() {
-        if(visualcomponents == null)
+        if (visualcomponents == null)
             setVisualcomponents(new VisualComponent[][]{{vList}});
         return visualcomponents;
     }
+
 
     public boolean isChildAddable() {
         return false;
     }
 
+
     public String getVar() {
         return var;
     }
 
+
     public void setVar(String var) {
         this.var = var;
-        if(StringUtils.isBlank(getLabel()))
+        if (StringUtils.isBlank(getLabel()))
             setLabel(var);
     }
+
 
     public String getLabel() {
         return label;
     }
+
 
     public void setLabel(String label) {
         this.label = label;
         vList.setLabelText(label);
     }
 
+
     public VListBox getVComboBox() {
         return vList;
     }
+
 
     public void setVList(VListBox vList) {
         this.vList = vList;
@@ -104,22 +115,25 @@ public class RListBox extends RElement{
         vList.setColumnSpan(colspan);
     }
 
+
     public void setVisualcomponents(VisualComponent[][] visualcomponents) {
         this.visualcomponents = visualcomponents;
     }
+
 
     public boolean isNumeric() {
         return numeric;
     }
 
+
     public void setNumeric(boolean numeric) {
         this.numeric = numeric;
     }
 
+
     public JComponent[][] getSwingComponentMatrix() {
         return vList.getSwingComponents();
     }
-
 
 
     @Override

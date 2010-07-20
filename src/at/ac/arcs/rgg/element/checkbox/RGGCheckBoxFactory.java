@@ -5,25 +5,28 @@
  */
 package at.ac.arcs.rgg.element.checkbox;
 
-import org.apache.commons.lang.StringUtils;
 import at.ac.arcs.rgg.RGG;
 import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.factories.RElementFactory;
+import org.apache.commons.lang.StringUtils;
 import org.jdesktop.beansbinding.AutoBinding;
 import org.jdesktop.beansbinding.BeanProperty;
 import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.ELProperty;
 import org.w3c.dom.Element;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGCheckBoxFactory extends RElementFactory {
 
-    /** Creates a new instance of RGGCheckBoxFactory */
+    /**
+     * Creates a new instance of RGGCheckBoxFactory
+     */
     public RGGCheckBoxFactory() {
     }
+
 
     public RElement createRGGElement(Element element, RGG rggInstance) {
         if (element.getNodeType() != Element.ELEMENT_NODE) {
@@ -89,17 +92,17 @@ public class RGGCheckBoxFactory extends RElementFactory {
                 enabled = util.substitute("s/" + sourceid + "\\.//g", enabled);
                 AutoBinding<Object, Object, Object, Object> binding =
                         Bindings.createAutoBinding(AutoBinding.UpdateStrategy.READ, // one-way binding
-                        rggInstance.getObject(sourceid), // source of value
-                        ELProperty.create(enabled), // the property to get
-                        vcheckbox, // the "backing bean"
-                        BeanProperty.create("enabled") // property to set
+                                rggInstance.getObject(sourceid), // source of value
+                                ELProperty.create(enabled), // the property to get
+                                vcheckbox, // the "backing bean"
+                                BeanProperty.create("enabled") // property to set
                         );
                 binding.bind();
             }
         }
 
         rcheckbox.setCheckBox(vcheckbox);
-        
+
         return rcheckbox;
     }
 }

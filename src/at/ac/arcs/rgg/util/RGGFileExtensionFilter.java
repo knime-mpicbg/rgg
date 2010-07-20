@@ -7,8 +7,8 @@ package at.ac.arcs.rgg.util;
 import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
+
 /**
- *
  * @author ilhami
  */
 public class RGGFileExtensionFilter extends FileFilter {
@@ -18,10 +18,12 @@ public class RGGFileExtensionFilter extends FileFilter {
     // Known extensions.
     private final String[] extensions;
 
+
     public RGGFileExtensionFilter(String description, String... extensions) {
         this.description = description;
         this.extensions = extensions;
     }
+
 
     @Override
     public boolean accept(File f) {
@@ -35,18 +37,19 @@ public class RGGFileExtensionFilter extends FileFilter {
             // overhead associated with java.io.File. Therefor we've stuck
             // with the simple lightweight approach.
             String fileName = f.getName();
-	    int i = fileName.lastIndexOf('.');
-	    if (i > 0 && i < fileName.length() - 1) {
-                String desiredExtension = fileName.substring(i+1);
+            int i = fileName.lastIndexOf('.');
+            if (i > 0 && i < fileName.length() - 1) {
+                String desiredExtension = fileName.substring(i + 1);
                 for (String extension : extensions) {
                     if (desiredExtension.equalsIgnoreCase(extension)) {
                         return true;
                     }
                 }
-	    }
+            }
         }
         return false;
     }
+
 
     @Override
     public String getDescription() {

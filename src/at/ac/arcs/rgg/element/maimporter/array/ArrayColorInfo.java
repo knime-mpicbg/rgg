@@ -6,10 +6,10 @@
 package at.ac.arcs.rgg.element.maimporter.array;
 
 /**
- *
  * @author ilhami
  */
 public enum ArrayColorInfo {
-R, //Red
-G; //Green
+
+    R, //Red
+    G; //Green
 }

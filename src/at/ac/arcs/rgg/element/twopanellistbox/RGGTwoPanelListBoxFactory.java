@@ -20,15 +20,13 @@ import java.util.Arrays;
 
 
 /**
- *
  * @author ilhami
  */
-public class RGGTwoPanelListBoxFactory extends RElementFactory{
+public class RGGTwoPanelListBoxFactory extends RElementFactory {
 
     public RElement createRGGElement(Element element, RGG rggInstance) {
-        if(element.getNodeType() != Element.ELEMENT_NODE)
+        if (element.getNodeType() != Element.ELEMENT_NODE)
             throw new IllegalArgumentException("elements node type must be ELEMENT_NODE");
-
 
 
         /****************** initialize and set attributes values **************************************/
@@ -41,32 +39,32 @@ public class RGGTwoPanelListBoxFactory extends RElementFactory{
         VTwoPanelListBox vList = new VTwoPanelListBox();
         RTwoPanelListBox rListBox = new RTwoPanelListBox();
 
-        if(StringUtils.isNotBlank(items)){
-            vList.setListData(Arrays.asList(StringUtils.split(items,',')));
+        if (StringUtils.isNotBlank(items)) {
+            vList.setListData(Arrays.asList(StringUtils.split(items, ',')));
         }
         rListBox.setVList(vList);
 
-        if(StringUtils.isNotBlank(var)){
+        if (StringUtils.isNotBlank(var)) {
             rListBox.setVar(var);
         }
 
-        if(StringUtils.isNotBlank(label)){
+        if (StringUtils.isNotBlank(label)) {
             rListBox.setLabel(label);
         }
 
-        if(StringUtils.isNotBlank(colspan)){
-            if(StringUtils.isNumeric(colspan)){
+        if (StringUtils.isNotBlank(colspan)) {
+            if (StringUtils.isNumeric(colspan)) {
                 vList.setColumnSpan(Integer.parseInt(colspan));
-            }else if(StringUtils.equals(colspan, RGG.getConfiguration().getString("FULL-SPAN")))
+            } else if (StringUtils.equals(colspan, RGG.getConfiguration().getString("FULL-SPAN")))
                 vList.setColumnSpan(LayoutInfo.FULL_SPAN);
             else
                 throw new NumberFormatException(RGG.getConfiguration().getString("COLUMN-SPAN")
-                        +" seems not to be a number: "+
+                        + " seems not to be a number: " +
                         colspan);
         }
 
-        if(StringUtils.isNotBlank(datatype)){
-            if(StringUtils.equalsIgnoreCase(RGG.getConfiguration().getString("NUMERIC"),datatype))
+        if (StringUtils.isNotBlank(datatype)) {
+            if (StringUtils.equalsIgnoreCase(RGG.getConfiguration().getString("NUMERIC"), datatype))
                 rListBox.setNumeric(true);
         }
 

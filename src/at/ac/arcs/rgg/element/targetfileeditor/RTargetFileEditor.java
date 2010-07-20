@@ -1,12 +1,13 @@
 package at.ac.arcs.rgg.element.targetfileeditor;
 
-import javax.swing.JComponent;
-import org.apache.commons.lang.StringUtils;
-import at.ac.arcs.rgg.element.RElement;
 import at.ac.arcs.rgg.component.VisualComponent;
+import at.ac.arcs.rgg.element.RElement;
+import org.apache.commons.lang.StringUtils;
+
+import javax.swing.*;
+
 
 /**
- *
  * @author ilhami
  */
 public class RTargetFileEditor extends RElement {
@@ -15,13 +16,15 @@ public class RTargetFileEditor extends RElement {
     private VTargetFileEditor vTargetFileEditor;
     private VisualComponent[][] visualcomponents;
 
+
     public RTargetFileEditor() {
     }
+
 
     public String getRCode() {
         StringBuilder rcodebuilder = new StringBuilder();
         if (StringUtils.isNotBlank(var)) {
-            rcodebuilder.append(var+"=");
+            rcodebuilder.append(var + "=");
         }
         if (vTargetFileEditor.getColumnCount() == 0) {
             return rcodebuilder.append("NA").toString();
@@ -53,13 +56,16 @@ public class RTargetFileEditor extends RElement {
         return rcodebuilder.toString();
     }
 
+
     public void setVTargetFileEditor(VTargetFileEditor vTargetFileEditor) {
         this.vTargetFileEditor = vTargetFileEditor;
     }
 
+
     public boolean hasVisualComponents() {
         return true;
     }
+
 
     public VisualComponent[][] getVisualComponents() {
         if (visualcomponents == null) {
@@ -68,21 +74,26 @@ public class RTargetFileEditor extends RElement {
         return visualcomponents;
     }
 
+
     public boolean isChildAddable() {
         return false;
     }
+
 
     public void setVar(String var) {
         this.var = var;
     }
 
+
     public String getVar() {
         return var;
     }
 
+
     public JComponent[][] getSwingComponentMatrix() {
         return vTargetFileEditor.getSwingComponents();
     }
+
 
     private boolean isNumeric(Object[] values) {
         for (Object v : values) {

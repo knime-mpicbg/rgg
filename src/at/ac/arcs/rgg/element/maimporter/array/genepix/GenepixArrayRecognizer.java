@@ -1,21 +1,14 @@
 package at.ac.arcs.rgg.element.maimporter.array.genepix;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
+import at.ac.arcs.rgg.element.maimporter.array.*;
+import org.apache.commons.lang.StringUtils;
+
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.commons.lang.StringUtils;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayChannelInfo;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayColorInfo;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayDetectionException;
-import at.ac.arcs.rgg.element.maimporter.array.ArrayInfo;
-import at.ac.arcs.rgg.element.maimporter.array.IArrayRecognizer;
+
 
 /**
- *
  * @author ilhami
  */
 public class GenepixArrayRecognizer implements IArrayRecognizer {
@@ -43,15 +36,15 @@ public class GenepixArrayRecognizer implements IArrayRecognizer {
                             continue;
                         }
                         while ((line = reader.readLine()) != null &&
-                                reader.getLineNumber() < optionalHeaderRecordsNumber + 3);
+                                reader.getLineNumber() < optionalHeaderRecordsNumber + 3) ;
 
                         if (reader.getLineNumber() == optionalHeaderRecordsNumber + 3) {
                             inf.setHeaderLineNo(reader.getLineNumber());
                             return inf;
                         } else {
-                            throw new ArrayDetectionException(array, 
+                            throw new ArrayDetectionException(array,
                                     "Premature end of file before " +
-                                    "reaching the declared header line");
+                                            "reaching the declared header line");
                         }
                     } else {
                         break;
@@ -74,9 +67,11 @@ public class GenepixArrayRecognizer implements IArrayRecognizer {
         }
     }
 
+
     private boolean checkATF(String line) {
         return line != null && line.startsWith("ATF");
     }
+
 
     private boolean setArrayInfoFields(ArrayInfo inf, String line) {
         if (line.contains("Wavelengths") || line.contains("ImageName")) {

@@ -5,19 +5,15 @@
  */
 package at.ac.arcs.rgg.element.slider;
 
-import javax.swing.BoxLayout;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.SwingUtilities;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.layout.LayoutInfo;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
+import javax.swing.*;
+
+
 /**
- *
  * @author ilhami
  */
 public class VSlider extends VisualComponent {
@@ -30,12 +26,14 @@ public class VSlider extends VisualComponent {
     private javax.swing.event.ChangeListener l;
     private JComponent[][] swingComponents;
 
+
     /**
      * Creates a new instance of VTextField
      */
     public VSlider() {
         initializeComponents();
     }
+
 
     private void initializeComponents() {
         label = new JLabel();
@@ -47,21 +45,23 @@ public class VSlider extends VisualComponent {
                 sliderValueLabel.setText("" + slider.getValue());
             }
         });
-        
+
         CellConstraints cc = new CellConstraints();
         sliderPanel = new JPanel();
         sliderPanel.setLayout(new FormLayout("center:pref", "min,pref"));
-        sliderPanel.add(sliderValueLabel,cc.xy(1,1));
-        sliderPanel.add(slider,cc.xy(1, 2));
+        sliderPanel.add(sliderValueLabel, cc.xy(1, 1));
+        sliderPanel.add(slider, cc.xy(1, 2));
 //        
 //        sliderPanel.setLayout(new BoxLayout(sliderPanel, BoxLayout.Y_AXIS));
 //        sliderPanel.add("sliderValueLabel", sliderValueLabel);
 //        sliderPanel.add("slider", slider);
     }
 
+
     public boolean isVisualComponent() {
         return true;
     }
+
 
     public JComponent[][] getSwingComponents() {
         if (swingComponents == null) {
@@ -74,48 +74,53 @@ public class VSlider extends VisualComponent {
         return swingComponents;
     }
 
+
     public String getLabelText() {
         return label.getText();
     }
 
-    public void setLabelText(final String labeltext) {
-        SwingUtilities.invokeLater(new Runnable() {
 
-            public void run() {
-                label.setText(labeltext);
-            }
-        });
+    public void setLabelText(final String labeltext) {
+        label.setText(labeltext);
     }
+
 
     public int getValue() {
         return slider.getValue();
     }
 
+
     public void setValue(int value) {
         slider.setValue(value);
     }
+
 
     public int getMinumum() {
         return slider.getMinimum();
     }
 
+
     public void setMinumum(int value) {
         slider.setMinimum(value);
     }
+
 
     public int getMaximum() {
         return slider.getMaximum();
     }
 
+
     public void setMaximum(int value) {
         slider.setMaximum(value);
     }
+
 
     public void setColumnSpan(int colspan) {
         if (colspan > 0) {
             LayoutInfo.setComponentColumnSpan(sliderPanel, colspan);
         }
     }
+
 
     public void setPaintValue(boolean b) {
         if (!b) {
@@ -124,38 +129,42 @@ public class VSlider extends VisualComponent {
         }
     }
 
+
     public void setPaintTicks(boolean b) {
         slider.setPaintTicks(b);
     }
+
 
     public void setPaintTrack(boolean b) {
         slider.setPaintTrack(b);
     }
 
+
     public void setPaintLabels(boolean b) {
         slider.setPaintLabels(b);
     }
+
 
     public void setMajorTickSpacing(int n) {
         slider.setMajorTickSpacing(n);
     }
 
+
     public void setMinorTickSpacing(int n) {
         slider.setMinorTickSpacing(n);
     }
+
 
     public boolean isEnabled() {
         return enabled;
     }
 
+
     public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
-        SwingUtilities.invokeLater(new Runnable() {
 
-            public void run() {
-                slider.setEnabled(enabled);
-                sliderValueLabel.setEnabled(enabled);
-            }
-        });
+        slider.setEnabled(enabled);
+        sliderValueLabel.setEnabled(enabled);
+
     }
 }

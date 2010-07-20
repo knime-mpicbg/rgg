@@ -6,17 +6,21 @@
 
 package at.ac.arcs.rgg.element.img;
 
-import javax.swing.JComponent;
 import at.ac.arcs.rgg.component.VisualComponent;
 import at.ac.arcs.rgg.element.RElement;
 
+import javax.swing.*;
+
+
 /**
- *
  * @author ilhami
  */
-public class RImage extends RElement{
+public class RImage extends RElement {
+
     private VisualComponent[][] visualcomponents;
     private VImage vlabel;
+
+
     /**
      * Creates a new instance of RImage
      */
@@ -25,24 +29,29 @@ public class RImage extends RElement{
         visualcomponents = new VisualComponent[][]{{vlabel}};
     }
 
+
     public String getRCode() {
         return "";
     }
+
 
     public boolean hasVisualComponents() {
         return true;
     }
 
+
     public VisualComponent[][] getVisualComponents() {
         return visualcomponents;
     }
+
 
     public boolean isChildAddable() {
         return false;
     }
 
+
     public JComponent[][] getSwingComponentMatrix() {
         return vlabel.getSwingComponents();
     }
-    
+
 }
