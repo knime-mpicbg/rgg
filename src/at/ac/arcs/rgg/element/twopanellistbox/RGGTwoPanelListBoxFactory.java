@@ -35,6 +35,7 @@ public class RGGTwoPanelListBoxFactory extends RElementFactory {
         String colspan = element.getAttribute(RGG.getConfiguration().getString("COLUMN-SPAN"));
         String items = element.getAttribute(RGG.getConfiguration().getString("ITEMS"));
         String datatype = element.getAttribute(RGG.getConfiguration().getString("DATA-TYPE"));
+        String keepMissingOptions = element.getAttribute(RGG.getConfiguration().getString("KEEP-NON-OPTIONS-ON-UNPERSIST"));
         /***********************************************************************************************/
         VTwoPanelListBox vList = new VTwoPanelListBox();
         RTwoPanelListBox rListBox = new RTwoPanelListBox();
@@ -50,6 +51,10 @@ public class RGGTwoPanelListBoxFactory extends RElementFactory {
 
         if (StringUtils.isNotBlank(label)) {
             rListBox.setLabel(label);
+        }
+
+        if (StringUtils.isNotBlank(keepMissingOptions)) {
+            rListBox.setKeepMissingOptions(Boolean.getBoolean(keepMissingOptions));
         }
 
         if (StringUtils.isNotBlank(colspan)) {

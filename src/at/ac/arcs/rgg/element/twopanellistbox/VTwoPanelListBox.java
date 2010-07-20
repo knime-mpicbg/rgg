@@ -33,6 +33,11 @@ public class VTwoPanelListBox extends VisualComponent {
     }
 
 
+    public TwoPaneSelectionPanel<String> getSelectPanel() {
+        return selectPanel;
+    }
+
+
     private void initComponents() {
         label = new JLabel();
         selectPanel = new TwoPaneSelectionPanel<String>(false, new DefaultListCellRenderer());

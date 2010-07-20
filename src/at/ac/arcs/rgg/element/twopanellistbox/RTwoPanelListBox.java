@@ -14,6 +14,7 @@ import at.ac.arcs.rgg.element.RElement;
 import org.apache.commons.lang.StringUtils;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +29,8 @@ public class RTwoPanelListBox extends RElement {
     private boolean numeric = false;
     private VTwoPanelListBox vList;
     private VisualComponent[][] visualcomponents;
+
+    private boolean keepMissingOptions = false;
 
 
     /**
@@ -145,8 +148,30 @@ public class RTwoPanelListBox extends RElement {
 
     @Override
     public void restoreState(Map<String, Object> persistMap) {
+        List<String> options = vList.getSelectedValues();
+
+
         if (persistMap.containsKey(vList.getLabelText())) {
-            vList.setIncludes((java.util.List<String>) persistMap.get(vList.getLabel().getText()));
+            List<String> unpersistedSelection = (List<String>) persistMap.get(vList.getLabel().getText());
+
+            List<String> filteredSelection = new ArrayList<String>();
+            if (keepMissingOptions) {
+                filteredSelection.addAll(unpersistedSelection);
+
+            } else {
+                for (String selectedItem : filteredSelection) {
+                    if (options.contains(selectedItem)) {
+                        filteredSelection.add(selectedItem);
+                    }
+                }
+            }
+
+            vList.setIncludes(filteredSelection);
         }
+    }
+
+
+    public void setKeepMissingOptions(boolean keepMissingOptions) {
+        this.keepMissingOptions = keepMissingOptions;
     }
 }

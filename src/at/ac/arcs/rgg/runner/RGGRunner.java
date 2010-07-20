@@ -68,6 +68,11 @@ public class RGGRunner extends JFrame {
     private void openRGGMenuItemActionPerformed() {
         JFileChooser chooser = new JFileChooser();
         chooser.setFileFilter(new FileNameExtensionFilter("rgg-script files", "rgg"));
+
+        if (curRGGFile != null && curRGGFile.getParentFile().isDirectory()) {
+            chooser.setCurrentDirectory(curRGGFile.getParentFile());
+        }
+
         chooser.showOpenDialog(this);
 
         File rggFile = chooser.getSelectedFile();
