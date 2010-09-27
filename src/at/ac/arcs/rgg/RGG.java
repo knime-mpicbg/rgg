@@ -2,6 +2,7 @@ package at.ac.arcs.rgg;
 
 import at.ac.arcs.rgg.builder.RGGPanelBuilder;
 import at.ac.arcs.rgg.factories.RGGFactory;
+import at.ac.arcs.rgg.runner.RGGRunner;
 import org.apache.commons.configuration.CompositeConfiguration;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
@@ -36,6 +37,20 @@ public class RGG {
     private RGGModel rggModel;
     private RGGPanelModel rggPanelModel;
     private String setName;
+
+
+    public static void main(String[] args) {
+        String templateText = RGGRunner.readFileAsString(new File("/Users/brandl/projects/knime/R4Knime/rggtester2.rgg"));
+        InputStream xmlStream = new BufferedInputStream(new ByteArrayInputStream(templateText.getBytes()));
+
+        try {
+            RGG rgg = RGG.createInstance(xmlStream);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+
+        System.err.println("done");
+    }
 
 
     private static void initRGG() {

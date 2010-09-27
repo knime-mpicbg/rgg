@@ -116,7 +116,7 @@ public class RGGRunner extends JFrame {
     }
 
 
-    private static String readFileAsString(File file) {
+    public static String readFileAsString(File file) {
         try {
             StringBuffer fileData = new StringBuffer(1000);
             BufferedReader reader = new BufferedReader(
