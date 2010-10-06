@@ -36,11 +36,15 @@ public class RComboBox extends RElement {
         if (StringUtils.isNotBlank(var)) {
             sbuf.append(var + "<-");
         }
-        if (vComboBox.getSelectedItem() != null) {
+
+        // make sure that the default selection is used even if the combo-box has not been displayed yet
+        String curSelection = vComboBox.getComboBox().isDisplayable() || selectedItem == null ? vComboBox.getSelectedItem().toString() : selectedItem.toString();
+
+        if (curSelection != null) {
             if (isNumeric()) {
-                sbuf.append(vComboBox.getSelectedItem().toString());
+                sbuf.append(curSelection);
             } else {
-                sbuf.append("\"" + vComboBox.getSelectedItem().toString() + "\"");
+                sbuf.append("\"" + curSelection + "\"");
 
             }
         } else {
