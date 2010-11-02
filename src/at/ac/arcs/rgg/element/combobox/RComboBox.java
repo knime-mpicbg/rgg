@@ -173,7 +173,10 @@ public class RComboBox extends RElement {
     @Override
     public void restoreState(Map<String, Object> persistMap) {
         if (persistMap.containsKey(vComboBox.getLabelText())) {
-            vComboBox.setSelectedItem(persistMap.get(vComboBox.getLabelText()));
+            Object restoreValue = persistMap.get(vComboBox.getLabelText());
+
+            vComboBox.setSelectedItem(restoreValue);
+            selectedItem = restoreValue;
         }
     }
 }
