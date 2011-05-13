@@ -5,19 +5,15 @@ import at.ac.arcs.rgg.component.VisualComponent;
 import javax.swing.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 
 public abstract class RElement {
 
-    protected ArrayList<RElement> childElements;
     protected PropertyChangeSupport changeSupport;
 
 
     public RElement() {
-        childElements = new ArrayList<RElement>();
         changeSupport = new PropertyChangeSupport(this);
     }
 
@@ -35,31 +31,6 @@ public abstract class RElement {
 
 
     public abstract boolean isChildAddable();
-
-
-    public void addChild(RElement elem) {
-        if (!isChildAddable()) {
-            throw new UnsupportedOperationException("This element doesn't accept any child elements.");
-        } else {
-            childElements.add(elem);
-            return;
-        }
-    }
-
-
-    public RElement getChild(int i) {
-        return childElements.get(i);
-    }
-
-
-    public List<RElement> getChilds() {
-        return childElements;
-    }
-
-
-    public boolean hasChild() {
-        return childElements.size() > 0;
-    }
 
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -92,6 +63,4 @@ public abstract class RElement {
     public void restoreState(Map<String, Object> persistMap) {
 
     }
-
-
 }

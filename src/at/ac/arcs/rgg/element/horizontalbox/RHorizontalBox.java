@@ -10,6 +10,7 @@ package at.ac.arcs.rgg.element.horizontalbox;
 
 import at.ac.arcs.rgg.component.EmptyPlaceHolder;
 import at.ac.arcs.rgg.component.VisualComponent;
+import at.ac.arcs.rgg.element.AbstractBoxElement;
 import at.ac.arcs.rgg.element.RElement;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 /**
  * @author ilhami
  */
-public class RHorizontalBox extends RElement {
+public class RHorizontalBox extends AbstractBoxElement {
 
     private static EmptyPlaceHolder eph = new EmptyPlaceHolder();
     private VisualComponent[][] visualComponentMatrix;
@@ -174,5 +175,4 @@ public class RHorizontalBox extends RElement {
 
         private JComponent swingComponents[][];
     }
-
 }

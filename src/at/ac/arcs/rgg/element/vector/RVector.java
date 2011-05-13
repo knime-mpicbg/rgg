@@ -14,6 +14,9 @@ import at.ac.arcs.rgg.element.RElement;
 import org.apache.commons.lang.StringUtils;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -100,6 +103,58 @@ public class RVector extends RElement {
 
     public JComponent[][] getSwingComponentMatrix() {
         return vvector.getSwingComponents();
+    }
+
+
+    @Override
+    public void persistState(Map<String, Object> persistMap) {
+
+        List vecValues = new ArrayList();
+
+        if (vvector.getVectortype() == VectorType.NUMERIC) {
+            for (JComponent textfield : vvector.getVectorlist()) {
+                vecValues.add(((JFormattedTextField) textfield).getText());
+            }
+        } else if (vvector.getVectortype() == VectorType.CHARACTER) {
+            for (JComponent textfield : vvector.getVectorlist()) {
+                vecValues.add(((JFormattedTextField) textfield).getText());
+            }
+        } else {
+            for (JComponent component : vvector.getVectorlist()) {
+                vecValues.add(((JCheckBox) component).isSelected());
+            }
+        }
+
+        persistMap.put(vvector.getLabelText(), vecValues);
+    }
+
+
+    @Override
+    public void restoreState(Map<String, Object> persistMap) {
+        if (persistMap.containsKey(vvector.getLabelText())) {
+            List values = (List) persistMap.get(vvector.getLabelText());
+
+
+            // is the length the same? If not don't do any restore
+            if (vvector.getVectorlist().size() != values.size()) {
+                return;
+            }
+
+
+            if (vvector.getVectortype() == VectorType.LOGICAL) {
+                ArrayList<JComponent> vectorlist = vvector.getVectorlist();
+                for (int i = 0; i < vectorlist.size(); i++) {
+                    JComponent component = vectorlist.get(i);
+                    ((JCheckBox) component).setSelected((Boolean) values.get(i));
+                }
+            } else if (vvector.getVectortype() == VectorType.CHARACTER) {
+                ArrayList<JComponent> vectorlist = vvector.getVectorlist();
+                for (int i = 0; i < vectorlist.size(); i++) {
+                    JComponent textfield = vectorlist.get(i);
+                    ((JFormattedTextField) textfield).setText((String) values.get(i));
+                }
+            }
+        }
     }
 
 }

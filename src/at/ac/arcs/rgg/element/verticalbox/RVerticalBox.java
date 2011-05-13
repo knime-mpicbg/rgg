@@ -11,6 +11,7 @@ package at.ac.arcs.rgg.element.verticalbox;
 
 import at.ac.arcs.rgg.component.EmptyPlaceHolder;
 import at.ac.arcs.rgg.component.VisualComponent;
+import at.ac.arcs.rgg.element.AbstractBoxElement;
 import at.ac.arcs.rgg.element.RElement;
 
 import javax.swing.*;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 /**
  * @author ilhami
  */
-public class RVerticalBox extends RElement {
+public class RVerticalBox extends AbstractBoxElement {
 
     private static EmptyPlaceHolder eph = new EmptyPlaceHolder();
     private VisualComponent[][] visualComponentMatrix;
