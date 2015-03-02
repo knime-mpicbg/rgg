@@ -1,3 +1,5 @@
 # Packages #
 ############
 *.jar
+*.DS_Store
+*.ucls
