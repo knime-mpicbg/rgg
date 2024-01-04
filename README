@@ -12,3 +12,5 @@ which fixes certain bugs and adds some features like:
 - reimplemented RGGRunner, which is now bundled with the library
 - rgg.jar is now executable (by simply opening a rgg-runner instance)
 - new labelarea-element, which allows to display longer descriptions and keeps all line-breaks and text-indentation
+
+Check out available RGG elements and their syntax on the [Wiki-Page](https://github.com/knime-mpicbg/rgg/wiki)
